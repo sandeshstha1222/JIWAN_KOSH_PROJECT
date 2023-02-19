@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "poppins", sans-serif;
+  box-sizing: border-box;
+}
+footer {
+  width: 100%;
+  background: linear-gradient(to right, #00093c, #2d0b00);
+  color: aliceblue;
+  padding: 90px 0 30px;
+  font-size: 13px;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  color: rgb(255, 255, 255);
+  margin-bottom: 35px;
+}
+.footer-about {
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+}
+.footer-about b {
+  color: #3cb100;
+}
+.footer-email {
+  text-align: center;
+}
+.footer-social p {
+  display: flex;
+  justify-content: center;
+}
+.footer-social-icons {
+  display: flex;
+  justify-content: space-between;
+}
+.footer-social-icons div {
+  padding: 5px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+.footer-social-icons .icons {
+  color: white;
+  font-size: 20px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+}
+.footer-contact {
+  text-align: center;
+}
+.footer-buttom-section {
+  padding-top: 4px;
+  text-align: center;
+}
+.bottom-container {
+  text-align: center;
+}
+hr {
+  margin-bottom: 10px;
+  color: white;
+  height: 0.1px;
+}

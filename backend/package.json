@@ -1,0 +1,33 @@
+{
+  "name": "backend_majorproject",
+  "version": "1.0.0",
+  "description": "backend of the major project",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saksham511/Backend_majorproject.git"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "anyone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Saksham511/Backend_majorproject/issues"
+  },
+  "homepage": "https://github.com/Saksham511/Backend_majorproject#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^6.9.0",
+    "nodemon": "^2.0.20"
+  }
+}

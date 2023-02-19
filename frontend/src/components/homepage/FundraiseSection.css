@@ -1,0 +1,68 @@
+.Fundraise {
+  width: 100%;
+  height: 70vh;
+  background-color: white;
+}
+.Fund {
+  display: flex;
+  justify-content: space-around;
+}
+.Text-Fund {
+  margin-top: 13em;
+}
+.Text-Fund a p {
+  font-weight: bold;
+  margin-left: 2.4em;
+}
+.Text-Fund a h1 {
+  text-align: center;
+}
+.Fundinghand {
+  width: 20em;
+  height: 10em;
+}
+.Yourself-Friends-Charity {
+  display: flex;
+  text-align: center;
+  font-weight: 200;
+  justify-content: space-between;
+  margin-top: 8em;
+}
+.yourself-icons {
+  border: 1px solid #f8f8f8;
+  border-radius: 5%;
+  padding: 4em 2em 5em 2em;
+  background-color: #f8f8f8;
+  cursor: pointer;
+}
+.yourself-icons:hover {
+  transition: 0.5s;
+  background-color: #dedede;
+}
+.friends-icons {
+  border: 1px solid #f8f8f8;
+  border-radius: 5%;
+  padding: 4em 2em 5em 2em;
+  background-color: #f8f8f8;
+  margin-left: 1em;
+  cursor: pointer;
+}
+.friends-icons:hover {
+  transition: 0.5s;
+  background-color: #dedede;
+}
+.charity-icons {
+  border: 1px solid #f8f8f8;
+  border-radius: 5%;
+  padding: 4em 2em 5em 2em;
+  background-color: #f8f8f8;
+  margin-left: 1em;
+  cursor: pointer;
+}
+.charity-icons:hover {
+  transition: 0.5s;
+  background-color: #dedede;
+}
+.hr {
+  margin-top: 5em;
+}

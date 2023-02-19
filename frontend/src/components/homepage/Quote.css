@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
+
+.quote {
+  display: flex;
+  justify-content: center;
+  background-color: #edebeb;
+}
+.quote p {
+  font-size: 30px;
+  color: #3cb100;
+  font-weight: 100z;
+  margin-bottom: 4em;
+  font-family: "Fjalla One", sans-serif;
+}

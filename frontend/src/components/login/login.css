@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.login-form {
+  width: 100%;
+  height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-form .form {
+  background-color: white;
+  width: 25em;
+  height: 30em;
+  position: relative;
+  border-radius: 1em;
+  box-shadow: 0 0.188em 1.55em rgb(15, 97, 33);
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.login-form .form h2 {
+  width: 50%;
+  text-align: center;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  background-color: #3cb100;
+  border-radius: 10px;
+  margin: 50px 0px 0px 98px;
+  padding: 10px;
+}
+.login-form .form input {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  background: transparent;
+  border: 1px solid #3cb100;
+  color: rgb(65, 64, 64);
+  font-size: 15px;
+  padding-left: 10px;
+  margin: 10px;
+}
+.input {
+  margin: 20px 0px 0px 40px;
+}
+.form input:focus {
+  outline: none;
+}
+
+.form input::placeholder {
+  color: rgb(65, 64, 64);
+  opacity: 70%;
+  font-family: Arial, Helvetica, sans-serif;
+  /* padding-left:  10px; */
+}
+.login-btn {
+  width: 90px;
+  text-align: center;
+  height: 40px;
+  color: #fff;
+  background: #3cb100;
+  border: 2px solid #3cb100;
+  border-radius: 5px;
+  margin: 40px;
+  margin-left: 150px;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+}
+.login-btn:hover {
+  color: #3cb100;
+  background: transparent;
+  transition: 0.5s;
+}
+.form .text {
+  font-family: "Montserarat", sans-serif;
+  color: #3cb100;
+  text-align: center;
+}
+.register {
+  width: 90px;
+  text-align: center;
+  height: 40px;
+  color: #fff;
+  background: #3cb100;
+  border: 2px solid #3cb100;
+  border-radius: 5px;
+  margin: 40px;
+  margin-left: 150px;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+}
+.register:hover {
+  color: #3cb100;
+  background: transparent;
+  transition: 0.5s;
+}
+.form .register {
+  width: 90px;
+  text-align: center;
+  height: 40px;
+  color: #fff;
+  background: #3cb100;
+  border: 2px solid #3cb100;
+  border-radius: 5px;
+  margin: 25px;
+  margin-left: 150px;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  align-items: center;
+  text-decoration: none;
+}
+.form .register:hover {
+  color: #3cb100;
+  background: transparent;
+  transition: 0.5s;
+}
+.home-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: #fff;
+  border: 2px solid #3cb100;
+  padding: 10px 45px;
+  margin-top: 50px;
+  margin-left: 80px;
+  background: #3cb100;
+  position: relative;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+}
+.home-btn:hover {
+  background: #fff;
+  transition: 0.5s;
+  color: #3cb100;
+}
