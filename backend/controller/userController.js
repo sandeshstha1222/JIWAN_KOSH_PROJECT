@@ -105,6 +105,10 @@ export const userDelete = asynchandler((req, res) => {
 
 export const login = asynchandler((req, res) => {
   const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.send({ message: "User Field is empty!" });
+  }
   user
     .findOne({ email })
     .then((response) => {

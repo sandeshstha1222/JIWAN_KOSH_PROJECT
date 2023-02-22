@@ -1,45 +1,24 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 const Login = () => {
-  const initialValues = { username: "", email: "", password: "" };
-
-  const [formValues, setFormValues] = useState(initialValues);
+  const [user, setUser] = useState({ email: "", password: "", role: "" });
   const [passErr, setPassErr] = useState(false);
   const [emailErr, setEmailErr] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormValues({ ...formValues, name: value });
+    setUser({ ...user, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-  console.log(formValues);
-
-  const Notify = () => {
-    axios
-      .post("login", {
-        email: "san@gmail.com",
-        password: "san",
-      })
-      .then((response) => {
-        console.log(response);
-      });
-    if (formValues.password == "") {
-      console.log("empty");
-      setPassErr(true);
-    }
-    if (formValues.email == "") {
-      console.log("empty");
-      setEmailErr(true);
-    }
-    toast.success("Login Successful", {
+  const NotifyError = () => {
+    console.log("hey");
+    toast.success("Please fill the form properly.", {
       postion: "top-center",
       autoClose: 5000,
       hideProgressBar: false,
@@ -50,10 +29,99 @@ const Login = () => {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+  console.log(user);
+
+  const Notify = () => {
+    if ((user.email && user.password && user.role) === "") {
+      NotifyError();
+    }
+    // if (user.password === "") {
+    //   console.log("empty");
+    //   setPassErr(true);
+    // }
+    // if (user.email === "") {
+    //   console.log("empty");
+    //   setEmailErr(true);
+    // }
+    if (user.password && user.email) {
+      console.log("not empty");
+      axios
+        .post("login", {
+          email: user.email,
+          password: user.password,
+        })
+        .then((response) => {
+          console.log(response.data.message);
+          if (response.data.message === "User Authenticated!") {
+            console.log("Login Success");
+            toast.success("Login Successful", {
+              postion: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            navigate("/dashboard");
+          } else if (
+            response.data.message === "Invalid email, no user found!!"
+          ) {
+            console.log("Login Success");
+            toast.success("Invalid Email", {
+              postion: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          } else if (response.data.message === "Wrong pw") {
+            console.log("Login Success");
+            toast.success("Wrong Password", {
+              postion: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        });
+    }
+  };
+
+  // const PostData = async (e) => {
+  //   e.preventDefault();
+  //   const { email, password } = user;
+  //   const res = await fetch("/login", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({
+  //       email,
+  //       password,
+  //     }),
+  //   });
+  //   const data = await res.json();
+  //   if (res.status === 400 || !data) {
+  //     window.alert("Invalid Login");
+  //     console.log("Invalid Login");
+  //   } else {
+  //     // window.alert("Registration successful");
+  //     console.log("Login successful");
+  //     navigate("/dashboard");
+  //   }
+  // };
+
   return (
     <div className="login-form">
       <div className="form">
-        {/* <pre>{JSON.stringify(formValues, undefined, 2)}</pre> */}
+        {/* <pre>{JSON.stringify(user, undefined, 2)}</pre> */}
         <form onSubmit={handleSubmit}>
           <h2>LOGIN</h2>
           <div className="input">
@@ -61,11 +129,11 @@ const Login = () => {
               type="email"
               name="email"
               id=""
-              placeholder="Email/Username"
-              value={formValues.email}
+              placeholder="Email"
+              value={user.email}
               onChange={(e) => {
-                setFormValues({
-                  ...formValues,
+                setUser({
+                  ...user,
                   [e.target.name]: e.target.value,
                 });
                 setEmailErr(false);
@@ -89,10 +157,10 @@ const Login = () => {
               name="password"
               id=""
               placeholder="Password"
-              value={formValues.password}
+              value={user.password}
               onChange={(e) => {
-                setFormValues({
-                  ...formValues,
+                setUser({
+                  ...user,
                   [e.target.name]: e.target.value,
                 });
                 setPassErr(false);
@@ -111,20 +179,62 @@ const Login = () => {
                 Please Enter Password
               </p>
             )}
+            <div className="role">
+              <select
+                type="text"
+                name="role"
+                value={user.role}
+                onClick={handleChange}
+                onChange={(e) => {
+                  setUser({
+                    ...user,
+                    [e.target.name]: e.target.value,
+                  });
+                }}
+                id="role"
+                style={{
+                  padding: "8px 12.5em 8px 6px",
+                  borderRadius: "5px",
+                  borderColor: "#3cb100",
+                  color: "rgb(65, 64, 64)",
+                  fontSize: "15px",
+                }}
+              >
+                <option className="roletext" selected hidden>
+                  Role
+                </option>
+                <option>Aid Agency</option>
+                <option>Beneficiary</option>
+                <option>Donor</option>
+                <option>Bank</option>
+                <option>Vendor</option>
+              </select>
+            </div>
           </div>
-          <button className="login-btn" onClick={Notify}>
-            Login
-          </button>
-          <ToastContainer />
-          <div className="text">
-            <p>OR</p>
+          <div className="buttons">
+            <button className="login-btn" onClick={Notify}>
+              Login
+            </button>
+            <ToastContainer />
+            <div className="text">
+              <p>OR</p>
+            </div>
+            <div className="register">
+              <p>
+                Don't have an account?{" "}
+                <Link
+                  to="/register"
+                  className="link"
+                  style={{ color: "#3cb100" }}
+                >
+                  <a>Register</a>
+                </Link>
+              </p>
+            </div>
+            <Link to="/">
+              <div className="home-btn">RETURN TO HOME</div>
+            </Link>
           </div>
-          <Link to="/register" className="link">
-            <button className="register"> Register</button>
-          </Link>
-          <Link to="/">
-            <div className="home-btn">RETURN TO HOME</div>
-          </Link>
         </form>
       </div>
     </div>
