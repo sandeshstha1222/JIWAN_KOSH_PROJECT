@@ -1,3 +1,4 @@
+import { response } from "express";
 import asynchandler from "express-async-handler";
 import user from "../models/user.js";
 
@@ -23,7 +24,7 @@ import user from "../models/user.js";
 // });
 
 export const register = asynchandler(async(req,res)=>{
-  const {name, username, email, password, cpassword , role}= req.body;
+  const {name, username, email, password, cpassword , role,walletAddress}= req.body;
   const oldUser = await user.findOne({email});
   const sameUser = await user.findOne({username});
   if (sameUser) {
@@ -40,6 +41,7 @@ export const register = asynchandler(async(req,res)=>{
       password,
       cpassword,
       role,
+      walletAddress,
     });
     res.send({ message:" Account Registered ! " ,User});
   }
@@ -87,7 +89,7 @@ export const listUserById= asynchandler((req,res)=>{
 });
 
 export const userUpdate= asynchandler((req,res)=>{
-    const { name, username, email, password, cpassword, role } = req.body;
+    const { name, username, email, password, cpassword, role, walletAddress } = req.body;
     user.findOneAndUpdate(
       { email },
       {
@@ -97,6 +99,7 @@ export const userUpdate= asynchandler((req,res)=>{
         password,
         cpassword,
         role,
+        walletAddress
       }
     )
       .then((response) => {
@@ -144,3 +147,4 @@ export const login = asynchandler((req,res)=>{
         });
       });
 });
+

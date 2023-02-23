@@ -7,6 +7,7 @@ const userSchema = yup.object().shape({
     password: yup.string().required().min(6, 'Password must be minimum 6 characters.').max(18,'Password must be less than 18 characters.'),
     cpassword: yup.string().required(),
     role: yup.string().required(),
+    walletAddress: yup.string(),
 });
 
 export default userSchema;

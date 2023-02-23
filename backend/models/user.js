@@ -8,12 +8,12 @@ const userSchema = mongoose.Schema(
         },
         username: {
             type: String,
-            required: true,
+            required: [true,'please provide a username'],
             unique: true,
         },
         email: {
             type: String,
-            required: true,
+            required: [true,'please provide an email'],
             unique: true,
         },
         password: {
@@ -27,6 +27,10 @@ const userSchema = mongoose.Schema(
         role: {
             type: String,
             default: "User",
+        },
+        walletAddress:{
+            type: String,
+            default: '',
         },
     },
     {

@@ -24,19 +24,11 @@ const projectSchema= mongoose.Schema(
             type: Date,
             required: true,
         },
-        projectRunTime: {
-            type: Number,
-            required: true,
-        },
         deadline: {
             type: Date,
             required: true,
         },
         target: {
-            type: Number,
-            required: true,
-        },
-        minContribution: {
             type: Number,
             required: true,
         },
