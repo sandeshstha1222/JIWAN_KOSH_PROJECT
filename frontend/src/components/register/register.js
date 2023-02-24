@@ -134,7 +134,8 @@ const Register = () => {
       console.log("Registration successful");
       // navigate("/login");
     } else {
-      window.alert("Invalid Registration");
+      SuccessNotify();
+      // window.alert("Invalid Registration");
       console.log("Invalid Registration");
     }
   };
