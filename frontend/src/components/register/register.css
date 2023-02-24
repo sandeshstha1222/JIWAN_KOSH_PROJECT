@@ -6,10 +6,11 @@
 }
 .register-form {
   width: 100%;
-  height: calc(100vh - 80px);
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: aliceblue;
 }
 .form {
   background-color: white;
@@ -43,7 +44,8 @@
   color: rgb(65, 64, 64);
   font-size: 15px;
   padding-left: 10px;
-  margin: 10px;
+  justify-content: space-between;
+  margin-top: 15px;
 }
 .input {
   margin: 20px 0px 0px 40px;
@@ -100,6 +102,12 @@ select:focus-visible {
   color: #3cb100;
 }
 .role {
-  margin: 6px;
-  padding: 4px;
+  margin-top: 15px;
+  /* padding: 4px; */
+}
+
+.form .input p {
+  color: red;
+  font-size: 12px;
+  font-family: "poppins", sans-serif;
 }

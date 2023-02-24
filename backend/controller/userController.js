@@ -145,6 +145,5 @@ export const login = asynchandler((req,res)=>{
         res.send({
           message: "Invalid email, no user found!!",
         });
-      });
-});
+
 
