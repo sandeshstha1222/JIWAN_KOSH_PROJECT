@@ -32,3 +32,16 @@ export const createProject = asynchandler(async(req,res)=>{
         });
 });
 
+export const listProject= asynchandler((req,res)=>{
+    Project.find({})
+    .then((response)=> {
+        res.send({
+            projects: response,
+        });
+    })
+    .catch((err)=> {
+        res.send({
+            message:"Error getting project",
+        });
+    });
+});
