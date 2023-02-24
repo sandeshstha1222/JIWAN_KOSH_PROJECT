@@ -1,0 +1,9 @@
+.Agency-home{
+    flex: 4;
+    background-color: white;
+}
+
+.homeWidgets{
+    display: flex;
+    margin: 20px;
+}
