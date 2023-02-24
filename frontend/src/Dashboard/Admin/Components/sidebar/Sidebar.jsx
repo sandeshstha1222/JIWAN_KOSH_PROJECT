@@ -50,10 +50,12 @@ export default function Sidebar() {
                 <CorporateFareIcon className="sidebarIcon" />
                 Aid Agency
               </li>
-              <li className="sidebarListItem">
-                <PaidIcon className="sidebarIcon" />
-                Donation Project
-              </li>
+              <Link to="/donationProject">
+                <li className="sidebarListItem">
+                  <PaidIcon className="sidebarIcon" />
+                  Donation Project
+                </li>
+              </Link>
               <li className="sidebarListItem">
                 <AccountBalanceIcon className="sidebarIcon" />
                 Bank

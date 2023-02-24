@@ -1,4 +1,4 @@
-import "./raiseFunds.css";
+import "./operation.css";
 import FormInput from "./FormInput";
 import { useState } from "react";
 
@@ -11,7 +11,7 @@ const Operation = () => {
     enddate: "",
   });
 
-  const inputs = [
+  const Mintinputs = [
     {
       id: 1,
       name: "projectid",
