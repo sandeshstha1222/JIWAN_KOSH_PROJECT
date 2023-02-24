@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./register.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -71,11 +72,11 @@ const Register = () => {
 
   const Notify = () => {
     if (
-      (user.username ||
-        user.name ||
-        user.email ||
-        user.password ||
-        user.cpassword ||
+      (user.username &&
+        user.name &&
+        user.email &&
+        user.password &&
+        user.cpassword &&
         user.role) === ""
     ) {
       NotifyError();
@@ -103,7 +104,7 @@ const Register = () => {
     //   setCpassErr(true);
     //   // NotifyError(true);
     // }
-    
+
     // if (user.role === "") {
     //   setRoleErr(true);
     //   // NotifyError(true);
@@ -126,14 +127,15 @@ const Register = () => {
       }),
     });
     const data = await res.json();
-    if (res.status === 422 || !data) {
-      window.alert("Invalid Registration");
-      console.log("Invalid Registration");
-    } else {
+    console.log(res.send);
+    if (res.send === "Account registered!") {
       SuccessNotify();
       // window.alert("Registration successful");
       console.log("Registration successful");
       // navigate("/login");
+    } else {
+      window.alert("Invalid Registration");
+      console.log("Invalid Registration");
     }
   };
 
@@ -255,3 +257,50 @@ const Register = () => {
   );
 };
 export default Register;
+
+// if (
+//   user.username &&
+//   user.name &&
+//   user.email &&
+//   user.password &&
+//   user.cpassword &&
+//   user.role
+// ) {
+//   console.log("not empty");
+//   axios
+//     .post("signup", {
+//       name: user.name,
+//       username: user.username,
+//       email: user.email,
+//       password: user.password,
+//       cpassword: user.cpassword,
+//       role: user.role,
+//     })
+//     .then((response) => {
+//       console.log(response.data.message);
+//       if (response.data.message === "Account registered!") {
+//         console.log("Registration Successful");
+//         toast.success("Registration Successful", {
+//           postion: "top-center",
+//           autoClose: 5000,
+//           hideProgressBar: false,
+//           closeOnClick: true,
+//           pauseOnHover: true,
+//           draggable: true,
+//           progress: undefined,
+//         });
+//         navigate("/login");
+//       } else if (response.data.message === "Error registering!") {
+//         console.log("Error");
+//         toast.success("Error registrating", {
+//           postion: "top-center",
+//           autoClose: 5000,
+//           hideProgressBar: false,
+//           closeOnClick: true,
+//           pauseOnHover: true,
+//           draggable: true,
+//           progress: undefined,
+//         });
+//       }
+//     });
+// }

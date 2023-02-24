@@ -46,12 +46,13 @@ const Login = () => {
     //   console.log("empty");
     //   setEmailErr(true);
     // }
-    if (user.password && user.email) {
+    if (user.password && user.email && user.role) {
       console.log("not empty");
       axios
         .post("login", {
           email: user.email,
           password: user.password,
+          role: user.role,
         })
         .then((response) => {
           console.log(response.data.message);
@@ -70,7 +71,7 @@ const Login = () => {
           } else if (
             response.data.message === "Invalid email, no user found!!"
           ) {
-            console.log("Login Success");
+            console.log("Invalid Email");
             toast.success("Invalid Email", {
               postion: "top-center",
               autoClose: 5000,
@@ -81,7 +82,7 @@ const Login = () => {
               progress: undefined,
             });
           } else if (response.data.message === "Wrong pw") {
-            console.log("Login Success");
+            console.log("Wrong Password Success");
             toast.success("Wrong Password", {
               postion: "top-center",
               autoClose: 5000,
@@ -95,28 +96,6 @@ const Login = () => {
         });
     }
   };
-
-  // const PostData = async (e) => {
-  //   e.preventDefault();
-  //   const { email, password } = user;
-  //   const res = await fetch("/login", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({
-  //       email,
-  //       password,
-  //     }),
-  //   });
-  //   const data = await res.json();
-  //   if (res.status === 400 || !data) {
-  //     window.alert("Invalid Login");
-  //     console.log("Invalid Login");
-  //   } else {
-  //     // window.alert("Registration successful");
-  //     console.log("Login successful");
-  //     navigate("/dashboard");
-  //   }
-  // };
 
   return (
     <div className="login-form">
@@ -176,7 +155,7 @@ const Login = () => {
                   margin: "0 0 5px 10px",
                 }}
               >
-                Please Enter Password
+                Please Enter Password.
               </p>
             )}
             <div className="role">
