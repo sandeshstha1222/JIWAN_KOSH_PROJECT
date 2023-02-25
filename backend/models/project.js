@@ -11,10 +11,14 @@ const projectSchema= mongoose.Schema(
             required: true,
         },
         benificiary: [{
-            bname: {
+            username: {
                 type: String,
                 required: true,
-            }
+            },
+            email: {
+                type: String,
+                required: true,
+            },
         }],
         projectInfo: {
             type: String,

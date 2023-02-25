@@ -4,11 +4,18 @@ import Project from "../models/project.js";
 import user from "../models/user.js";
 
 export const createProject = asynchandler(async(req,res)=>{
-    const {projectName, numOfBenificiary, benificiary, projectInfo,startDate,deadline, target}= req.body;
+    const {projectName, numOfBenificiary, projectInfo,startDate,deadline, target, benificiaries}= req.body;
+    // const projectName= req.body.projectName;
+    // const numOfBenificiary=req.body.numOfBenificiary;
+    // const projectInfo= req.body.projectInfo;
+    // const startDate = req.body.startDate;
+    // const deadline= req.body.deadline;
+    // const target = req.body.target;
     Project.create({
         projectName,
         numOfBenificiary,
-        benificiary: new array [numOfBenificiary],
+        benificiaries,
+        // : req.body.benificiary,
         projectInfo,
         startDate,
         deadline,
@@ -25,3 +32,16 @@ export const createProject = asynchandler(async(req,res)=>{
         });
 });
 
+export const listProject= asynchandler((req,res)=>{
+    Project.find({})
+    .then((response)=> {
+        res.send({
+            projects: response,
+        });
+    })
+    .catch((err)=> {
+        res.send({
+            message:"Error getting project",
+        });
+    });
+});

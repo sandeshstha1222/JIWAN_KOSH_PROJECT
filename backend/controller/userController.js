@@ -145,5 +145,60 @@ export const login = asynchandler((req,res)=>{
         res.send({
           message: "Invalid email, no user found!!",
         });
+      });
+});
 
+export const listAidAgency= asynchandler((req,res)=>{
+  user.find({role: "aid agency"})
+  .then((response)=> {
+    res.send({
+      message: "aid agency listed!",
+      benificiary: response,
+    });
+    console.log(response);
+  })
+  .catch((err)=> {
+    res.send({
+      message:"Error getting aid agency",
+      benificiary: JSON.stringify(err),
+    });
+    console.log(err);
+  });
+});
+
+export const listDonor= asynchandler((req,res)=>{
+  user.find({role: "donor"})
+  .then((response)=> {
+    res.send({
+      message: "donor listed!",
+      benificiary: response,
+    });
+    console.log(response);
+  })
+  .catch((err)=> {
+    res.send({
+      message:"Error getting donor",
+      benificiary: JSON.stringify(err),
+    });
+    console.log(err);
+  });
+});
+
+export const listBenificiary= asynchandler((req,res)=>{
+  user.find({role: "benificiary"})
+  .then((response)=> {
+    res.send({
+      message: "benificiary listed!",
+      benificiary: response,
+    });
+    console.log(response);
+  })
+  .catch((err)=> {
+    res.send({
+      message:"Error getting benificiary",
+      benificiary: JSON.stringify(err),
+    });
+    console.log(err);
+  });
+});
 
