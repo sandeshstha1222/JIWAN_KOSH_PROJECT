@@ -4,63 +4,55 @@ import { useState } from "react";
 
 const Operation = () => {
   const [values, setValues] = useState({
-    projectid: "",
-    aidagency: "",
-    goal: "",
-    startdate: "",
-    enddate: "",
+    minttoken: "",
+    mintwalletaddress: "",
+    transfertoken: "",
+    transferwalletaddress: "",
   });
 
-  const inputs = [
+  const Mintinputs = [
     {
       id: 1,
-      name: "projectid",
-      type: "text",
-      placeholder: "Projectid",
+      name: "minttoken",
+      type: "Amount",
+      placeholder: "Token",
       errorMessage:
-        "Projectid should be 3-16 characters long and shouldn't include special charater!",
+        "Token should be 3-16 characters long and shouldn't include special charater!",
       label: "Projectid",
-      pattern: "^[A-Za-z0-9]{3,16}$",
+      pattern: "^{3,16}$",
       required: true,
     },
     {
       id: 2,
-      name: "aidagency",
+      name: "mintwalletaddress",
       type: "text",
-      placeholder: "Aidagency",
+      placeholder: "WalletAddress",
       errorMessage:
         "It should be 3-16 characters long and shouldn't include special charater! ",
-      label: "Aidagency ",
+      label: "WalletAddress",
       pattern: "^[A-Za-z0-9]{3,16}$",
       required: true,
     },
+  ];
+  const Transferinputs = [
     {
       id: 3,
-      name: "goal",
+      name: "transfertoken",
       type: "text",
-      placeholder: "Goal",
+      placeholder: "Token",
       errorMessage:
         "It should be 3-16 characters long and shouldn't include special charater!",
-      label: "Goal",
+      label: "Token",
       pattern: "^[A-Za-z0-9]{3,16}$",
       required: true,
     },
     {
       id: 4,
-      name: "startdate",
-      type: "date",
-      placeholder: "Startdate",
+      name: "transferwalletaddress",
+      type: "text",
+      placeholder: "WalletAddress",
       errorMessage: "It must be filled",
-      label: "Startdate",
-      required: true,
-    },
-    {
-      id: 5,
-      name: "enddate",
-      type: "date",
-      placeholder: "Enddate",
-      errorMessage: "It must be filled",
-      label: "Enddate",
+      label: "WalletAddress",
       required: true,
     },
   ];
@@ -76,18 +68,72 @@ const Operation = () => {
   console.log(values);
 
   return (
-    <div className="raiseFunds">
+    <div className="operation">
       <form onSubmit={handleSubmit}>
-        <h1>Raise Funds</h1>
-        {inputs.map((input) => (
-          <FormInput
-            key={input.id}
-            {...input}
-            value={values[input.name]}
-            onChange={onChange}
-          />
-        ))}
-        <button>Raise Funds</button>
+        <h1>Operation</h1>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "2em",
+          }}
+        >
+          <div
+            style={{
+              width: "22em",
+              height: "22em",
+              padding: "20px",
+              backgroundColor: "#fff",
+              borderRadius: "10px",
+            }}
+          >
+            <h2 style={{ textAlign: "center" }}>Mint Token</h2>
+
+            {Mintinputs.map((input) => (
+              <FormInput
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "80%",
+                }}
+                key={input.id}
+                {...input}
+                value={values[input.name]}
+                onChange={onChange}
+              />
+            ))}
+            <button>Mint</button>
+          </div>
+          <div
+            style={{
+              width: "22em",
+              height: "22em",
+              padding: "20px",
+              backgroundColor: "#fff",
+              borderRadius: "10px",
+            }}
+          >
+            <h2 style={{ textAlign: "center" }}>Transfer Token</h2>
+            {Transferinputs.map((input) => (
+              <FormInput
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "80%",
+                }}
+                key={input.id}
+                {...input}
+                value={values[input.name]}
+                onChange={onChange}
+              />
+            ))}
+
+            <button>Transfer</button>
+          </div>
+        </div>
+        <div className="balanceButton">
+          <button>Balance</button>
+        </div>
       </form>
     </div>
   );
