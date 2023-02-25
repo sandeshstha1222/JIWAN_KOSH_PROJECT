@@ -30,7 +30,7 @@ const Data = [
     projectname: "Project 4",
     description: "Saksham is Farsi which is also known as vegetable.",
     amount: "5000",
-    startdate: "52023-2-25",
+    startdate: "2023-2-25",
     enddate: "2023-2-30",
   },
   {

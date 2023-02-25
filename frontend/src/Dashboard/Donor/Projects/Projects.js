@@ -6,36 +6,32 @@ import data from "./data.js";
 import "./Projects.css";
 
 const Projects = () => {
-  // const ProjectCard = ({ card, id }) => (
-  //   <div id="projects" className="Card">
-  //     <Link to={"/projects/" + id}>
-  //       <img
-  //         src={charity}
-  //         alt="Project Title"
-  //         className="Charity-Image"
-  //         style={{ width: "20em" }}
-  //       />
-  //       <div>
-  //         <p>Need money for the treatment of Cancer of Mr. Sahil Karki.</p>
-  //       </div>
-  //     </Link>
-  //   </div>
-  // );
-
   return (
     <div className="Project-Body">
-      {/* <DonarNavar /> */}
+      <DonarNavar />
       <div className="Project-Whole-Body">
-        {/* {Array(6)
-          .fill()
-          .map((card, i) => (
-            <div>
-              <ProjectCard key={i} />
-
-              <div>
-            </div>
-          ))} */}
-        <div style={{ width: "100%", background: "red", marginTop: "5em" }}>
+        <div style={{ width: "100%", marginTop: "6em" }}>
+          <div
+            style={{
+              textAlign: "center",
+              fontSize: "20px",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <p
+              style={{
+                border: "2px solid #3cb100",
+                borderRadius: "5px",
+                padding: "5px 20px 5px 20px",
+                color: "white",
+                background: "#3cb100",
+              }}
+            >
+              Projects
+            </p>
+          </div>
+          <hr style={{ marginTop: "2em", color: "red" }} />
           {data.map((newData) => {
             const {
               // image,
@@ -55,11 +51,12 @@ const Projects = () => {
                   marginLeft: "2em",
                   padding: "40px",
                   borderRadius: "10px",
+                  marginTop: "2em",
                 }}
               >
                 <div
                   className="Projects"
-                  style={{ width: "15em", height: "20em" }}
+                  style={{ width: "15em", height: "25em" }}
                 >
                   {/* <p>{image}</p> */}
                   <div
