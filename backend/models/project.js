@@ -10,7 +10,7 @@ const projectSchema= mongoose.Schema(
             type: Number,
             required: true,
         },
-        benificiary: [{
+        benificiaries: [{
             username: {
                 type: String,
                 required: true,
