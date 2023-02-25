@@ -12,12 +12,12 @@ const Navbar = () => {
         </div>
         <div className="donor-nav-menu">
           <ul>
-            <Link to="/projects">
+            <Link to="/donorhome">
               <li>
                 <a>HOME</a>
               </li>
             </Link>
-            <Link to="#">
+            <Link to="/donationprojects">
               <li>
                 <a>DONATE</a>
               </li>

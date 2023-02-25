@@ -1,0 +1,29 @@
+.Charity-Image {
+  width: 10px;
+  height: 10px;
+}
+.Project-body {
+  display: flex;
+}
+
+.Project-whole-Body .Projects {
+  margin-top: 10em;
+  margin-left: 10em;
+}
+
+.Projects .Donate-Button {
+  color: #fff;
+  background: #3cb100;
+  border: 2px solid #3cb100;
+  padding: 7px 7px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 5em;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+.Projects .Donate-Button:hover {
+  background: #fff;
+  transition: 0.5s;
+  color: #3cb100;
+}

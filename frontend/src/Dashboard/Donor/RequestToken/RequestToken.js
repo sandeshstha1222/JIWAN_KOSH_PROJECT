@@ -9,10 +9,10 @@ const RequestToken = () => {
   });
 
   const handleInputs = (e) => {
-    console.log(token.tokenRequired, token.walletAddress);
-    const token = e.target.token;
+    console.log(token);
+    const name = e.target.name;
     const value = e.target.value;
-    setToken({ ...token, [token]: value });
+    setToken({ ...token, [name]: value });
   };
 
   return (
@@ -47,6 +47,7 @@ const RequestToken = () => {
               <div>
                 <input
                   type="number"
+                  name="tokenRequired"
                   placeholder="Token Required"
                   value={token.tokenRequired}
                   onChange={handleInputs}
@@ -57,6 +58,7 @@ const RequestToken = () => {
                 <div>
                   <input
                     type=""
+                    name="walletAddress"
                     placeholder="Wallet Address"
                     value={token.walletAddress}
                     onChange={handleInputs}
