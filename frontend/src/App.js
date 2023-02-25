@@ -5,7 +5,8 @@ import Register from "./components/register/register";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import Homepage from "./components/homepage/homepage";
 import Footer from "./components/footer/footer";
-import Dashboard from "./components/dashboard";
+import Dashboard from "./Dashboard/Dashboard";
+import RequestToken from "./Dashboard/Donor/RequestToken/RequestToken";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/navbar" element={<Navbar />} />
             <Route path="/footer" element={<Footer />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/tokenrequest" element={<RequestToken />} />
           </Routes>
         </Router>
       </div>
