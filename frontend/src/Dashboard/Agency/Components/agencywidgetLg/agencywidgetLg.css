@@ -1,51 +1,51 @@
-.widgetLg {
+.agencywidgetLg {
   flex: 2;
   box-shadow: 13px 22px 10px 2px rgba(0, 0, 0, 0.6);
   -webkit-box-shadow: 13px 22px 10px 2px rgba(0, 0, 0, 0.6);
   -moz-box-shadow: 13px 22px 10px 2px rgba(0, 0, 0, 0.6);
 }
 
-.widgetLgTitle {
+.agencywidgetLgTitle {
   font-style: 15px;
   font-weight: 600;
 }
 
-.widgetLgTable {
+.agencywidgetLgTable {
   width: 100%;
   border-spacing: 10px;
 }
 
-.widgetLgTh {
+.agencywidgetLgTh {
   text-align: left;
 }
 
-.widgetLgUser {
+.agencywidgetLgUser {
   display: flex;
   align-items: center;
   font-weight: 600;
 }
 
-.widgetLgImg {
+.agencywidgetLgImg {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.widgetLgButton {
+.agencywidgetLgButton {
   padding: 5px 7px;
   border: none;
   border-radius: 10px;
 }
 
-.widgetLgButton.Approved {
+.agencywidgetLgButton.Approved {
   background-color: rgb(232, 239, 226);
 }
 
-.widgetLgButton.Declined {
+.agencywidgetLgButton.Declined {
   background-color: rgb(242, 219, 219);
 }
 
-.widgetLgButton.Pending {
+.agencywidgetLgButton.Pending {
   background-color: rgb(240, 240, 210);
 }

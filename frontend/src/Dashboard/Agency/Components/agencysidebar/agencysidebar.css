@@ -1,0 +1,76 @@
+.agencysidebar {
+  flex: 1;
+  width: 20%;
+  height: calc(100vh - 50px);
+  background-color: #202025;
+  position: fixed;
+  margin: 1.7em 0 0 1.7em;
+  border-radius: 10px;
+}
+.agencysidebarList li {
+  color: white;
+}
+.agencysidebarWrapper {
+  padding: 20px;
+}
+.agencySidebar-Second {
+  padding: 5px;
+}
+.agencysidebarMenu {
+  margin-bottom: 10px;
+}
+
+.agencytop-profile {
+  display: flex;
+  justify-content: space-around;
+  background-color: #00b273;
+  border-radius: 10px;
+  padding: 4px;
+  align-items: center;
+}
+.agencytop-profile .image {
+  width: 30px;
+  height: 30px;
+  color: white;
+}
+.agencytop-profile p {
+  color: #fff;
+}
+
+.agencysidebarTitle {
+  font-size: 30px;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.agencysidebarSubTitle {
+  font-size: 20px;
+  color: white;
+  font-family: " fantasy";
+}
+
+.agencysidebarList {
+  list-style: none;
+  padding: 15px;
+  display: block;
+}
+
+.agencysidebarListItem {
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.agencysidebarListItem.active {
+  background-color: White;
+}
+.agencysidebarListItem:hover {
+  background-color: #00b273;
+}
+
+.agencysidebarIcon {
+  margin-right: 5px;
+  font-size: 30px !important;
+}

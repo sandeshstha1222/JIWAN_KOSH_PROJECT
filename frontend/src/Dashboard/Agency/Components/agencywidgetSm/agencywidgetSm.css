@@ -1,4 +1,4 @@
-.widgetSm {
+.agencywidgetSm {
   flex: 1;
   box-shadow: 13px 22px 10px 2px rgba(0, 0, 0, 0.6);
   -webkit-box-shadow: 13px 22px 10px 2px rgba(0, 0, 0, 0.6);
@@ -7,45 +7,45 @@
   margin-right: 20px;
 }
 
-.widgetSmTitle {
+.agencywidgetSmTitle {
   font-size: 20px;
   font-weight: 600;
 }
 
-.widgetSmImg {
+.agencywidgetSmImg {
   width: 40px;
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.widgetSmList {
+.agencywidgetSmList {
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.widgetSmListItem {
+.agencywidgetSmListItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 20px 0px;
 }
 
-.widgetSmClient {
+.agencywidgetSmClient {
   display: flex;
   flex-direction: column;
 }
 
-.widgetSmClientName {
+.agencywidgetSmClientName {
   font-weight: 600;
 }
 
-.widgetSmClientAmount {
+.agencywidgetSmClientAmount {
   font-weight: 300;
 }
 
-.widgetSmButton {
+.agencywidgetSmButton {
   display: flex;
   align-items: center;
   border: none;
@@ -56,7 +56,7 @@
   cursor: pointer;
 }
 
-.widgetSmIcon {
+.agencywidgetSmIcon {
   font-size: 16px !important;
   margin-right: 5px;
 }

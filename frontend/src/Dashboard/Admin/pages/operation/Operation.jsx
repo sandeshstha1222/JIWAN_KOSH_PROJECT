@@ -11,7 +11,7 @@ const Operation = () => {
     enddate: "",
   });
 
-  const Mintinputs = [
+  const inputs = [
     {
       id: 1,
       name: "projectid",

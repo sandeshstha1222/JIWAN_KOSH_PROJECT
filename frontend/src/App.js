@@ -22,6 +22,7 @@ function App() {
             <Route path="/navbar" element={<Navbar />} />
             <Route path="/footer" element={<Footer />} />
             <Route path="/dashboard" element={<Dashboard />} />
+
             <Route path="/operation" element={<Operation />} />
             <Route path="/raisefunds" element={<Raisefund />} />
             <Route path="/donationProject" element={<DonationProject />} />

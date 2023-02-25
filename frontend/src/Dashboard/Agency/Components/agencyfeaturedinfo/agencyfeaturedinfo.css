@@ -1,10 +1,10 @@
-.featured {
+.Agencyfeatured {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
-.featuredItem {
+.AgencyfeaturedItem {
   flex: 1;
   margin: 0px 20px;
   padding: 30px;
@@ -14,43 +14,44 @@
   -moz-box-shadow: 13px 22px 10px 2px rgba(0, 0, 0, 0.6);
 }
 
-.featuredTitle {
+.AgencyfeaturedTitle {
   font-size: 20px;
-  color: #3cb100;
+  color: #2c0101;
 }
 
-.featuredContainer {
+.AgencyfeaturedContainer {
   margin: 10px 0px;
   display: flex;
   align-items: center;
 }
 
-.featuredValue {
+.AgencyfeaturedValue {
   font-size: 30px;
   font-weight: 600;
 }
 
-.featuredRate {
+.AgencyfeaturedRate {
   display: flex;
   align-items: center;
   margin-left: 20px;
 }
 
-.featuredIcon {
+.AgencyfeaturedIcon {
   font-size: 24px;
   margin-left: 5px;
   color: green;
 }
 
-.featuredIconNegative {
+.AgencyfeaturedIconNegative {
   color: red;
 }
 
-.featuredSub {
+.AgencyfeaturedSub {
   font-size: 15px;
-  color: green;
+  color: blue;
   margin-bottom: 1px;
 }
-.featuredItem .featuredTitle {
+
+.agencyfeaturedItem .agencyfeaturedTitle {
   font-weight: bold;
 }
