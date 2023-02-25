@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import charity from "../../../images/project.jpg";
 import DonarNavar from "../DonorNavbar/DonorNavbar";
 import data from "./data.js";
-import "./Projects.css  ";
+import "./Projects.css";
 
 const Projects = () => {
   // const ProjectCard = ({ card, id }) => (
