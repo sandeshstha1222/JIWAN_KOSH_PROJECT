@@ -5,48 +5,58 @@ import user from "../models/user.js";
 
 export const createProject = asynchandler(async(req,res)=>{
     const {projectName, numOfBenificiary, projectInfo,startDate,deadline, target}= req.body;
+    var benificiaries1 = Array(numOfBenificiary);
     var benificiaries = Array(numOfBenificiary);
-    var busername = Array(numOfBenificiary);
-    var bemail = Array(numOfBenificiary);
-    busername= req.body.benificiaries.username;
-    console.log(busername);
-    bemail = req.body.benificiaries.email;
+    benificiaries1 = req.body.benificiaries;
+
     for(let i=0  ; i<numOfBenificiary ; i++)
     {
-        var user1=user.find({username: busername[i]});
-        if(user1.role == "benificiary")
+        var username=benificiaries1[i].username;
+        var user1= await user.findOne({username});
+        if (user1)
         {
-            if (user1.email == bemail[i])
+            if(user1.role == 'benificiary')
             {
-                benificiaries = req.body.benificiaries;
-                Project.create({
-                    projectName,
-                    numOfBenificiary,
-                    benificiaries: benificiaries,
-                    // : req.body.benificiary,
-                    projectInfo,
-                    startDate,
-                    deadline,
-                    target,
-                    claimableFund: target/numOfBenificiary,
-                })
-                    .then((response)=>{
-                        res.send({message: "Project Created"});
-                        console.log(response);
-                    })
-                    .catch((err)=>{
-                        console.log(err);
-                        res.send({message: "Error project Creating"});
-                    });
+                if (user1.email == benificiaries1[i].email)
+                { 
+                    benificiaries[i] = req.body.benificiaries[i];
+                    benificiaries[i].name= user1.name;
+                    benificiaries[i].walletAddress= user1.walletAddress;
+                }
+                else {
+                    res.send({message: "Please enter email that belongs to this username"});
+                }
             }
-            else {
-                res.send({message: "Please enter email that belongs to this username"});
+            else{
+                res.send({message: "The entered username doesnot belong to benificiary"});
             }
         }
-        else{
-            res.send({message: "The entered username doesnot belong to benificiary"});
+        else
+        {
+            res.send({message: "This account doesnot exist."});
         }
+        
     }
+
+    Project.create({
+        projectName,
+        numOfBenificiary,
+        benificiaries: benificiaries,
+        // : req.body.benificiary,
+        projectInfo,
+        startDate,
+        deadline,
+        target,
+        claimableFund: target/numOfBenificiary,
+    })
+        .then((response)=>{
+            res.send({message: "Project Created"});
+            console.log(response);
+        })
+        .catch((err)=>{
+            console.log(err);
+            res.send({message: "Error project Creating"});
+        });
 
     
     
