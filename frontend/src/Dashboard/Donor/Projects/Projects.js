@@ -78,7 +78,9 @@ const Projects = () => {
                   </p>
                   <p style={{ width: "24em", marginTop: "1em" }}>
                     StartDate: {startdate}{" "}
-                    <button className="Donate-Button">DONATE NOW</button>
+                    <Link to="/projectdetails">
+                      <button className="Donate-Button">DONATE NOW</button>
+                    </Link>
                   </p>
                   <p style={{ width: "24em", marginTop: "1em" }}>
                     EndDate: {enddate}

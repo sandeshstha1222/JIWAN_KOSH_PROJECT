@@ -9,6 +9,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import DonationProjects from "./Dashboard/Donor/Projects/Projects";
 import RequestToken from "./Dashboard/Donor/RequestToken/RequestToken";
 import Donor from "./Dashboard/Donor/Donor";
+import ProjectDetails from "./Dashboard/Donor/Projects/ProjectDetails";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/tokenrequest" element={<RequestToken />} />
             <Route path="/donationprojects" element={<DonationProjects />} />
             <Route path="/donorhome" element={<Donor />} />
+            <Route path="/projectdetails" element={<ProjectDetails />} />
           </Routes>
         </Router>
       </div>

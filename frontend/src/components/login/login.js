@@ -67,7 +67,10 @@ const Login = () => {
               draggable: true,
               progress: undefined,
             });
-            navigate("/dashboard");
+            if (user.role == "Donor") {
+              navigate("/dashboard");
+            } else navigate("/");
+            0.0;
           } else if (
             response.data.message === "Invalid email, no user found!!"
           ) {
