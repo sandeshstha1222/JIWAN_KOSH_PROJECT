@@ -1,13 +1,19 @@
 import "./donationProject.css";
 import FormInput from "./FormInput";
 import { useState } from "react";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
-const RaiseFunds = () => {
+const DonationProject = () => {
+  const navigate = useNavigate();
+
   const [values, setValues] = useState({
     projectname: "",
-    projectdescription: "",
-    beneficiaries: "",
-    goal: "",
+    projectinfo: "",
+    numofbeneficiaries: "",
+    beneficiary: "",
     amount: "",
     startdate: "",
     enddate: "",
@@ -27,7 +33,7 @@ const RaiseFunds = () => {
     },
     {
       id: 2,
-      name: "projectdescription",
+      name: "projectinfo",
       type: "text",
       placeholder: "Projectdescription",
       errorMessage:
@@ -38,23 +44,23 @@ const RaiseFunds = () => {
     },
     {
       id: 3,
-      name: "beneficiaries",
-      type: "text",
-      placeholder: "Beneficiaries",
+      name: "numofbeneficiaries",
+      type: "number",
+      placeholder: "NumofBeneficiaries",
       errorMessage:
         "It should be 3-16 characters long and shouldn't include special charater! ",
-      label: "Beneficiaries",
-      pattern: "^[A-Za-z0-9]{3,16}$",
+      label: "NumofBeneficiaries",
+      pattern: "^{3,16}$",
       required: true,
     },
     {
       id: 4,
-      name: "goal",
+      name: "beneficiary",
       type: "text",
-      placeholder: "Goal",
+      placeholder: "Beneficiary",
       errorMessage:
         "It should be 3-16 characters long and shouldn't include special charater!",
-      label: "Goal",
+      label: "Beneficiary",
       pattern: "^[A-Za-z0-9]{3,16}$",
       required: true,
     },
@@ -87,6 +93,19 @@ const RaiseFunds = () => {
     },
   ];
 
+  const NotifyError = () => {
+    console.log("hey");
+    toast.success("Please fill the form properly.", {
+      postion: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -96,6 +115,125 @@ const RaiseFunds = () => {
   };
 
   console.log(values);
+
+  const Notify = () => {
+    if (
+      (values.projectname &&
+        values.projectinfo &&
+        values.numofbeneficiaries &&
+        values.beneficiary &&
+        values.amount &&
+        values.startdate &&
+        values.enddate) === ""
+    ) {
+      NotifyError();
+    }
+
+    if (
+      values.projectname &&
+      values.projectinfo &&
+      values.numofbeneficiaries &&
+      values.beneficiary &&
+      values.amount &&
+      values.startdate &&
+      values.enddate
+    ) {
+      console.log("not empty");
+
+      axios
+        .post("createProject", {
+          projectname: values.projectname,
+          projectinfo: values.projectinfo,
+          numofbeneficiaries: values.numofbeneficiaries,
+          beneficiary: values.beneficiary,
+          amount: values.amount,
+          startdate: values.startdate,
+          enddate: values.enddate,
+        })
+        .then((response) => {
+          console.log(response.data.message);
+          if (response.data.message === "Project Created") {
+            console.log("Project Create Success");
+            toast.success("Project Create Successful", {
+              postion: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            navigate("/dashboard");
+          } else if (
+            response.data.message === "Invalid projectname, no project found!!"
+          ) {
+            console.log("Invalid projectname");
+            toast.success("Invalid projectname", {
+              postion: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          } else if (
+            response.data.message === "Invalid projectinfo, no project found!!"
+          ) {
+            console.log("Invalid projectinfo");
+            toast.success("Invalid projectinfo", {
+              postion: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          } else if (
+            response.data.message ===
+            "Invalid numberofbeneficiaries, no user found!!"
+          ) {
+            console.log("Invalid numberofbeneficiaries");
+            toast.success("Invalid numberofbeneficiaries", {
+              postion: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          } else if (
+            response.data.message === "Invalid beneficiaries, no user found!!"
+          ) {
+            console.log("Invalid beneficiaries");
+            toast.success("Invalid beneficiaries", {
+              postion: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          } else if (
+            response.data.message === "Invalid amount, no user found!!"
+          ) {
+            console.log("Invalid amount");
+            toast.success("Invalid amount", {
+              postion: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        });
+    }
+  };
 
   return (
     <div className="donationProject">
@@ -109,10 +247,13 @@ const RaiseFunds = () => {
             onChange={onChange}
           />
         ))}
-        <button>Create Project</button>
+        <button className="Create-btn" onClick={Notify}>
+          Create Project
+        </button>
+        <ToastContainer />
       </form>
     </div>
   );
 };
 
-export default RaiseFunds;
+export default DonationProject;
