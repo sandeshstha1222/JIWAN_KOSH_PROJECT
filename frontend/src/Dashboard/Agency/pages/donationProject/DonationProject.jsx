@@ -1,4 +1,4 @@
-import "./donationProject.css";
+// import "./donationProject.css";
 import FormInput from "./FormInput";
 import { useState } from "react";
 import axios from "axios";
@@ -58,10 +58,9 @@ const DonationProject = () => {
       name: "beneficiary",
       type: "text",
       placeholder: "Beneficiary",
-      errorMessage:
-        "It should be 3-16 characters long and shouldn't include special charater!",
+      errorMessage: "Not equal to number of beneficiaries",
       label: "Beneficiary",
-      pattern: "^[A-Za-z0-9]{3,16}$",
+      pattern: values.numofbeneficiaries,
       required: true,
     },
     {
@@ -111,7 +110,7 @@ const DonationProject = () => {
   };
 
   const onChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.values });
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   console.log(values);
@@ -250,7 +249,6 @@ const DonationProject = () => {
         <button className="Create-btn" onClick={Notify}>
           Create Project
         </button>
-        <ToastContainer />
       </form>
     </div>
   );

@@ -9,6 +9,7 @@ import Dashboard from "./Dashboard/Dashboard";
 import Operation from "./Dashboard/Admin/pages/operation/Operation";
 import Raisefund from "./Dashboard/Admin/pages/raiseFunds/RaiseFunds";
 import DonationProject from "../../frontend/src/Dashboard/Agency/pages/donationProject/DonationProject";
+import DProject from "../src/Dashboard/Agency/pages/dProject/DProject";
 function App() {
   return (
     <div className="App">
@@ -26,6 +27,7 @@ function App() {
             <Route path="/operation" element={<Operation />} />
             <Route path="/raisefunds" element={<Raisefund />} />
             <Route path="/donationProject" element={<DonationProject />} />
+            <Route path="/dProject" element={<DProject />} />
           </Routes>
         </Router>
       </div>

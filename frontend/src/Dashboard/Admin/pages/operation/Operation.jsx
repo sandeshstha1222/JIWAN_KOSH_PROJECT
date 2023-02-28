@@ -62,7 +62,7 @@ const Operation = () => {
   };
 
   const onChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.values });
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   console.log(values);

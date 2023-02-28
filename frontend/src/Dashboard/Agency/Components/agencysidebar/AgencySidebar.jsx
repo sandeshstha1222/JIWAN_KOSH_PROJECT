@@ -43,10 +43,12 @@ export default function AgencySidebar() {
                   Donation Project
                 </li>
               </Link>
-              <li className="agencysidebarListItem">
-                <AccountBalanceIcon className="agencysidebarIcon" />
-                Bank
-              </li>
+              <Link to="/dProject">
+                <li className="agencysidebarListItem">
+                  <AccountBalanceIcon className="agencysidebarIcon" />
+                  Bank
+                </li>
+              </Link>
               <li className="agencysidebarListItem">
                 <PeopleIcon className="agencysidebarIcon" />
                 Beneficiaries
