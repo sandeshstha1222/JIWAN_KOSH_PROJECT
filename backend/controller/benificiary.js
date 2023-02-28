@@ -7,7 +7,6 @@ export const listProjectByBenificiary= asynchandler(async(req,res)=>{
 
     try{
         const project1=await Project.find({})
-        console.log(project1)
         for (let i=0;i<5;i++)
             {
                 if(project1[i].benificiaries.username== username)
@@ -20,9 +19,10 @@ export const listProjectByBenificiary= asynchandler(async(req,res)=>{
                         deadline: deadline,
                         claimableFund: claimableFund,
                     });
+                    break;
                 }
-                
-            }
+            };
+            
     }
     catch(err){
         res.send({
