@@ -153,14 +153,14 @@ export const listAidAgency= asynchandler((req,res)=>{
   .then((response)=> {
     res.send({
       message: "aid agency listed!",
-      benificiary: response,
+      AidAgency: response,
     });
     console.log(response);
   })
   .catch((err)=> {
     res.send({
       message:"Error getting aid agency",
-      benificiary: JSON.stringify(err),
+      AidAgency: JSON.stringify(err),
     });
     console.log(err);
   });
@@ -171,14 +171,14 @@ export const listDonor= asynchandler((req,res)=>{
   .then((response)=> {
     res.send({
       message: "donor listed!",
-      benificiary: response,
+      donor: response,
     });
     console.log(response);
   })
   .catch((err)=> {
     res.send({
       message:"Error getting donor",
-      benificiary: JSON.stringify(err),
+      donor: JSON.stringify(err),
     });
     console.log(err);
   });

@@ -10,7 +10,7 @@ const projectSchema= mongoose.Schema(
             type: Number,
             required: true,
         },
-        benificiary: [{
+        benificiaries: [{
             username: {
                 type: String,
                 required: true,
@@ -18,6 +18,14 @@ const projectSchema= mongoose.Schema(
             email: {
                 type: String,
                 required: true,
+            },
+            name:{
+                type: String,
+                required: true,
+            },
+            walletAddress:{
+                type: String,
+                default: '',
             },
         }],
         projectInfo: {
