@@ -85,3 +85,10 @@
   color: #3cb100;
   text-align: center;
 }
+.addbutton .buttonsuccess {
+  color: green;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px;
+}

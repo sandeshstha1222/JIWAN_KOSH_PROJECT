@@ -37,18 +37,18 @@ export default function AgencySidebar() {
             </li>
             <hr />
             <div className="agencySidebar-Second">
-              <Link to="/donationProject">
+              <Link to="/dProject">
                 <li className="agencysidebarListItem">
                   <PaidIcon className="agencysidebarIcon" />
                   Donation Project
                 </li>
               </Link>
-              <Link to="/dProject">
-                <li className="agencysidebarListItem">
-                  <AccountBalanceIcon className="agencysidebarIcon" />
-                  Bank
-                </li>
-              </Link>
+
+              <li className="agencysidebarListItem">
+                <AccountBalanceIcon className="agencysidebarIcon" />
+                Bank
+              </li>
+
               <li className="agencysidebarListItem">
                 <PeopleIcon className="agencysidebarIcon" />
                 Beneficiaries

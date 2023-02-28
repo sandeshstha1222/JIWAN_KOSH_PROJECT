@@ -10,8 +10,6 @@ const DProject = () => {
     projectname: "",
     projectinfo: "",
     numofbeneficiaries: "",
-    beneficiaryEmail: "",
-    beneficiaryUsername: "",
     amount: "",
     startdate: "",
     enddate: "",
@@ -22,7 +20,6 @@ const DProject = () => {
   const [projectnameErr, setProjectnameErr] = useState(false);
   const [projectinfoErr, setProjectinfoErr] = useState(false);
   const [numofbeneficiariesErr, setNumofbeneficiariesErr] = useState(false);
-  const [beneficiaryErr, setBeneficiaryErr] = useState(false);
   const [amountErr, setAmountErr] = useState(false);
   const [startdateErr, setStartdateErr] = useState(false);
   const [enddateErr, setEnddateErr] = useState(false);
@@ -37,11 +34,21 @@ const DProject = () => {
     ]);
   };
 
-  const handleChange = (e, index) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues({ [name]: value });
+  };
+
+  const handleinputchange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
     list[index][name] = value;
-    setValues({ [name]: value });
+    setInputList(list);
+  };
+
+  const handleremove = (index) => {
+    const list = [...inputList];
+    list.splice(index, 1);
     setInputList(list);
   };
 
@@ -61,14 +68,15 @@ const DProject = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-  console.log(values);
+  console.log(values, inputList);
 
   const Notify = () => {
     if (
       (values.projectname &&
         values.projectinfo &&
         values.numofbeneficiaries &&
-        values.beneficiary &&
+        inputList.beneficiaryUsername &&
+        inputList.beneficiaryEmail &&
         values.amount &&
         values.startdate &&
         values.enddate) === ""
@@ -78,11 +86,28 @@ const DProject = () => {
     if (values.projectname === "") {
       setProjectnameErr(true);
     }
+    if (values.projectinfo === "") {
+      setProjectinfoErr(true);
+    }
+    if (values.numofbeneficiaries === "") {
+      setNumofbeneficiariesErr(true);
+    }
+    if (values.amount === "") {
+      setAmountErr(true);
+    }
+    if (values.startdate === "") {
+      setStartdateErr(true);
+    }
+    if (values.enddate === "") {
+      setEnddateErr(true);
+    }
+
     if (
       values.projectname &&
       values.projectinfo &&
       values.numofbeneficiaries &&
-      values.beneficiary &&
+      inputList.beneficiaryUsername &&
+      inputList.beneficiaryEmail &&
       values.amount &&
       values.startdate &&
       values.enddate
@@ -93,7 +118,8 @@ const DProject = () => {
           projectname: values.projectname,
           projectinfo: values.projectinfo,
           numofbeneficiaries: values.numofbeneficiaries,
-          beneficiary: values.beneficiary,
+          beneficiaryUsername: inputList.beneficiaryUsername,
+          beneficiaryEmail: inputList.beneficiaryEmail,
           amount: values.amount,
           startdate: values.startdate,
           enddate: values.enddate,
@@ -141,11 +167,7 @@ const DProject = () => {
               name="projectname"
               id=""
               placeholder="ProjectName"
-              label="ProjectName"
               value={values.projectname}
-              pattern="^[A-Za-z0-9]{3,16}$"
-              errorMessage="Projectid should be 3-16 characters long and shouldn't include special charater!"
-              required={true}
               onChange={(e) => {
                 setValues({
                   ...values,
@@ -173,10 +195,6 @@ const DProject = () => {
               id=""
               placeholder="Projectdescription"
               value={values.projectinfo}
-              label="Projectdescription"
-              pattern="^[A-Za-z0-9]{3,16}$"
-              errorMessage="Projectdescription should be 3-16 characters long and shouldn't include special charater!"
-              required={true}
               onChange={(e) => {
                 setValues({
                   ...values,
@@ -204,10 +222,6 @@ const DProject = () => {
               id=""
               placeholder="NumofBeneficiaries"
               value={values.numofbeneficiaries}
-              label="NumofBeneficiaries"
-              pattern="^{3,16}$"
-              errorMessage="It should be 3-16 characters long and shouldn't include special charater!"
-              required={true}
               onChange={(e) => {
                 setValues({
                   ...values,
@@ -243,51 +257,39 @@ const DProject = () => {
                     id=""
                     placeholder="Beneficiary Username"
                     value={values.beneficiaryUsername}
-                    onChange={(e, i) => {
-                      setValues({
-                        ...values,
-                        [e.target.name]: e.target.value,
-                      });
-                      setBeneficiaryErr(false);
-                    }}
-                    onClick={handleChange}
+                    onChange={(e) => handleinputchange(e, i)}
                   />
+
                   <input
                     style={{ width: "12.7em", marginLeft: "10px" }}
-                    type="text"
+                    type="email"
                     name="beneficiaryEmail"
                     id=""
                     placeholder="Beneficiary Email"
                     value={values.beneficiaryEmail}
-                    onChange={(e, i) => {
-                      setValues({
-                        ...values,
-                        [e.target.name]: e.target.value,
-                      });
-                      setBeneficiaryErr(false);
-                    }}
-                    onClick={handleChange}
+                    onChange={(e) => handleinputchange(e, i)}
                   />
-                  {beneficiaryErr && (
-                    <p
-                      style={{
-                        color: "red",
-                        fontSize: "14px",
-                        fontFamily: "auto",
-                        margin: "0 0 5px 10px",
-                      }}
-                    >
-                      Please Enter beneficiaries.
-                    </p>
-                  )}
 
                   <div
                     className="addbutton"
                     style={{ marginTop: "22px", marginLeft: "10px" }}
                   >
-                    <button className="buttonsuccess" onClick={handleaddclick}>
-                      Add
-                    </button>
+                    {inputList.length !== 1 && (
+                      <button
+                        className="buttonsuccess"
+                        onClick={() => handleremove(i)}
+                      >
+                        Remove
+                      </button>
+                    )}
+                    {inputList.length - 1 === i && (
+                      <button
+                        className="buttonsuccess"
+                        onClick={handleaddclick}
+                      >
+                        Add
+                      </button>
+                    )}
                   </div>
                 </div>
               );
@@ -299,10 +301,6 @@ const DProject = () => {
               id=""
               placeholder="Amount"
               value={values.amount}
-              label="Amount"
-              pattern="^[A-Za-z0-9]{3,16}$"
-              errorMessage="It  shouldn't include special charater!"
-              required={true}
               onChange={(e) => {
                 setValues({
                   ...values,
@@ -330,7 +328,6 @@ const DProject = () => {
               id=""
               placeholder="Startdate"
               value={values.startdate}
-              label="Startdate"
               onChange={(e) => {
                 setValues({
                   ...values,
@@ -358,7 +355,6 @@ const DProject = () => {
               id=""
               placeholder="Enddate"
               value={values.enddate}
-              label="Enddate"
               onChange={(e) => {
                 setValues({
                   ...values,
