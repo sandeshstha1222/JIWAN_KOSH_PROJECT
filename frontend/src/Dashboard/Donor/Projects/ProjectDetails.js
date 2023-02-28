@@ -1,6 +1,6 @@
 import React from "react";
 import "./Projects.css";
-import data from "./data.js";
+import data from "../../Api/data.js";
 const ProjectDetails = () => {
   return (
     <div>

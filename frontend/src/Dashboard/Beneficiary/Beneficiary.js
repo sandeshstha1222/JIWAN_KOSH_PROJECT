@@ -1,37 +1,29 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import BeneMenu from "./BeneMenu";
-import { BiListUl } from "react-icons/bi";
+import React from "react";
+import BeneficiaryNavbar from "./BeneficiaryNavbar/BeneficiaryNavbar";
+import "./Beneficiary.css";
+import jiwankosh from "../../images/logoblack.png";
 
-const Container = styled.div`
-  top: 80px;
-  @media screen and (max-width: 768px) {
-    position: sticky;
-  }
-`;
-const ExtendMenu = styled.button`
-  color: white;
-  background-color: transparent;
-  border: none;
-  padding: 10px;
-  font-size: 40px;
-  cursor: pointer;
-`;
 const Beneficiary = () => {
-  const [click, setClick] = useState(false);
-  const [beneMenu, setBeneMenu] = useState(false);
-  const handleClick = () => {
-    setClick(!click);
-    setBeneMenu(true);
-  };
-
   return (
-    <Container>
-      <ExtendMenu onClick={handleClick}>
-        <BiListUl />
-      </ExtendMenu>
-      {click && beneMenu && <BeneMenu />}
-    </Container>
+    <div className="Beneficiary">
+      <BeneficiaryNavbar />
+      <div className="Quotes" style={{ textAlign: "center" }}>
+        <img
+          src={jiwankosh}
+          alt="JW"
+          style={{ marginTop: "0.5em", width: "20%" }}
+        />
+        <p style={{ color: "#e67a54", fontSize: "3em", marginTop: "0.5em" }}>
+          only by
+        </p>
+        <p style={{ color: "#2f720e", fontSize: "5em" }}>GIVING</p>
+        <p style={{ color: "#e67a54", fontSize: "3em" }}>are you able</p>
+        <p style={{ color: "#494949", fontSize: "4em" }}>to recieve</p>
+        <p style={{ color: "#2f720e", fontSize: "5em" }}>MORE</p>
+        <p style={{ color: "#e67a54", fontSize: "3em" }}>than you</p>
+        <p style={{ color: "#000", fontSize: "3em" }}>already have</p>
+      </div>
+    </div>
   );
 };
 

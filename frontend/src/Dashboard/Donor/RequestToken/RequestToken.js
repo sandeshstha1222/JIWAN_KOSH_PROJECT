@@ -42,7 +42,7 @@ const RequestToken = () => {
         <div className="token-form">
           <form>
             <p>TOKEN REQUEST</p>
-            <div className="input">
+            <div className="input" style={{ margin: "1em 0 0 2.3em" }}>
               <label>Token</label>
               <div>
                 <input

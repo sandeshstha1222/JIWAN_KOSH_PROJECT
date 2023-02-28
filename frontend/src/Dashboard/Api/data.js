@@ -1,5 +1,3 @@
-import img from "../../../images/project.jpg";
-
 const Data = [
   {
     // image: { img },

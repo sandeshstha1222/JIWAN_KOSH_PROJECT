@@ -69,8 +69,9 @@ const Login = () => {
             });
             if (user.role == "Donor") {
               navigate("/dashboard");
+            } else if (user.role == "Beneficiary") {
+              navigate("/beneficiaryhome");
             } else navigate("/");
-            0.0;
           } else if (
             response.data.message === "Invalid email, no user found!!"
           ) {
@@ -213,12 +214,12 @@ const Login = () => {
                 </Link>
               </p>
             </div>
-            <Link to="/">
-              <div className="home-btn">RETURN TO HOME</div>
-            </Link>
           </div>
         </form>
       </div>
+      <Link to="/">
+        <div className="home-btn">RETURN TO HOME</div>
+      </Link>
     </div>
   );
 };

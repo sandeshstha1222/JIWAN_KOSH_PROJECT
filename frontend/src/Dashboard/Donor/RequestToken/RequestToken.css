@@ -19,7 +19,7 @@
 .token-form {
   margin-top: 4em;
   width: 25em;
-  height: 26em;
+  height: auto;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -55,7 +55,9 @@
   border-radius: 5px;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
+  margin-bottom: 3em;
 }
+
 .token-form .submit:hover {
   background: #fff;
   transition: 0.5s;

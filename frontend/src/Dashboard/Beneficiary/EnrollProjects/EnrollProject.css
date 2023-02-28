@@ -1,0 +1,20 @@
+.Enroll-Projects {
+  margin-top: 3em;
+}
+
+.Claim-Button {
+  color: #fff;
+  background: #3cb100;
+  border: 2px solid #3cb100;
+  padding: 7px 7px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 5em;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+.Claim-Button:hover {
+  background: #fff;
+  transition: 0.5s;
+  color: #3cb100;
+}

@@ -12,10 +12,11 @@
   justify-content: center;
   background-color: aliceblue;
 }
-.form {
+.register-form .form {
   background-color: white;
   width: 25em;
-  height: 30em;
+  height: auto;
+  padding: 10px 0 40px 0;
   position: relative;
   border-radius: 1em;
   box-shadow: 0 0.188em 1.55em rgb(15, 97, 33);
@@ -23,7 +24,7 @@
   align-items: center;
   justify-content: space-around;
 }
-.form h2 {
+.register-form .form h2 {
   width: 50%;
   text-align: center;
   color: #fff;
@@ -47,7 +48,7 @@
   justify-content: space-between;
   margin-top: 15px;
 }
-.input {
+.form .input {
   margin: 20px 0px 0px 40px;
 }
 .form input:focus {

@@ -1,15 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import charity from "../../../images/project.jpg";
-import DonarNavar from "../DonorNavbar/DonorNavbar";
-import data from "../../Api/data.js";
-import "./Projects.css";
+import BeneficiaryNavbar from "../BeneficiaryNavbar/BeneficiaryNavbar";
+import data from "../../Api/data";
+import "./EnrollProject.css";
 
-const Projects = () => {
+const EnrollProject = () => {
   return (
-    <div className="Project-Body">
-      <DonarNavar />
-      <div className="Project-Whole-Body">
+    <div className="Beneficiary">
+      <BeneficiaryNavbar />
+      <div className="Enroll-Project">
         <div style={{ width: "100%", marginTop: "6em" }}>
           <div
             style={{
@@ -28,19 +26,13 @@ const Projects = () => {
                 background: "#3cb100",
               }}
             >
-              Projects
+              Enrolled Projects
             </p>
           </div>
           <hr style={{ marginTop: "2em", color: "red" }} />
           {data.map((newData) => {
-            const {
-              // image,
-              projectname,
-              description,
-              amount,
-              startdate,
-              enddate,
-            } = newData;
+            const { projectname, description, amount, startdate, enddate } =
+              newData;
 
             return (
               <div
@@ -52,6 +44,7 @@ const Projects = () => {
                   padding: "40px",
                   borderRadius: "10px",
                   marginTop: "2em",
+                  height: "auto",
                 }}
               >
                 <div
@@ -77,10 +70,10 @@ const Projects = () => {
                     RequiredAmount: {amount}
                   </p>
                   <p style={{ width: "24em", marginTop: "1em" }}>
-                    StartDate: {startdate}{" "}
-                    <Link to="/projectdetails">
-                      <button className="Donate-Button">DONATE NOW</button>
-                    </Link>
+                    StartDate: {startdate}
+                    <button onClick="" className="Claim-Button">
+                      CLAIM NOW
+                    </button>
                   </p>
                   <p style={{ width: "24em", marginTop: "1em" }}>
                     EndDate: {enddate}
@@ -99,4 +92,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default EnrollProject;

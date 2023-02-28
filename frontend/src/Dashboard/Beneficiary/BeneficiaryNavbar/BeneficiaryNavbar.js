@@ -17,17 +17,11 @@ const Navbar = () => {
                 <a>HOME</a>
               </li>
             </Link>
-            <Link to="/donationprojects">
+            <Link to="/enrollprojects">
               <li>
                 <a>PROJECTS ENROLLED</a>
               </li>
             </Link>
-            <Link to="/tokenrequest">
-              <li>
-                <a>TOKEN RQST</a>
-              </li>
-            </Link>
-
             <Link className="btn" to="#">
               <li>
                 <button className="Beneficiary-connectwallet-button">
