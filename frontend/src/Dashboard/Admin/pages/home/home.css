@@ -1,0 +1,11 @@
+.Admin-home{
+    flex: 4;
+    background-color: white;
+    width: 75%;
+    float: right;
+}
+
+.homeWidgets{
+    display: flex;
+    margin: 20px;
+}
