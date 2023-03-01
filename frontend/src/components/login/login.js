@@ -38,14 +38,7 @@ const Login = () => {
     if ((user.email && user.password && user.role) === "") {
       NotifyError();
     }
-    // if (user.password === "") {
-    //   console.log("empty");
-    //   setPassErr(true);
-    // }
-    // if (user.email === "") {
-    //   console.log("empty");
-    //   setEmailErr(true);
-    // }
+
     if (user.password && user.email && user.role) {
       console.log("not empty");
       axios
@@ -68,7 +61,7 @@ const Login = () => {
               progress: undefined,
             });
             if (user.role == "Donor") {
-              navigate("/dashboard");
+              navigate("/donorhome");
             } else if (user.role == "Beneficiary") {
               navigate("/beneficiaryhome");
             } else navigate("/");

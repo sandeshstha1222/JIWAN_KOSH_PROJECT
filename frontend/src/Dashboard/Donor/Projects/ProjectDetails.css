@@ -1,0 +1,37 @@
+.ProjectDetails button {
+  color: #fff;
+  background: #3cb100;
+  border: 2px solid #3cb100;
+  padding: 10.2px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+.ProjectDetails button:hover {
+  background: #fff;
+  transition: 0.5s;
+  color: #3cb100;
+}
+
+.ProjectDetails input {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  background: transparent;
+  border: 1px solid #3cb100;
+  color: rgb(65, 64, 64);
+  font-size: 15px;
+  padding-left: 10px;
+  margin-top: 15px;
+}
+.ProjectDetails input:focus {
+  outline: none;
+}
+
+.ProjectDetails input::placeholder {
+  color: rgb(65, 64, 64);
+  opacity: 70%;
+  font-family: Arial, Helvetica, sans-serif;
+  /* padding-left:  10px; */
+}
