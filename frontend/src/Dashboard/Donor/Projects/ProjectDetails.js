@@ -65,7 +65,7 @@ const ProjectDetails = () => {
           }}
         >
           <img style={{ width: "25em" }} src={img} />
-          <div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             <input
               placeholder="JKT Token"
               type="number"
@@ -73,7 +73,21 @@ const ProjectDetails = () => {
               value={values.token}
               onChange={handleChange}
             />
-            <button style={{ margin: "0 0 0 10px" }} onClick={setDonation}>
+            <input
+              placeholder="Username"
+              type="text"
+              name="username"
+              value={values.username}
+              onChange={handleChange}
+            />
+            <input
+              placeholder="Wallet Address"
+              type="text"
+              name="walletaddress"
+              value={values.walletaddress}
+              onChange={handleChange}
+            />
+            <button style={{ margin: "15px 0 0 0px" }} onClick={""}>
               DONATE
             </button>
           </div>
