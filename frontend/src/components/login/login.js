@@ -49,7 +49,7 @@ const Login = () => {
     if (user.password && user.email && user.role) {
       console.log("not empty");
       axios
-        .post("login", {
+        .post("/user/login", {
           email: user.email,
           password: user.password,
           role: user.role,
