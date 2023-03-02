@@ -1,0 +1,76 @@
+.sidebar {
+  flex: 1;
+  width: 20%;
+  height: calc(100vh - 50px);
+  background-color: #202025;
+  position: fixed;
+  margin: 1.7em 0 0 1.7em;
+  border-radius: 10px;
+}
+.sidebarList li {
+  color: white;
+}
+.sidebarWrapper {
+  padding: 20px;
+}
+.Sidebar-Second {
+  padding: 5px;
+}
+.sidebarMenu {
+  margin-bottom: 10px;
+}
+
+.top-profile {
+  display: flex;
+  justify-content: space-around;
+  background-color: #00b273;
+  border-radius: 10px;
+  padding: 4px;
+  align-items: center;
+}
+.top-profile .image {
+  width: 30px;
+  height: 30px;
+  color: white;
+}
+.top-profile p {
+  color: #fff;
+}
+
+.sidebarTitle {
+  font-size: 30px;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.sidebarSubTitle {
+  font-size: 20px;
+  color: white;
+  font-family: " fantasy";
+}
+
+.sidebarList {
+  list-style: none;
+  padding: 15px;
+  display: block;
+}
+
+.sidebarListItem {
+  padding: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.sidebarListItem.active {
+  background-color: White;
+}
+.sidebarListItem:hover {
+  background-color: #00b273;
+}
+
+.sidebarIcon {
+  margin-right: 5px;
+  font-size: 30px !important;
+}
