@@ -15,7 +15,7 @@ const DProject = () => {
     enddate: "",
   });
   const [inputList, setInputList] = useState([
-    { beneficiaryEmail: "", beneficiaryUsername: "" },
+    { email: "", username: "" },
   ]);
   const [projectnameErr, setProjectnameErr] = useState(false);
   const [projectinfoErr, setProjectinfoErr] = useState(false);
@@ -30,13 +30,13 @@ const DProject = () => {
     // alert("add");
     setInputList([
       ...inputList,
-      { beneficiaryEmail: "", beneficiaryUsername: "" },
+      { email: "", username: "" },
     ]);
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setValues({ [name]: value });
+    setValues({ ...values, [name]: value });
   };
 
   const handleinputchange = (e, index) => {
@@ -52,18 +52,6 @@ const DProject = () => {
     setInputList(list);
   };
 
-  const NotifyError = () => {
-    console.log("hey");
-    toast.success("Please fill the form properly.", {
-      postion: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -71,18 +59,7 @@ const DProject = () => {
   console.log(values, inputList);
 
   const Notify = () => {
-    if (
-      (values.projectname &&
-        values.projectinfo &&
-        values.numofbeneficiaries &&
-        inputList.beneficiaryUsername &&
-        inputList.beneficiaryEmail &&
-        values.amount &&
-        values.startdate &&
-        values.enddate) === ""
-    ) {
-      NotifyError();
-    }
+   
     if (values.projectname === "") {
       setProjectnameErr(true);
     }
@@ -102,27 +79,33 @@ const DProject = () => {
       setEnddateErr(true);
     }
 
-    if (
+    if ((
       values.projectname &&
       values.projectinfo &&
       values.numofbeneficiaries &&
-      inputList.beneficiaryUsername &&
-      inputList.beneficiaryEmail &&
+      inputList.username &&
+      inputList.email &&
       values.amount &&
       values.startdate &&
       values.enddate
-    ) {
+    )!=""){
+      
       console.log("not empty");
+      
+      console.log(values);
+      
+      console.log(inputList);
       axios
-        .post("createProject", {
-          projectname: values.projectname,
-          projectinfo: values.projectinfo,
-          numofbeneficiaries: values.numofbeneficiaries,
-          beneficiaryUsername: inputList.beneficiaryUsername,
-          beneficiaryEmail: inputList.beneficiaryEmail,
-          amount: values.amount,
-          startdate: values.startdate,
-          enddate: values.enddate,
+        .post("/project", {
+          projectName: values.projectname,
+          numOfBenificiary: values.numofbeneficiaries,
+          projectInfo: values.projectinfo,
+          startDate: values.startdate,
+          deadline: values.enddate,
+          target: values.amount,
+          benificiaries: inputList,
+          
+          
         })
         .then((response) => {
           console.log(response.data.message);
@@ -153,6 +136,7 @@ const DProject = () => {
           }
         });
     }
+    
   };
 
   return (
@@ -253,20 +237,20 @@ const DProject = () => {
                   <input
                     style={{ width: "12.6em" }}
                     type="text"
-                    name="beneficiaryUsername"
+                    name="username"
                     id=""
-                    placeholder="Beneficiary Username"
-                    value={values.beneficiaryUsername}
+                    placeholder="Benificiary Username"
+                    value={values.username}
                     onChange={(e) => handleinputchange(e, i)}
                   />
 
                   <input
                     style={{ width: "12.7em", marginLeft: "10px" }}
                     type="email"
-                    name="beneficiaryEmail"
+                    name="email"
                     id=""
-                    placeholder="Beneficiary Email"
-                    value={values.beneficiaryEmail}
+                    placeholder="Benificiary Email"
+                    value={values.email}
                     onChange={(e) => handleinputchange(e, i)}
                   />
 
