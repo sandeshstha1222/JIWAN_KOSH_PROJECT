@@ -1,0 +1,49 @@
+.Charity-Image {
+  width: 10px;
+  height: 10px;
+}
+.Project-body {
+  display: flex;
+}
+
+.Project-whole-Body .Projects {
+  margin-top: 10em;
+  margin-left: 10em;
+}
+
+.Projects .Donate-Button {
+  color: #fff;
+  background: #3cb100;
+  border: 2px solid #3cb100;
+  padding: 7px 7px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 5em;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+.Projects .Donate-Button:hover {
+  background: #fff;
+  transition: 0.5s;
+  color: #3cb100;
+}
+
+.Projects-Data {
+  width: 30%;
+  background: #cce5fb;
+  float: left;
+  margin-left: 2em;
+  padding: 40px;
+  border-radius: 10px;
+  margin-top: 2em;
+}
+.Projects-Data .ProjectName {
+  width: 23em;
+  height: 12em;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  flex-direction: column;
+}

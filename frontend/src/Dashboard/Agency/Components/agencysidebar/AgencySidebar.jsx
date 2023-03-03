@@ -62,10 +62,12 @@ export default function AgencySidebar() {
                 Transaction
               </li>
             </div>
-            <li className="agencysidebarListItem">
-              <LogoutOutlinedIcon className="agencysidebarIcon" />
-              Logout
-            </li>
+            <Link to="/">
+              <li className="agencysidebarListItem">
+                <LogoutOutlinedIcon className="agencysidebarIcon" />
+                Logout
+              </li>
+            </Link>
           </ul>
         </div>
       </div>
