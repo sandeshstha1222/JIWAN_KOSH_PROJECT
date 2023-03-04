@@ -62,6 +62,7 @@ const TokenOperation = () => {
               padding: "20px",
               backgroundColor: "#fff",
               borderRadius: "10px",
+              border: "2px solid #3cb100",
             }}
           >
             <h2 style={{ textAlign: "center" }}> Mint Token</h2>
@@ -131,6 +132,8 @@ const TokenOperation = () => {
               padding: "20px",
               backgroundColor: "#fff",
               borderRadius: "10px",
+              border: "2px solid #3cb100",
+              marginLeft: "20px",
             }}
           >
             <h2 style={{ textAlign: "center" }}>Transfer Token</h2>
@@ -197,7 +200,7 @@ const TokenOperation = () => {
           </div>
         </div>
         <div>
-          <button className="Button-click">Balance</button>
+          <button className="Balance-Button-click">Balance</button>
         </div>
       </form>
     </div>

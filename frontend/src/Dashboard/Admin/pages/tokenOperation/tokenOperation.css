@@ -16,7 +16,7 @@
   justify-content: space-between;
 }
 .tokenOperationForm Form h1 {
-  color: rgb(123, 1, 1);
+  color: black;
   text-align: center;
 }
 
@@ -49,8 +49,7 @@
   background: #3cb100;
   border: 2px solid #3cb100;
   border-radius: 5px;
-  margin: 40px;
-  margin-left: 150px;
+  margin: 40px 0 0 7em;
   font-size: 15px;
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
@@ -65,4 +64,23 @@
   font-family: "Montserarat", sans-serif;
   color: #3cb100;
   text-align: center;
+}
+.Balance-Button-click {
+  width: 90px;
+  text-align: center;
+  height: 40px;
+  color: #fff;
+  background: #3cb100;
+  border: 2px solid #3cb100;
+  border-radius: 5px;
+  margin: 40px;
+  margin-left: 22em;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+}
+.Balance-Button-click:hover {
+  color: #3cb100;
+  background: transparent;
+  transition: 0.5s;
 }
