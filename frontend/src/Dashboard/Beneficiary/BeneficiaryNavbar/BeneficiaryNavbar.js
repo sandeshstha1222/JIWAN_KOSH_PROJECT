@@ -22,6 +22,11 @@ const Navbar = () => {
                 <a>PROJECTS ENROLLED</a>
               </li>
             </Link>
+            <Link to="/transfertoken">
+              <li>
+                <a>TRANSFER TOKEN</a>
+              </li>
+            </Link>
             <Link className="btn" to="#">
               <li>
                 <button className="Beneficiary-connectwallet-button">

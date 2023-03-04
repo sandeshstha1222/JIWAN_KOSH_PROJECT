@@ -15,6 +15,7 @@ import Donor from "./Dashboard/Donor/Donor";
 import ProjectDetails from "./Dashboard/Donor/Projects/ProjectDetails";
 import Beneficiary from "./Dashboard/Beneficiary/Beneficiary";
 import EnrollProjects from "./Dashboard/Beneficiary/EnrollProjects/EnrollProject";
+import TransferToken from "./Dashboard/Beneficiary/TransferToken/TokenTransfer";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
             <Route path="/projectdetails" element={<ProjectDetails />} />
             <Route path="/beneficiaryhome" element={<Beneficiary />} />
             <Route path="/enrollprojects" element={<EnrollProjects />} />
+            <Route path="/transfertoken" element={<TransferToken />} />
           </Routes>
         </Router>
       </div>
