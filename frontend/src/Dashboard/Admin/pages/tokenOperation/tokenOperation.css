@@ -1,0 +1,68 @@
+.tokenOperationForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(rgba(255, 255, 255, 0.7) rgba(255, 255, 255, 0.3)),
+    url("https://www.freepik.com/free-vector/watercolor-nature-background-with-leaves_13295378.htm#query=leaves%20background&position=0&from_view=keyword&track=ais");
+  background-size: cover;
+  background-position: center;
+}
+
+.tokenOperationForm Form {
+  background-color: rgb(233, 246, 213);
+  padding: 0px 60px;
+  border-radius: 10px;
+  justify-content: space-between;
+}
+.tokenOperationForm Form h1 {
+  color: rgb(123, 1, 1);
+  text-align: center;
+}
+
+.tokenOperationForm Form input {
+  width: 20em;
+  height: 40px;
+  border-radius: 5px;
+  background: transparent;
+  border: 1px solid #3cb100;
+  color: rgb(65, 64, 64);
+  font-size: 15px;
+  padding-left: 10px;
+  margin-top: 15px;
+}
+
+.Formtoken input:focus {
+  outline: none;
+}
+
+.Formtoken input::placeholder {
+  color: rgb(65, 64, 64);
+  opacity: 70%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.Button-click {
+  width: 90px;
+  text-align: center;
+  height: 40px;
+  color: #fff;
+  background: #3cb100;
+  border: 2px solid #3cb100;
+  border-radius: 5px;
+  margin: 40px;
+  margin-left: 150px;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  justify-content: center;
+}
+.Button-click:hover {
+  color: #3cb100;
+  background: transparent;
+  transition: 0.5s;
+}
+.Formtoken .text {
+  font-family: "Montserarat", sans-serif;
+  color: #3cb100;
+  text-align: center;
+}

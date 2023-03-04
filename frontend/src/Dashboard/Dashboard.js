@@ -10,10 +10,10 @@ const Dashboard = () => {
     <div className="Dashboard">
       {/* <Topbar/> */}
       <div className="container">
-        {/* <AdminSidebar />
-        <AdminHomepage /> */}
-        <AgencySidebar />
-        <AgencyHomepage />
+        <AdminSidebar />
+        <AdminHomepage />
+        {/* <AgencySidebar />
+        <AgencyHomepage /> */}
       </div>
     </div>
   );

@@ -34,13 +34,7 @@ export default function Sidebar() {
             </li>
             <hr />
             <div className="Sidebar-Second">
-              <Link to="/raisefunds">
-                <li className="sidebarListItem">
-                  <AttachMoneyIcon className="sidebarIcon" />
-                  Raise Fund
-                </li>
-              </Link>
-              <Link to="/operation">
+              <Link to="/tokenoperation">
                 <li className="sidebarListItem">
                   <AppsIcon className="sidebarIcon" />
                   Operation
@@ -50,20 +44,22 @@ export default function Sidebar() {
                 <CorporateFareIcon className="sidebarIcon" />
                 Aid Agency
               </li>
-              <Link to="/donationProject">
+              <Link to="/Projectdisplay">
                 <li className="sidebarListItem">
                   <PaidIcon className="sidebarIcon" />
-                  Donation Project
+                  Display Project
                 </li>
               </Link>
               <li className="sidebarListItem">
                 <AccountBalanceIcon className="sidebarIcon" />
                 Bank
               </li>
-              <li className="sidebarListItem">
-                <PeopleIcon className="sidebarIcon" />
-                Beneficiaries
-              </li>
+              <Link to="/beneficiary">
+                <li className="sidebarListItem">
+                  <PeopleIcon className="sidebarIcon" />
+                  Beneficiaries
+                </li>
+              </Link>
               <li className="sidebarListItem">
                 <ShoppingCartIcon className="sidebarIcon" />
                 Vendors
