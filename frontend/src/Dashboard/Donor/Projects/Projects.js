@@ -5,9 +5,11 @@ import DonarNavar from "../DonorNavbar/DonorNavbar";
 import data from "../../Api/data.js";
 import "./Projects.css";
 import axios from "axios";
+import ProjectDetails from "./ProjectDetails";
 
 const Projects = () => {
   const [projectData, setProjectData] = useState([]);
+  const [show, setShow] = useState(0);
 
   useEffect(() => {
     axios.get("/Project").then(
@@ -15,6 +17,10 @@ const Projects = () => {
       // console.log(res)
     );
   }, []);
+
+  const DonateDetails = (projectName) => {
+    console.log(projectName);
+  };
 
   return (
     <div className="Project-Body">
@@ -46,6 +52,7 @@ const Projects = () => {
           {/* fetching projects data from Database */}
           {projectData.map((projects) => {
             const {
+              id,
               projectName,
               projectInfo,
               numOfBenificiaries,
@@ -62,13 +69,19 @@ const Projects = () => {
                   style={{ width: "15em", height: "25em" }}
                 >
                   <div className="ProjectName">
-                    {benificiaries.map((benificiaries) => (
+                    {/* {benificiaries.map((benificiaries) => (
                       <div key={benificiaries.email}>{benificiaries.email}</div>
-                    ))}
+                    ))} */}
+                    <p>{benificiaries[0].email}</p>
                     <p>{projectName}</p>
                     <div style={{ margin: "2em 4em 0 0" }}>
                       <Link to="/projectdetails">
-                        <button className="Donate-Button">DONATE NOW</button>
+                        <button
+                          className="Donate-Button"
+                          onClick={() => DonateDetails(projectName)}
+                        >
+                          DONATE NOW
+                        </button>
                       </Link>
                     </div>
                   </div>
