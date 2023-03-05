@@ -1,25 +1,25 @@
 import asynchandler from "express-async-handler";
 import Project from "../models/project.js";
 
-export const listProjectByBenificiary= asynchandler(async(req,res)=>{
+export const listProjectByBeneficiary= asynchandler(async(req,res)=>{
     
     const {username}= req.body;
 
     try{
-        const project1=await Project.find({})
+        const projects=await Project.find({})
         for (let i=0;i<5;i++)
             {
-                if(project1[i].benificiaries.username== username)
+                if(projects[i].beneficiaries.username== username)
                 {
-                    const { projectName, projectInfo, startDate, deadline, claimableFund }= project1[i];
-                    res.send({
+                    const { projectName, projectInfo, startDate, deadline, claimableFund }= projects[i];
+                    return res.send({
                         projectName: projectName,
                         projectInfo: projectInfo,
                         startDate: startDate,
                         deadline: deadline,
                         claimableFund: claimableFund,
                     });
-                    break;
+                    // break;
                 }
             };
             
@@ -32,3 +32,4 @@ export const listProjectByBenificiary= asynchandler(async(req,res)=>{
         console.log(err);
     }
 });
+

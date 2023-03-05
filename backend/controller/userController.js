@@ -149,8 +149,9 @@ export const login = asynchandler((req,res)=>{
 });
 
 export const listAidAgency= asynchandler((req,res)=>{
-  user.find({role: "aid agency"})
+  user.find({role: "Aid Agency"})
   .then((response)=> {
+    // res.status(200)
     res.send({
       message: "aid agency listed!",
       AidAgency: response,
@@ -158,6 +159,7 @@ export const listAidAgency= asynchandler((req,res)=>{
     console.log(response);
   })
   .catch((err)=> {
+    // res.status(err.code)
     res.send({
       message:"Error getting aid agency",
       AidAgency: JSON.stringify(err),
@@ -184,19 +186,19 @@ export const listDonor= asynchandler((req,res)=>{
   });
 });
 
-export const listBenificiary= asynchandler((req,res)=>{
-  user.find({role: "benificiary"})
+export const listbeneficiary= asynchandler((req,res)=>{
+  user.find({role: "beneficiary"})
   .then((response)=> {
     res.send({
-      message: "benificiary listed!",
-      benificiary: response,
+      message: "beneficiary listed!",
+      beneficiary: response,
     });
     console.log(response);
   })
   .catch((err)=> {
     res.send({
-      message:"Error getting benificiary",
-      benificiary: JSON.stringify(err),
+      message:"Error getting beneficiary",
+      beneficiary: JSON.stringify(err),
     });
     console.log(err);
   });
