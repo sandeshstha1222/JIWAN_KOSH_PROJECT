@@ -5,7 +5,8 @@ import Register from "./components/register/register";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import Homepage from "./components/homepage/homepage";
 import Footer from "./components/footer/footer";
-import Dashboard from "./Dashboard/Dashboard";
+import AdminDashboard from "./Dashboard/Admin/Dashboard";
+import AgencyDashboard from "./Dashboard/Agency/Dashboard";
 import TokenOperation from "./Dashboard/Admin/pages/tokenOperation/TokenOperation";
 import ProjectDisplay from "./Dashboard/Admin/pages/Projectdisplay/projectDisplay";
 import BeneficiaryDisplay from "./Dashboard/Admin/pages/Beneficiary/BeneficiaryDisplay";
@@ -30,7 +31,8 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/navbar" element={<Navbar />} />
             <Route path="/footer" element={<Footer />} />
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/admindashboard" element={<AdminDashboard />} />
+            <Route path="/agencydashboard" element={<AgencyDashboard />} />
             <Route path="/beneficiary" element={<BeneficiaryDisplay />} />
             <Route path="/tokenoperation" element={<TokenOperation />} />
             <Route path="/Projectdisplay" element={<ProjectDisplay />} />

@@ -18,15 +18,7 @@ const Login = () => {
 
   const NotifyError = () => {
     console.log("hey");
-    toast.success("Please fill the form properly.", {
-      postion: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    toast.success("Please fill the form properly.");
   };
 
   const handleSubmit = (e) => {
@@ -36,16 +28,9 @@ const Login = () => {
 
   const Notify = () => {
     if ((user.email && user.password && user.role) === "") {
-      NotifyError();
+      toast.warn("Field is Empty");
+      // NotifyError();
     }
-    // if (user.password === "") {
-    //   console.log("empty");
-    //   setPassErr(true);
-    // }
-    // if (user.email === "") {
-    //   console.log("empty");
-    //   setEmailErr(true);
-    // }
     if (user.password && user.email && user.role) {
       console.log("not empty");
       axios

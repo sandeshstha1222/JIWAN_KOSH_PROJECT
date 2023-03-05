@@ -35,7 +35,8 @@
   margin: 50px 0px 0px 98px;
   padding: 10px;
 }
-.donationForm .Form input {
+.donationForm .Form input,
+textarea {
   width: 26em;
   height: 40px;
   border-radius: 5px;
@@ -45,6 +46,10 @@
   font-size: 15px;
   padding-left: 10px;
   margin-top: 15px;
+}
+.donationForm .Form textarea {
+  height: 80px;
+  resize: none;
 }
 
 .Beneficiary-Input {

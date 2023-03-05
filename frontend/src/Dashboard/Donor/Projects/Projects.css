@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+Pro&display=swap");
+
 .Charity-Image {
   width: 10px;
   height: 10px;
@@ -11,6 +13,13 @@
   margin-left: 10em;
 }
 
+.Projects-Data .Projects {
+  width: "";
+  height: "";
+}
+.Projects .donate-button-border {
+  padding: 2em;
+}
 .Projects .Donate-Button {
   color: #fff;
   background: #3cb100;
@@ -18,7 +27,7 @@
   padding: 7px 7px;
   cursor: pointer;
   border-radius: 5px;
-  margin-left: 5em;
+  margin-left: 7em;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
 }
@@ -30,20 +39,93 @@
 
 .Projects-Data {
   width: 30%;
-  background: #cce5fb;
+  background: #fff;
   float: left;
   margin-left: 2em;
   padding: 40px;
-  border-radius: 10px;
-  margin-top: 2em;
-}
-.Projects-Data .ProjectName {
-  width: 23em;
-  height: 12em;
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 5px;
-  flex-direction: column;
+  margin-top: 2em;
+  background-color: rgb(228, 226, 226);
+  box-shadow: rgb(78, 78, 78);
+}
+.Projects-Data .ProjectName p {
+  margin-top: 1em;
+  font-size: 1.5em;
+  font-family: "Bebas Neue", cursive;
+}
+.Projects p {
+  width: auto;
+  margin-top: 1em;
+  text-align: justify;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.Project-body .ProjectDetails {
+  width: 100%;
+  height: auto;
+}
+.Projects .restDetails {
+  border: 1px solid black;
+  border-radius: 3px;
+  font-weight: bold;
+  width: "24em";
+  margin-top: "1em";
+}
+.Projects .restDetails p {
+  margin: 1em 0 0.4em 0.4em;
+}
+.Projects .restDetails p a {
+  color: #3b9d0a;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+/* ProjectDetails popup */
+.ProjectDetails .overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  backdrop-filter: blur(5px);
+  background: rgba(49, 49, 49, 0.8);
+}
+
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.ProjectDetails .Project-content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background: #f1f1f1;
+  padding: 14px 28px;
+  border-radius: 3px;
+  max-width: 600px;
+  min-width: 300px;
+}
+
+.ProjectDetails .close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 7px;
+}
+
+.ProjectDetails button {
+  color: #fff;
+  background: #3cb100;
+  border: 2px solid #3cb100;
+  padding: 10.2px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+.ProjectDetails button:hover {
+  background: #fff;
+  transition: 0.5s;
+  color: #3cb100;
 }
