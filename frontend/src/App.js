@@ -8,11 +8,7 @@ import Footer from "./components/footer/footer";
 import Dashboard from "./Dashboard/Dashboard";
 import TokenOperation from "./Dashboard/Admin/pages/tokenOperation/TokenOperation";
 import ProjectDisplay from "./Dashboard/Admin/pages/Projectdisplay/projectDisplay";
-
 import BeneficiaryDisplay from "./Dashboard/Admin/pages/Beneficiary/BeneficiaryDisplay";
-
-import Operation from "./Dashboard/Admin/pages/operation/Operation";
-
 import DProject from "../src/Dashboard/Agency/pages/dProject/DProject";
 import DonationProjects from "./Dashboard/Donor/Projects/Projects";
 import RequestToken from "./Dashboard/Donor/RequestToken/RequestToken";
@@ -39,9 +35,6 @@ function App() {
             <Route path="/tokenoperation" element={<TokenOperation />} />
             <Route path="/Projectdisplay" element={<ProjectDisplay />} />
             <Route path="/dProject" element={<DProject />} />
-
-            <Route path="/operation" element={<Operation />} />
-
             <Route path="/tokenrequest" element={<RequestToken />} />
             <Route path="/donationprojects" element={<DonationProjects />} />
             <Route path="/donorhome" element={<Donor />} />

@@ -31,6 +31,7 @@ const ProjectDisplay = () => {
             startDate,
             deadline,
             target,
+            benificiaries,
           } = post;
           return (
             <div className="displayItem" key={projectName}>
@@ -38,6 +39,16 @@ const ProjectDisplay = () => {
               <p className="displayText">
                 Numberofbeneficiary: {numOfBenificiary}
               </p>
+              {post.benificiaries.map((data) => {
+                const { email, username } = data;
+                return (
+                  <div>
+                    Emails :{data.email} <br />
+                    Username: {data.username}
+                  </div>
+                );
+              })}
+
               <p className="displayText">Projectinfo: {projectInfo}</p>
               <p className="displayText">Startdate: {startDate}</p>
               <p className="displayText">Deadline: {deadline}</p>

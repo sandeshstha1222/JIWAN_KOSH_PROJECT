@@ -2,11 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  justify-content: space-around;
   height: 100vh;
   background: linear-gradient(rgba(255, 255, 255, 0.7) rgba(255, 255, 255, 0.3)),
     url("https://www.freepik.com/free-vector/watercolor-nature-background-with-leaves_13295378.htm#query=leaves%20background&position=0&from_view=keyword&track=ais");
   background-size: cover;
   background-position: center;
+  flex-direction: column;
 }
 
 .tokenOperationForm Form {
@@ -65,21 +67,21 @@
   color: #3cb100;
   text-align: center;
 }
-.Balance-Button-click {
-  width: 90px;
+.connectwallet-button {
+  width: 180px;
   text-align: center;
   height: 40px;
   color: #fff;
   background: #3cb100;
   border: 2px solid #3cb100;
   border-radius: 5px;
-  margin: 40px;
-  margin-left: 22em;
+  right: 5em;
   font-size: 15px;
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
+  position: absolute;
 }
-.Balance-Button-click:hover {
+.connectwallet-button:hover {
   color: #3cb100;
   background: transparent;
   transition: 0.5s;
