@@ -9,8 +9,25 @@ import ProjectDetails from "./ProjectDetails";
 
 const Projects = () => {
   const [projectData, setProjectData] = useState([]);
-  const [show, setShow] = useState(0);
+  const [projectDetails, setProjectDetails] = useState({
+    id: "",
+    projectName: "",
+    projectInfo: "",
+    numOfBenificiaries: "",
+    startDate: "",
+    enddate: "",
+  });
+  const [modal, setModal] = useState(false);
 
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
+  if (modal) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
   useEffect(() => {
     axios.get("/Project").then(
       (res) => setProjectData(res.data.projects)
@@ -18,8 +35,11 @@ const Projects = () => {
     );
   }, []);
 
-  const DonateDetails = (projectName) => {
-    console.log(projectName);
+  const DonateDetails = (id) => {
+    axios.get("/Project").then((res) =>
+      // setProjectDetails(res.data.projects)
+      console.log(projectData)
+    );
   };
 
   return (
@@ -64,110 +84,82 @@ const Projects = () => {
 
             return (
               <div className="Projects-Data" key={benificiaries.email}>
-                <div
-                  className="Projects"
-                  style={{ width: "15em", height: "25em" }}
-                >
+                <img
+                  style={{ width: "23em", height: "15em" }}
+                  src={charity}
+                  alt="PROJECT"
+                />
+                <div className="Projects">
                   <div className="ProjectName">
-                    {/* {benificiaries.map((benificiaries) => (
-                      <div key={benificiaries.email}>{benificiaries.email}</div>
-                    ))} */}
-                    <p>{benificiaries[0].email}</p>
+                    {/* <p>{benificiaries[0].email}</p> */}
                     <p>{projectName}</p>
-                    <div style={{ margin: "2em 4em 0 0" }}>
-                      <Link to="/projectdetails">
-                        <button
-                          className="Donate-Button"
-                          onClick={() => DonateDetails(projectName)}
-                        >
-                          DONATE NOW
-                        </button>
-                      </Link>
-                    </div>
                   </div>
-                  <p style={{ width: "24em", marginTop: "1em" }}>
-                    Required Amount: {target}JKT
+                  <p>
+                    {projectInfo.length > 200
+                      ? `${projectInfo.substring(0, 200)}...`
+                      : projectInfo}
+                    <a
+                      style={{
+                        color: "#3b9d0a",
+                        cursor: "pointer",
+                        fontFamily: "Source Sans Pro",
+                        fontWeight: "600",
+                      }}
+                      onClick={toggleModal}
+                    >
+                      ...Readmore
+                    </a>
                   </p>
-                  <p style={{ width: "24em", marginTop: "1em" }}>
-                    StartDate: {startDate}{" "}
-                  </p>
-                  <p style={{ width: "24em", marginTop: "1em" }}>
-                    EndDate: {deadline}
-                  </p>
-                  <p style={{ width: "24em", marginTop: "1em" }}>
-                    {projectInfo}
-                  </p>
+                  {/* <hr style={{ width: "26em" }} /> */}
+                  <div className="donate-button-border">
+                    <button
+                      className="Donate-Button"
+                      onClick={(e) => {
+                        DonateDetails(projectName);
+                        toggleModal();
+                      }}
+                    >
+                      DONATE NOW
+                    </button>
+                  </div>
+                  <div className="restDetails">
+                    <p>
+                      {target} <a>JKT Needed</a>
+                    </p>
+                    <p>StartDate: {startDate} </p>
+                    <p>EndDate: {deadline}</p>
+                  </div>
                 </div>
               </div>
             );
           })}
         </div>
       </div>
+      {projectData.projectName}
+      {projectDetails.projectName}
+      {modal && (
+        <div className="ProjectDetails">
+          <div className="modal">
+            <div onClick={toggleModal} className="overlay"></div>
+            <div className="Project-content">
+              <h2>{projectDetails.projectName}</h2>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Provident perferendis suscipit officia recusandae, eveniet
+                quaerat assumenda id fugit, dignissimos maxime non natus placeat
+                illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur
+                possimus quaerat ipsum quos molestiae rem aspernatur dicta
+                tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea.
+              </p>
+              <button className="close-button" onClick={toggleModal}>
+                CLOSE
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default Projects;
-
-// {
-//   data.map((newData) => {
-//     const {
-//       // image,
-//       projectname,
-//       description,
-//       amount,
-//       startdate,
-//       enddate,
-//     } = newData;
-
-//     return (
-//       <div
-//         style={{
-//           width: "30%",
-//           background: "#cce5fb",
-//           float: "left",
-//           marginLeft: "2em",
-//           padding: "40px",
-//           borderRadius: "10px",
-//           marginTop: "2em",
-//         }}
-//       >
-//         <div
-//           className="Projects"
-//           style={{ width: "15em", height: "25em" }}
-//         >
-//           {/* <p>{image}</p> */}
-//           <div
-//             className="ProjectName"
-//             style={{
-//               width: "23em",
-//               height: "12em",
-//               backgroundColor: "#fff",
-//               display: "flex",
-//               justifyContent: "center",
-//               alignItems: "center",
-//               borderRadius: "5px",
-//             }}
-//           >
-//             <p>{projectname}</p>
-//           </div>
-//           <p style={{ width: "24em", marginTop: "1em" }}>
-//             RequiredAmount: {amount}
-//           </p>
-//           <p style={{ width: "24em", marginTop: "1em" }}>
-//             StartDate: {startdate}{" "}
-//             <Link to="/projectdetails">
-//               <button className="Donate-Button">DONATE NOW</button>
-//             </Link>
-//           </p>
-//           <p style={{ width: "24em", marginTop: "1em" }}>
-//             EndDate: {enddate}
-//           </p>
-//           <p style={{ width: "24em", marginTop: "1em" }}>
-//             {description}
-//           </p>
-//         </div>
-//       </div>
-//     );
-//   });
-// }
