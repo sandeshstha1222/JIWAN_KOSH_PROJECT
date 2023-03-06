@@ -6,11 +6,11 @@ const projectSchema= mongoose.Schema(
             type: String,
             required: true,
         },
-        numOfBenificiary: {
+        numOfBeneficiary: {
             type: Number,
             required: true,
         },
-        benificiaries: [{
+        beneficiaries: [{
             username: {
                 type: String,
                 required: true,

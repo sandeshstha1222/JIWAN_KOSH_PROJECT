@@ -1,17 +1,20 @@
-import express, { json, response } from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import express, { json, response } from "express";
+
 import user from "./models/user.js";
 import Project from "./models/project.js";
 import userRouter from "./router/userRouter.js";
 import projectRouter from "./router/projectRouter.js";
-import benificiaryRouter from "./router/benificiaryRouter.js";
+import beneficiaryRouter from "./router/beneficiaryRouter.js";
 
 
 dotenv.config();
 const app= express();
 
 app.use(express.json());
+// separate file for db connection and call that function in main.js
+// app.use(cors())
 
 (async () => {
     try {
@@ -31,6 +34,8 @@ app.use(express.json());
 
 app.use("/user", userRouter);
 app.use("/project",projectRouter);
-app.use("/benificiary",benificiaryRouter);
+app.use("/beneficiary",beneficiaryRouter);
 
+// const PORT = process.env.PORT
+// use PORT variable in app.listen()
 app.listen(process.env.PORT, console.log(`Hello from port: ${process.env.PORT}`));
