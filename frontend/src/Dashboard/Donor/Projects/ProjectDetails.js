@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./ProjectDetails.css";
 import data from "../../Api/data.js";
 import img from "../../../images/project.jpg";
+import { useParams } from "react-router-dom";
 
 const ProjectDetails = ({ projects }) => {
   // const { projectName } = projects;
-
-  console.log("hey", projects);
+  const { projectName } = useParams();
+  console.log("hey", projectName);
   const [pro, setPro] = useState([]);
 
   const [values, setValues] = useState({

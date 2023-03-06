@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import BeneficiaryNavbar from "../BeneficiaryNavbar/BeneficiaryNavbar";
 import data from "../../Api/data";
 import "./EnrollProject.css";
-import noteContext from "../../Context/noteContext";
+import noteContext from "../../../Context/UserContext";
 
 const EnrollProject = () => {
   const a = useContext(noteContext);

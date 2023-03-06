@@ -4,31 +4,31 @@ import Project from "../models/project.js";
 import user from "../models/user.js";
 
 export const createProject = asynchandler(async(req,res)=>{
-    const {projectName, numOfBenificiary, projectInfo,startDate,deadline, target}= req.body;
-    var benificiaries1 = Array(numOfBenificiary);
-    var benificiaries = Array(numOfBenificiary);
-    benificiaries1 = req.body.benificiaries;
+    const {projectName, numOfBeneficiary, projectInfo,startDate,deadline, target}= req.body;
+    var beneficiaries1 = Array(numOfBeneficiary);
+    var beneficiaries = Array(numOfBeneficiary);
+    beneficiaries1 = req.body.beneficiaries;
 
-    for(let i=0  ; i<numOfBenificiary ; i++)
+    for(let i=0  ; i<numOfBeneficiary ; i++)
     {
-        var username=benificiaries1[i].username;
+        var username=beneficiaries1[i].username;
         var user1= await user.findOne({username});
         if (user1)
         {
-            if(user1.role == 'benificiary')
+            if(user1.role == 'beneficiary')
             {
-                if (user1.email == benificiaries1[i].email)
+                if (user1.email == beneficiaries1[i].email)
                 { 
-                    benificiaries[i] = req.body.benificiaries[i];
-                    benificiaries[i].name= user1.name;
-                    benificiaries[i].walletAddress= user1.walletAddress;
+                    beneficiaries[i] = req.body.beneficiaries[i];
+                    beneficiaries[i].name= user1.name;
+                    beneficiaries[i].walletAddress= user1.walletAddress;
                 }
                 else {
                     res.send({message: "Please enter email that belongs to this username"});
                 }
             }
             else{
-                res.send({message: "The entered username doesnot belong to benificiary"});
+                res.send({message: "The entered username doesnot belong to beneficiary"});
             }
         }
         else
@@ -40,14 +40,14 @@ export const createProject = asynchandler(async(req,res)=>{
 
     Project.create({
         projectName,
-        numOfBenificiary,
-        benificiaries: benificiaries,
-        // : req.body.benificiary,
+        numOfBeneficiary,
+        beneficiaries: beneficiaries,
+        // : req.body.beneficiary,
         projectInfo,
         startDate,
         deadline,
         target,
-        claimableFund: target/numOfBenificiary,
+        claimableFund: target/numOfBeneficiary,
     })
         .then((response)=>{
             res.send({message: "Project Created"});
@@ -72,6 +72,21 @@ export const listProject= asynchandler((req,res)=>{
     .catch((err)=> {
         res.send({
             message:"Error getting project",
+        });
+    });
+});
+
+export const listProjectBySearch= asynchandler((req,res)=>{
+    const {projectName} = req.body;
+    Project.find({projectName})
+    .then((response)=> {
+        res.send({
+            project: response,
+        });
+    })
+    .catch((err)=> {
+        res.send({
+            message:"Error getting the project",
         });
     });
 });

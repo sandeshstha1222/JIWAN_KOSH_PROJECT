@@ -9,7 +9,7 @@ const DProject = () => {
   const [values, setValues] = useState({
     projectname: "",
     projectinfo: "",
-    numofbeneficiaries: "",
+    numOfBeneficiaries: "",
     amount: "",
     startdate: "",
     enddate: "",
@@ -17,7 +17,7 @@ const DProject = () => {
   const [inputList, setInputList] = useState([{ email: "", username: "" }]);
   const [projectnameErr, setProjectnameErr] = useState(false);
   const [projectinfoErr, setProjectinfoErr] = useState(false);
-  const [numofbeneficiariesErr, setNumofbeneficiariesErr] = useState(false);
+  const [numOfBeneficiariesErr, setnumOfBeneficiariesErr] = useState(false);
   const [amountErr, setAmountErr] = useState(false);
   const [startdateErr, setStartdateErr] = useState(false);
   const [enddateErr, setEnddateErr] = useState(false);
@@ -77,11 +77,10 @@ const DProject = () => {
       setEnddateErr(true);
       toast.warn("Field is Empty");
     }
-
     if (
       (values.projectname &&
         values.projectinfo &&
-        values.numofbeneficiaries &&
+        values.numOfBeneficiaries &&
         inputList.username &&
         inputList.email &&
         values.amount &&
@@ -96,7 +95,7 @@ const DProject = () => {
       axios
         .post("/project", {
           projectName: values.projectname,
-          numOfBenificiary: values.numofbeneficiaries,
+          numOfBeneficiary: values.numOfBeneficiaries,
           projectInfo: values.projectinfo,
           startDate: values.startdate,
           deadline: values.enddate,
@@ -197,20 +196,20 @@ const DProject = () => {
             )}
             <input
               type="number"
-              name="numofbeneficiaries"
+              name="numOfBeneficiaries"
               id=""
-              placeholder="NumofBeneficiaries"
-              value={values.numofbeneficiaries}
+              placeholder="numOfBeneficiaries"
+              value={values.numOfBeneficiaries}
               onChange={(e) => {
                 setValues({
                   ...values,
                   [e.target.name]: e.target.value,
                 });
-                setNumofbeneficiariesErr(false);
+                setnumOfBeneficiariesErr(false);
               }}
               onClick={handleChange}
             />
-            {numofbeneficiariesErr && (
+            {numOfBeneficiariesErr && (
               <p
                 style={{
                   color: "red",
@@ -234,7 +233,7 @@ const DProject = () => {
                     type="text"
                     name="username"
                     id=""
-                    placeholder="Benificiary Username"
+                    placeholder="beneficiary Username"
                     value={values.username}
                     onChange={(e) => handleinputchange(e, i)}
                   />
@@ -244,7 +243,7 @@ const DProject = () => {
                     type="email"
                     name="email"
                     id=""
-                    placeholder="Benificiary Email"
+                    placeholder="beneficiary Email"
                     value={values.email}
                     onChange={(e) => handleinputchange(e, i)}
                   />

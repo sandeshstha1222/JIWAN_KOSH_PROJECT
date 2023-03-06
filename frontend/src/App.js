@@ -9,6 +9,7 @@ import AdminDashboard from "./Dashboard/Admin/Dashboard";
 import AgencyDashboard from "./Dashboard/Agency/Dashboard";
 import TokenOperation from "./Dashboard/Admin/pages/tokenOperation/TokenOperation";
 import ProjectDisplay from "./Dashboard/Admin/pages/Projectdisplay/projectDisplay";
+
 import BeneficiaryDisplay from "./Dashboard/Admin/pages/Beneficiary/BeneficiaryDisplay";
 import DProject from "../src/Dashboard/Agency/pages/dProject/DProject";
 import DonationProjects from "./Dashboard/Donor/Projects/Projects";
@@ -25,7 +26,6 @@ function App() {
     <div className="App">
       <div className="Path">
         <Router>
-          <div></div>
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<Login />} />

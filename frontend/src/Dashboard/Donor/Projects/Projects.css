@@ -13,10 +13,6 @@
   margin-left: 10em;
 }
 
-.Projects-Data .Projects {
-  width: "";
-  height: "";
-}
 .Projects .donate-button-border {
   padding: 2em;
 }
@@ -81,6 +77,8 @@
 
 /* ProjectDetails popup */
 .ProjectDetails .overlay {
+  width: 100%;
+  height: auto;
   top: 0;
   left: 0;
   right: 0;
@@ -95,16 +93,16 @@ body.active-modal {
 }
 
 .ProjectDetails .Project-content {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: fixed;
+  width: 88%;
+  min-height: 80vh;
+  max-height: 100vh;
+  top: 10%;
+  left: 6%;
   line-height: 1.4;
   background: #f1f1f1;
   padding: 14px 28px;
   border-radius: 3px;
-  max-width: 600px;
-  min-width: 300px;
 }
 
 .ProjectDetails .close-button {
@@ -128,4 +126,51 @@ body.active-modal {
   background: #fff;
   transition: 0.5s;
   color: #3cb100;
+}
+
+/***toogggggle buttton part***/
+.ProjectDetails .three-bodies {
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
+}
+.three-bodies .middle div {
+  text-align: "center";
+  border: "2px solid #3cb100";
+  border-radius: "3px";
+}
+.three-bodies .middle div p {
+  background-color: #3cb100;
+  color: white;
+}
+.ProjectDetails .input {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #3cb100;
+  padding: 50px;
+}
+
+.ProjectDetails input {
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  background: transparent;
+  border: 1px solid #3cb100;
+  color: rgb(65, 64, 64);
+  font-size: 15px;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+.ProjectDetails input:focus {
+  outline: none;
+}
+
+.ProjectDetails input::placeholder {
+  color: rgb(65, 64, 64);
+  opacity: 70%;
+  font-family: Arial, Helvetica, sans-serif;
+  /* padding-left:  10px; */
 }
