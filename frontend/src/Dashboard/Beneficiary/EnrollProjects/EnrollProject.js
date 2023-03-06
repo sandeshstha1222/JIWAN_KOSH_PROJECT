@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import BeneficiaryNavbar from "../BeneficiaryNavbar/BeneficiaryNavbar";
 import data from "../../Api/data";
 import "./EnrollProject.css";
+import noteContext from "../../../Context/UserContext";
 
 const EnrollProject = () => {
+  const a = useContext(noteContext);
+
   return (
     <div className="Beneficiary">
       <BeneficiaryNavbar />
-      <div className="Enroll-Project">
+      {a.ProjectName}
+      {/* <div className="Enroll-Project">
         <div style={{ width: "100%", marginTop: "6em" }}>
           <div
             style={{
@@ -52,7 +56,7 @@ const EnrollProject = () => {
                   style={{ width: "15em", height: "25em" }}
                 >
                   {/* <p>{image}</p> */}
-                  <div
+      {/* <div
                     className="ProjectName"
                     style={{
                       width: "23em",
@@ -81,13 +85,13 @@ const EnrollProject = () => {
                   <p style={{ width: "24em", marginTop: "1em" }}>
                     {description}
                   </p>
-                </div>
-                {/* <hr /> */}
-              </div>
+                </div> */}
+      {/* <hr /> */}
+      {/* </div>
             );
           })}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

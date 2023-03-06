@@ -14,9 +14,7 @@ const DProject = () => {
     startdate: "",
     enddate: "",
   });
-  const [inputList, setInputList] = useState([
-    { email: "", username: "" },
-  ]);
+  const [inputList, setInputList] = useState([{ email: "", username: "" }]);
   const [projectnameErr, setProjectnameErr] = useState(false);
   const [projectinfoErr, setProjectinfoErr] = useState(false);
   const [numOfBeneficiariesErr, setnumOfBeneficiariesErr] = useState(false);
@@ -28,10 +26,7 @@ const DProject = () => {
 
   const handleaddclick = () => {
     // alert("add");
-    setInputList([
-      ...inputList,
-      { email: "", username: "" },
-    ]);
+    setInputList([...inputList, { email: "", username: "" }]);
   };
 
   const handleChange = (e) => {
@@ -52,14 +47,12 @@ const DProject = () => {
     setInputList(list);
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
   };
   console.log(values, inputList);
 
   const Notify = () => {
-   
     if (values.projectname === "") {
       setProjectnameErr(true);
     }
@@ -78,7 +71,6 @@ const DProject = () => {
     if (values.enddate === "") {
       setEnddateErr(true);
     }
-
     if ((
       values.projectname &&
       values.projectinfo &&
@@ -90,10 +82,11 @@ const DProject = () => {
       values.enddate
     )!=""){
       
+
       console.log("not empty");
-      
+
       console.log(values);
-      
+
       console.log(inputList);
       axios
         .post("/project", {
@@ -103,9 +96,10 @@ const DProject = () => {
           startDate: values.startdate,
           deadline: values.enddate,
           target: values.amount,
-          beneficiaries: inputList,
+          benificiaries: inputList,
+
           
-          
+      
         })
         .then((response) => {
           console.log(response.data.message);
@@ -136,7 +130,6 @@ const DProject = () => {
           }
         });
     }
-    
   };
 
   return (
@@ -173,7 +166,7 @@ const DProject = () => {
                 Please Enter project name
               </p>
             )}
-            <input
+            <textarea
               type="text"
               name="projectinfo"
               id=""

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "./RequestToken.css";
-import DonorNavar from "../DonorNavbar/DonorNavbar";
+import "./TokenTransfer.css";
+import BeneficiaryNavar from "../BeneficiaryNavbar/BeneficiaryNavbar";
 
-const RequestToken = () => {
+const TokenTransfer = () => {
   const [token, setToken] = useState({
-    tokenRequired: "",
-    walletAddress: "",
+    tokenTransfer: "",
+    bankWalletAddress: "",
   });
 
   const handleInputs = (e) => {
@@ -16,51 +16,68 @@ const RequestToken = () => {
   };
 
   return (
-    <div className="token">
-      <div className="token-body">
-        <DonorNavar />
-        <div className="token-head">
+    <div className="Beneficiary-token">
+      <div className="Beneficiary-token-body">
+        <BeneficiaryNavar />
+        <div className="Beneficiary-token-head">
           <div style={{ fontSize: "30px" }}>
-            <div>
-              Happiness doesn't result from what we get, but from what we give.
-            </div>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              So please
+            <div
+              style={{
+                border: "2px solid #3cb100",
+                padding: "5px 3!0px 5px 30px",
+              }}
+            >
+              You can claim your money by sending token to bank.
             </div>
             <div
               style={{
                 display: "flex",
                 justifyContent: "center",
-                color: "#3cb100",
-                fontWeight: "bold",
+                fontSize: "1.5em",
               }}
             >
-              DONATE.
+              <p>
+                <a
+                  style={{
+                    fontWeight: "bold",
+                  }}
+                >
+                  CLAIM
+                </a>
+                <a
+                  style={{
+                    color: "#3cb100",
+                    fontWeight: "bold",
+                  }}
+                >
+                  NOW
+                </a>
+              </p>
             </div>
           </div>
         </div>
-        <div className="token-form">
+        <div className="Beneficiary-token-form">
           <form>
-            <p>TOKEN REQUEST</p>
+            <p>TOKEN TRANSFER</p>
             <div className="input" style={{ margin: "1em 0 0 2.3em" }}>
               <label>Token</label>
               <div>
                 <input
                   type="number"
-                  name="tokenRequired"
+                  name="tokenTransfer"
                   placeholder="Token Required"
-                  value={token.tokenRequired}
+                  value={token.tokenTransfer}
                   onChange={handleInputs}
                 />
               </div>
               <div style={{ marginTop: "1.5em" }}>
-                <label style={{ marginTop: "5em" }}>WalletAddress</label>
+                <label style={{ marginTop: "5em" }}>Bank WalletAddress</label>
                 <div>
                   <input
                     type=""
                     name="walletAddress"
                     placeholder="Wallet Address"
-                    value={token.walletAddress}
+                    value={token.bankWalletAddress}
                     onChange={handleInputs}
                   />
                 </div>
@@ -82,4 +99,4 @@ const RequestToken = () => {
   );
 };
 
-export default RequestToken;
+export default TokenTransfer;

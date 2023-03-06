@@ -4,13 +4,14 @@ import "./login.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { useSignIn } from "react-auth-kit";
 
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "", role: "" });
   const [passErr, setPassErr] = useState(false);
   const [emailErr, setEmailErr] = useState(false);
   const navigate = useNavigate();
-
+  const signIn = useSignIn();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
@@ -18,15 +19,7 @@ const Login = () => {
 
   const NotifyError = () => {
     console.log("hey");
-    toast.success("Please fill the form properly.", {
-      postion: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+    toast.success("Please fill the form properly.");
   };
 
   const handleSubmit = (e) => {
@@ -36,16 +29,9 @@ const Login = () => {
 
   const Notify = () => {
     if ((user.email && user.password && user.role) === "") {
-      NotifyError();
+      toast.warn("Field is Empty");
+      // NotifyError();
     }
-    // if (user.password === "") {
-    //   console.log("empty");
-    //   setPassErr(true);
-    // }
-    // if (user.email === "") {
-    //   console.log("empty");
-    //   setEmailErr(true);
-    // }
     if (user.password && user.email && user.role) {
       console.log("not empty");
       axios
@@ -56,17 +42,15 @@ const Login = () => {
         })
         .then((response) => {
           console.log(response.data.message);
+          signIn({
+            token: response.data.token,
+            expiresIn: 3600,
+            tokenType: "Bearer",
+            authState: { email: user.email },
+          });
           if (response.data.message === "User Authenticated!") {
             console.log("Login Success");
-            toast.success("Login Successful", {
-              postion: "top-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            toast.success("Login Successful", {});
             if (user.role == "Donor") {
               navigate("/donorhome");
             } else if ((user.role = "Beneficiary")) {
@@ -76,26 +60,10 @@ const Login = () => {
             response.data.message === "Invalid email, no user found!!"
           ) {
             console.log("Invalid Email");
-            toast.success("Invalid Email", {
-              postion: "top-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            toast.success("Invalid Email");
           } else if (response.data.message === "Wrong pw") {
             console.log("Wrong Password Success");
-            toast.success("Wrong Password", {
-              postion: "top-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            toast.success("Wrong Password");
           }
         });
     }

@@ -2,8 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./ProjectDetails.css";
 import data from "../../Api/data.js";
 import img from "../../../images/project.jpg";
+import { useParams } from "react-router-dom";
 
-const ProjectDetails = () => {
+const ProjectDetails = ({ projects }) => {
+  // const { projectName } = projects;
+  const { projectName } = useParams();
+  console.log("hey", projectName);
+  const [pro, setPro] = useState([]);
+
   const [values, setValues] = useState({
     token: "",
     walletaddress: "",
@@ -16,56 +22,32 @@ const ProjectDetails = () => {
     setValues({ ...values, [name]: value });
   };
 
-  const [provider, setProvider] = useState(undefined);
-  const [signer, setSigner] = useState(undefined);
-  const [contract, setContract] = useState(undefined);
-  const [amount, setAmount] = useState(0);
-  const [donations, setDonations] = useState([]);
-
-  // const toString = (bytes32) => ethers.utils.parseBytes325(bytes32);
-  // const toWei = (ether) => ethers.utils.parseEther(ether);
-  // const toEther = (wei) => ethers.utils.formatEther(wei).toString();
-
-  // useEffect(() => {
-  //   const init = async () => {
-  //     setContract(contract);
-  //     contract
-  //       .connect(provider)
-  //       .getDonations()
-  //       .then((result) => {
-  //         const donations = result.map((el) => [el[0], toEther(el[1])]);
-  //         setDonations(donations);
-  //       });
-  //   };
-  //   init();
-  // }, []);
-
-  // const sendDonation = async () => {
-  //   const wei = toWei(amount);
-
-  //   await signer.sendTransaction({
-  //     to: contract.address,
-  //     value: wei,
-  //   });
-  //   setAmount("0");
-  // };
+  useEffect(() => {
+    if (projects) {
+      setPro(projects);
+    }
+  }, [projects]);
 
   return (
     <div className="ProjectDetails">
+      {console.log("hey", pro)}
       <div>
-        <div
-          style={{
-            width: "100%",
-            height: "100vh",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            justifyContent: "space-around",
-          }}
-        >
-          <img style={{ width: "25em" }} src={img} />
-          <div style={{ display: "flex", flexDirection: "column" }}>
+        <div className="three-bodies">
+          <div>
+            <img style={{ width: "25em" }} src={img} />
+          </div>
+          <div>
+            {data.map((data) => {
+              const { projectName, projectInfo } = data;
+              return (
+                <div>
+                  <p>{projectName}</p>
+                  <p>{projectInfo}</p>
+                </div>
+              );
+            })}
+          </div>
+          <div className="input">
             <input
               placeholder="JKT Token"
               type="number"
@@ -93,18 +75,6 @@ const ProjectDetails = () => {
           </div>
         </div>
       </div>
-      {/* {data.map((newData) => {
-        const { projectname, descripion, amount, startdate, enddate } = newData;
-        return (
-          <div>
-            <p>{projectname}</p>
-            <p>{descripion}</p>
-            <p>{amount}</p>
-            <p>{startdate}</p>
-            <p>{enddate}</p>
-          </div>
-        );
-      })} */}
     </div>
   );
 };

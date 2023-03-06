@@ -7,14 +7,50 @@ import "./Projects.css";
 import axios from "axios";
 
 const Projects = () => {
+  const [projectDetails, setProjectDetails] = useState({
+    _id: "",
+    projectName: "",
+    projectInfo: "",
+    numOfBenificiaries: "",
+    target: "",
+    startDate: "",
+    enddate: "",
+  });
+
+  const [values, setValues] = useState({
+    token: "",
+  });
+
+  const [modal, setModal] = useState(false);
   const [projectData, setProjectData] = useState([]);
 
+  const handleChange = (e) => {
+    console.log(values);
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
+  };
+
+  const toggleModal = (projects) => {
+    setModal(!modal);
+    console.log(projects.projectName, "passed here");
+  };
+
+  if (modal) {
+    document.body.classList.add("active-modal");
+  } else {
+    document.body.classList.remove("active-modal");
+  }
   useEffect(() => {
     axios.get("/Project").then(
       (res) => setProjectData(res.data.projects)
       // console.log(res)
     );
   }, []);
+
+  const donateDetails = (projects) => {
+    setProjectDetails(projects);
+    console.log(projects);
+  };
 
   return (
     <div className="Project-Body">
@@ -46,6 +82,7 @@ const Projects = () => {
           {/* fetching projects data from Database */}
           {projectData.map((projects) => {
             const {
+              _id,
               projectName,
               projectInfo,
               numOfBenificiaries,
@@ -57,104 +94,158 @@ const Projects = () => {
 
             return (
               <div className="Projects-Data" key={benificiaries.email}>
-                <div
-                  className="Projects"
-                  style={{ width: "15em", height: "25em" }}
-                >
+                <img
+                  style={{ width: "23em", height: "15em" }}
+                  src={charity}
+                  alt="PROJECT"
+                />
+                <div className="Projects">
                   <div className="ProjectName">
-                    {benificiaries.map((benificiaries) => (
-                      <div key={benificiaries.email}>{benificiaries.email}</div>
-                    ))}
+                    {/* <p>{benificiaries[0].email}</p> */}
+
                     <p>{projectName}</p>
-                    <div style={{ margin: "2em 4em 0 0" }}>
-                      <Link to="/projectdetails">
-                        <button className="Donate-Button">DONATE NOW</button>
-                      </Link>
-                    </div>
                   </div>
-                  <p style={{ width: "24em", marginTop: "1em" }}>
-                    Required Amount: {target}JKT
+                  <p>
+                    {projectInfo.length > 200
+                      ? `${projectInfo.substring(0, 200)}...`
+                      : projectInfo}
+                    <a
+                      style={{
+                        color: "#3b9d0a",
+                        cursor: "pointer",
+                        fontFamily: "Source Sans Pro",
+                        fontWeight: "600",
+                      }}
+                      onClick={toggleModal}
+                    >
+                      ...Readmore
+                    </a>
                   </p>
-                  <p style={{ width: "24em", marginTop: "1em" }}>
-                    StartDate: {startDate}{" "}
-                  </p>
-                  <p style={{ width: "24em", marginTop: "1em" }}>
-                    EndDate: {deadline}
-                  </p>
-                  <p style={{ width: "24em", marginTop: "1em" }}>
-                    {projectInfo}
-                  </p>
+                  {/* <hr style={{ width: "26em" }} /> */}
+                  <div className="donate-button-border">
+                    {/* <Link to="/projectdetails"> */}
+                    <button
+                      className="Donate-Button"
+                      onClick={(e) => {
+                        donateDetails(projects);
+                        console.log(_id);
+                        toggleModal();
+                      }}
+                    >
+                      DONATE NOW
+                    </button>
+                    {/* </Link> */}
+                  </div>
+                  <div className="restDetails">
+                    <p>
+                      {target} <a>JKT Needed</a>
+                    </p>
+                    <p>StartDate: {startDate} </p>
+                    <p>EndDate: {deadline}</p>
+                  </div>
                 </div>
               </div>
             );
           })}
         </div>
       </div>
+
+      {modal && (
+        <div className="ProjectDetails">
+          <div className="modal">
+            <div onClick={toggleModal} className="overlay"></div>
+            <div className="Project-content">
+              <button className="close-button" onClick={toggleModal}>
+                CLOSE
+              </button>
+              <div className="three-bodies">
+                <div style={{ marginTop: "4em" }}>
+                  <img style={{ width: "25em" }} src={charity} alt="PROJECT" />
+                </div>
+                <div className="middle">
+                  <div
+                    style={{
+                      textAlign: "center",
+                      border: "2px solid #3cb100",
+                      borderRadius: "3px",
+                    }}
+                  >
+                    <a
+                      style={{
+                        fontFamily: "Bebas Neue",
+                        fontSize: "25px",
+                        padding: "30px",
+                      }}
+                    >
+                      Amount Needed
+                    </a>
+                    <p
+                      style={{
+                        border: "5px solid #3cb100",
+                      }}
+                    >
+                      {projectDetails.target} JKT
+                    </p>
+                  </div>
+                  <div
+                    style={{
+                      marginTop: "2em",
+                      textAlign: "center",
+                      border: "2px solid #3cb100",
+                      borderRadius: "3px",
+                    }}
+                  >
+                    <a
+                      style={{
+                        fontFamily: "Bebas Neue",
+                        fontSize: "25px",
+                        padding: "30px",
+                      }}
+                    >
+                      Amount Collected
+                    </a>
+
+                    <p
+                      style={{
+                        border: "5px solid #3cb100",
+                      }}
+                    >
+                      0 JKT
+                    </p>
+                  </div>
+                </div>
+                <div className="input">
+                  <input
+                    placeholder="JKT Token"
+                    type="number"
+                    name="token"
+                    value={values.token}
+                    onChange={handleChange}
+                  />
+
+                  <button style={{ margin: "15px 0 0 0px" }} onClick={""}>
+                    DONATE
+                  </button>
+                </div>
+              </div>
+              <p
+                style={{
+                  fontFamily: "Bebas Neue",
+                  fontSize: "2em",
+                  marginLeft: "0.79em",
+                }}
+              >
+                {projectDetails.projectName}
+              </p>
+              <p style={{ fontFamily: "Source Sans Pro", marginLeft: "1.6em" }}>
+                {projectDetails.projectInfo}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default Projects;
-
-// {
-//   data.map((newData) => {
-//     const {
-//       // image,
-//       projectname,
-//       description,
-//       amount,
-//       startdate,
-//       enddate,
-//     } = newData;
-
-//     return (
-//       <div
-//         style={{
-//           width: "30%",
-//           background: "#cce5fb",
-//           float: "left",
-//           marginLeft: "2em",
-//           padding: "40px",
-//           borderRadius: "10px",
-//           marginTop: "2em",
-//         }}
-//       >
-//         <div
-//           className="Projects"
-//           style={{ width: "15em", height: "25em" }}
-//         >
-//           {/* <p>{image}</p> */}
-//           <div
-//             className="ProjectName"
-//             style={{
-//               width: "23em",
-//               height: "12em",
-//               backgroundColor: "#fff",
-//               display: "flex",
-//               justifyContent: "center",
-//               alignItems: "center",
-//               borderRadius: "5px",
-//             }}
-//           >
-//             <p>{projectname}</p>
-//           </div>
-//           <p style={{ width: "24em", marginTop: "1em" }}>
-//             RequiredAmount: {amount}
-//           </p>
-//           <p style={{ width: "24em", marginTop: "1em" }}>
-//             StartDate: {startdate}{" "}
-//             <Link to="/projectdetails">
-//               <button className="Donate-Button">DONATE NOW</button>
-//             </Link>
-//           </p>
-//           <p style={{ width: "24em", marginTop: "1em" }}>
-//             EndDate: {enddate}
-//           </p>
-//           <p style={{ width: "24em", marginTop: "1em" }}>
-//             {description}
-//           </p>
-//         </div>
-//       </div>
-//     );
-//   });
-// }
