@@ -1,10 +1,10 @@
-.display {
+.displayProject {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
-.displayItem {
+.displayProject .displayItem {
   flex: 1;
   margin: 1px 0px;
   padding: 10px;
@@ -16,18 +16,18 @@
   justify-content: center;
 }
 
-.grid {
+.displayProject .grid {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1.6rem;
 }
 
-.displayTitle {
+.displayProject .displayTitle {
   font-size: 20px;
   color: #3cb100;
   justify-content: space-between;
 }
 
-.displayText {
+.displayProject .displayText {
   font-size: 15px;
   font-weight: 200;
 }

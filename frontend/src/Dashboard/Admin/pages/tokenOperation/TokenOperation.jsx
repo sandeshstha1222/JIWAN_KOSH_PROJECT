@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./tokenOperation.css";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const TokenOperation = () => {
@@ -72,17 +72,21 @@ const TokenOperation = () => {
   const Notify = () => {
     if (values.minttoken === "") {
       setMinttokenErr(true);
+      toast.warn("Field is Empty");
     }
     if (values.mintwalletaddress === "") {
       setMintwalletaddressErr(true);
+      toast.warn("Field is Empty");
     }
   };
   const Notice = () => {
     if (values.transfertoken === "") {
       setTransfertokenErr(true);
+      toast.warn("Field is Empty");
     }
     if (values.transferwalletaddress === "") {
       setTransferwalletaddressErr(true);
+      toast.warn("Field is Empty");
     }
   };
 

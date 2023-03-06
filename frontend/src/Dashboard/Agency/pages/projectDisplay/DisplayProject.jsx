@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./projectDisplay.css";
+import "./displayProject.css";
 import axios from "axios";
 
-const ProjectDisplay = () => {
+const DisplayProject = () => {
   const [mydata, setMyData] = useState([]);
 
   const getProjectData = async () => {
@@ -20,7 +20,7 @@ const ProjectDisplay = () => {
   }, []);
 
   return (
-    <div className="display">
+    <div className="displayProject">
       <div className="grid">
         <h1 className="displayTitle">Display Project</h1>
         {mydata.map((post) => {
@@ -61,4 +61,4 @@ const ProjectDisplay = () => {
   );
 };
 
-export default ProjectDisplay;
+export default DisplayProject;

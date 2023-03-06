@@ -18,7 +18,8 @@ import ProjectDetails from "./Dashboard/Donor/Projects/ProjectDetails";
 import Beneficiary from "./Dashboard/Beneficiary/Beneficiary";
 import EnrollProjects from "./Dashboard/Beneficiary/EnrollProjects/EnrollProject";
 import TransferToken from "./Dashboard/Beneficiary/TransferToken/TokenTransfer";
-
+import DisplayProject from "./Dashboard/Agency/pages/projectDisplay/DisplayProject";
+import BeneficiariesDis from "./Dashboard/Agency/pages/BeneficiariesDisplay/BeneficiariesDis";
 function App() {
   return (
     <div className="App">
@@ -37,6 +38,11 @@ function App() {
             <Route path="/tokenoperation" element={<TokenOperation />} />
             <Route path="/Projectdisplay" element={<ProjectDisplay />} />
             <Route path="/dProject" element={<DProject />} />
+            <Route path="/DisplayProject" element={<DisplayProject />} />
+            <Route
+              path="/BeneficiariesDisplay"
+              element={<BeneficiariesDis />}
+            />
             <Route path="/tokenrequest" element={<RequestToken />} />
             <Route path="/donationprojects" element={<DonationProjects />} />
             <Route path="/donorhome" element={<Donor />} />
