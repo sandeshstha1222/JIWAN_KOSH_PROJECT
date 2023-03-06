@@ -9,11 +9,8 @@ import AdminDashboard from "./Dashboard/Admin/Dashboard";
 import AgencyDashboard from "./Dashboard/Agency/Dashboard";
 import TokenOperation from "./Dashboard/Admin/pages/tokenOperation/TokenOperation";
 import ProjectDisplay from "./Dashboard/Admin/pages/Projectdisplay/projectDisplay";
-
 import BeneficiaryDisplay from "./Dashboard/Admin/pages/Beneficiary/BeneficiaryDisplay";
-
 import Operation from "./Dashboard/Admin/pages/operation/Operation";
-
 import DProject from "../src/Dashboard/Agency/pages/dProject/DProject";
 import DonationProjects from "./Dashboard/Donor/Projects/Projects";
 import RequestToken from "./Dashboard/Donor/RequestToken/RequestToken";
@@ -28,7 +25,6 @@ function App() {
     <div className="App">
       <div className="Path">
         <Router>
-          <div></div>
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<Login />} />

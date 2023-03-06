@@ -5,22 +5,34 @@ import DonarNavar from "../DonorNavbar/DonorNavbar";
 import data from "../../Api/data.js";
 import "./Projects.css";
 import axios from "axios";
-import ProjectDetails from "./ProjectDetails";
 
 const Projects = () => {
-  const [projectData, setProjectData] = useState([]);
   const [projectDetails, setProjectDetails] = useState({
-    id: "",
+    _id: "",
     projectName: "",
     projectInfo: "",
     numOfBenificiaries: "",
+    target: "",
     startDate: "",
     enddate: "",
   });
-  const [modal, setModal] = useState(false);
 
-  const toggleModal = () => {
+  const [values, setValues] = useState({
+    token: "",
+  });
+
+  const [modal, setModal] = useState(false);
+  const [projectData, setProjectData] = useState([]);
+
+  const handleChange = (e) => {
+    console.log(values);
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
+  };
+
+  const toggleModal = (projects) => {
     setModal(!modal);
+    console.log(projects.projectName, "passed here");
   };
 
   if (modal) {
@@ -35,11 +47,9 @@ const Projects = () => {
     );
   }, []);
 
-  const DonateDetails = (id) => {
-    axios.get("/Project").then((res) =>
-      // setProjectDetails(res.data.projects)
-      console.log(projectData)
-    );
+  const donateDetails = (projects) => {
+    setProjectDetails(projects);
+    console.log(projects);
   };
 
   return (
@@ -72,7 +82,7 @@ const Projects = () => {
           {/* fetching projects data from Database */}
           {projectData.map((projects) => {
             const {
-              id,
+              _id,
               projectName,
               projectInfo,
               numOfBenificiaries,
@@ -92,6 +102,7 @@ const Projects = () => {
                 <div className="Projects">
                   <div className="ProjectName">
                     {/* <p>{benificiaries[0].email}</p> */}
+
                     <p>{projectName}</p>
                   </div>
                   <p>
@@ -112,15 +123,18 @@ const Projects = () => {
                   </p>
                   {/* <hr style={{ width: "26em" }} /> */}
                   <div className="donate-button-border">
+                    {/* <Link to="/projectdetails"> */}
                     <button
                       className="Donate-Button"
                       onClick={(e) => {
-                        DonateDetails(projectName);
+                        donateDetails(projects);
+                        console.log(_id);
                         toggleModal();
                       }}
                     >
                       DONATE NOW
                     </button>
+                    {/* </Link> */}
                   </div>
                   <div className="restDetails">
                     <p>
@@ -135,25 +149,97 @@ const Projects = () => {
           })}
         </div>
       </div>
-      {projectData.projectName}
-      {projectDetails.projectName}
+
       {modal && (
         <div className="ProjectDetails">
           <div className="modal">
             <div onClick={toggleModal} className="overlay"></div>
             <div className="Project-content">
-              <h2>{projectDetails.projectName}</h2>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Provident perferendis suscipit officia recusandae, eveniet
-                quaerat assumenda id fugit, dignissimos maxime non natus placeat
-                illo iusto! Sapiente dolorum id maiores dolores? Illum pariatur
-                possimus quaerat ipsum quos molestiae rem aspernatur dicta
-                tenetur. Sunt placeat tempora vitae enim incidunt porro fuga ea.
-              </p>
               <button className="close-button" onClick={toggleModal}>
                 CLOSE
               </button>
+              <div className="three-bodies">
+                <div style={{ marginTop: "4em" }}>
+                  <img style={{ width: "25em" }} src={charity} alt="PROJECT" />
+                </div>
+                <div className="middle">
+                  <div
+                    style={{
+                      textAlign: "center",
+                      border: "2px solid #3cb100",
+                      borderRadius: "3px",
+                    }}
+                  >
+                    <a
+                      style={{
+                        fontFamily: "Bebas Neue",
+                        fontSize: "25px",
+                        padding: "30px",
+                      }}
+                    >
+                      Amount Needed
+                    </a>
+                    <p
+                      style={{
+                        border: "5px solid #3cb100",
+                      }}
+                    >
+                      {projectDetails.target} JKT
+                    </p>
+                  </div>
+                  <div
+                    style={{
+                      marginTop: "2em",
+                      textAlign: "center",
+                      border: "2px solid #3cb100",
+                      borderRadius: "3px",
+                    }}
+                  >
+                    <a
+                      style={{
+                        fontFamily: "Bebas Neue",
+                        fontSize: "25px",
+                        padding: "30px",
+                      }}
+                    >
+                      Amount Collected
+                    </a>
+
+                    <p
+                      style={{
+                        border: "5px solid #3cb100",
+                      }}
+                    >
+                      0 JKT
+                    </p>
+                  </div>
+                </div>
+                <div className="input">
+                  <input
+                    placeholder="JKT Token"
+                    type="number"
+                    name="token"
+                    value={values.token}
+                    onChange={handleChange}
+                  />
+
+                  <button style={{ margin: "15px 0 0 0px" }} onClick={""}>
+                    DONATE
+                  </button>
+                </div>
+              </div>
+              <p
+                style={{
+                  fontFamily: "Bebas Neue",
+                  fontSize: "2em",
+                  marginLeft: "0.79em",
+                }}
+              >
+                {projectDetails.projectName}
+              </p>
+              <p style={{ fontFamily: "Source Sans Pro", marginLeft: "1.6em" }}>
+                {projectDetails.projectInfo}
+              </p>
             </div>
           </div>
         </div>

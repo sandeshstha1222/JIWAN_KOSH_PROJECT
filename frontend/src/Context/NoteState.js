@@ -1,5 +1,5 @@
 import React from "react";
-import NoteContext from "./noteContext";
+import NoteContext from "./UserContext";
 import axios from "axios";
 
 const NoteState = (props) => {
