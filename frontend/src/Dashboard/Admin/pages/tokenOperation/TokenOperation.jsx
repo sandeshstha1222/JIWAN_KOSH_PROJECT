@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./tokenOperation.css";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const TokenOperation = () => {
@@ -10,6 +10,48 @@ const TokenOperation = () => {
     transfertoken: "",
     transferwalletaddress: "",
   });
+
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [defaultAccount, setDefaultAccount] = useState(null);
+  const [userBalance, setUserBalance] = useState(null);
+  const [walletAddress, setWalletAddress] = useState("");
+
+  const connectWalletHandler = () => {
+    if (window.ethereum) {
+      window.ethereum
+        .request({ method: "eth_requestAccounts" })
+        .then((result) => {
+          accountChangedHandler(result[0]);
+          setWalletAddress(result[0]);
+          console.log(result[0]);
+        });
+    } else {
+      setErrorMessage("Install Metamask");
+      alert("ERROR!Install Metamask");
+      console.log("Errrrrorrr Install metamask");
+    }
+  };
+
+  const accountChangedHandler = (newAccount) => {
+    setDefaultAccount(newAccount);
+    getUserBalance(newAccount.toString());
+  };
+
+  const getUserBalance = (address) => {
+    window.ethereum
+      .request({ method: "eth_getBalance", params: [address, "latest"] })
+      .then((balance) => {
+        setUserBalance(balance);
+      });
+  };
+
+  const chainChangedHandler = () => {
+    window.location.reload();
+  };
+
+  window.ethereum.on("accountChanged", accountChangedHandler);
+
+  window.ethereum.on("chainChanged", chainChangedHandler);
 
   const [minttokenErr, setMinttokenErr] = useState(false);
   const [mintwalletaddressErr, setMintwalletaddressErr] = useState(false);
@@ -46,6 +88,16 @@ const TokenOperation = () => {
 
   return (
     <div className="tokenOperationForm">
+      <div>
+        <button onClick={connectWalletHandler} className="connectwallet-button">
+          {userBalance}
+          {walletAddress && walletAddress.length > 0
+            ? `: ${walletAddress.substring(0, 6)}...${walletAddress.substring(
+                38
+              )}`
+            : "CONNECT WALLET"}
+        </button>
+      </div>
       <form onSubmit={handleSubmit}>
         <h1> Token Operation</h1>
         <div
@@ -199,9 +251,8 @@ const TokenOperation = () => {
             <ToastContainer />
           </div>
         </div>
-        <div>
-          <button className="Balance-Button-click">Balance</button>
-        </div>
+
+        <div>{errorMessage}</div>
       </form>
     </div>
   );
