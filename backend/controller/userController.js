@@ -1,6 +1,7 @@
 import { response } from "express";
 import asynchandler from "express-async-handler";
 import user from "../models/user.js";
+import bcrypt from "bcryptjs";
 
 
 // export const register = asynchandler((req,res)=>{
@@ -27,6 +28,8 @@ export const register = asynchandler(async(req,res)=>{
   const {name, username, email, password, cpassword , role,walletAddress}= req.body;
   const oldUser = await user.findOne({email});
   const sameUser = await user.findOne({username});
+  const passwordHash = await bcrypt.hash(password, 4);
+  const cpasswordHash = await bcrypt.hash(cpassword, 4);
   if (sameUser) {
     return res.send("Username already exist. Try a new one");
   }
@@ -38,8 +41,8 @@ export const register = asynchandler(async(req,res)=>{
       name,
       username,
       email: email.toLowerCase(),
-      password,
-      cpassword,
+      password : passwordHash,
+      cpassword: cpasswordHash,
       role,
       walletAddress,
     });
@@ -131,11 +134,12 @@ export const userDelete= asynchandler((req,res)=> {
       });
 });
 
-export const login = asynchandler((req,res)=>{
+export const login = async (req,res)=>{
     const { email, password } = req.body;
-    user.findOne({ email })
-      .then((response) => {
-        if (response.password === password) {
+    await user.findOne({ email })
+      .then(async(response) => {
+        const passwordMatch = await bcrypt.compare(password, response.password);
+        if (passwordMatch) {
           res.send({ message: "User Authenticated!" });
         } else {
           res.send({ message: "Wrong pw" });
@@ -146,7 +150,7 @@ export const login = asynchandler((req,res)=>{
           message: "Invalid email, no user found!!",
         });
       });
-});
+};
 
 export const listAidAgency= asynchandler((req,res)=>{
   user.find({role: "Aid Agency"})
