@@ -1,6 +1,7 @@
 import { response } from "express";
 import asynchandler from "express-async-handler";
 import user from "../models/user.js";
+import bcrypt from "bcryptjs";
 
 
 // export const register = asynchandler((req,res)=>{
@@ -27,6 +28,8 @@ export const register = asynchandler(async(req,res)=>{
   const {name, username, email, password, cpassword , role,walletAddress}= req.body;
   const oldUser = await user.findOne({email});
   const sameUser = await user.findOne({username});
+  const passwordHash = await bcrypt.hash(password, 4);
+  const cpasswordHash = await bcrypt.hash(cpassword, 4);
   if (sameUser) {
     return res.send("Username already exist. Try a new one");
   }
@@ -38,8 +41,8 @@ export const register = asynchandler(async(req,res)=>{
       name,
       username,
       email: email.toLowerCase(),
-      password,
-      cpassword,
+      password : passwordHash,
+      cpassword: cpasswordHash,
       role,
       walletAddress,
     });
@@ -131,22 +134,38 @@ export const userDelete= asynchandler((req,res)=> {
       });
 });
 
-export const login = asynchandler((req,res)=>{
-    const { email, password } = req.body;
-    user.findOne({ email })
-      .then((response) => {
-        if (response.password === password) {
-          res.send({ message: "User Authenticated!" });
-        } else {
-          res.send({ message: "Wrong pw" });
-        }
-      })
-      .catch((err) => {
-        res.send({
-          message: "Invalid email, no user found!!",
+export const login = async (req,res)=>{
+  const { email, password } = req.body;
+  const userLogin = await user.findOne({ email: email });
+  if (!userLogin) {
+    return res.send("Invalid email, no user found!!");
+  }
+  try{
+    if (userLogin) {
+      const passwordMatch = await bcrypt.compare(password, userLogin.password);
+      if (passwordMatch) {
+        const token = userLogin.generateAuthToken();
+
+        res.cookie("jwtcookie",token,{
+          expires: new Date(Date.now()+ 25892000000000),
+          httpOnly: true
         });
-      });
-});
+
+        res.send({ message: "User Authenticated!" })
+
+        
+
+      } else {
+        res.send({ message: "Wrong pw" });
+      }
+    }
+  }
+  catch(err) {
+    res.send({
+      message: "Error Login!!",
+    });
+  }
+};
 
 export const listAidAgency= asynchandler((req,res)=>{
   user.find({role: "Aid Agency"})
