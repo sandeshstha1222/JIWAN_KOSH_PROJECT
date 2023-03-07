@@ -146,12 +146,14 @@ export const login = async (req,res)=>{
       if (passwordMatch) {
         const token = userLogin.generateAuthToken();
 
+        res.cookie("jwtcookie",token,{
+          expires: new Date(Date.now()+ 25892000000000),
+          httpOnly: true
+        });
+
         res.send({ message: "User Authenticated!" })
 
-        // res.cookie("test",token,{
-        //   expires: new Date(Date.now()+ 25892000000000),
-        //   httpOnly: true
-        // });
+        
 
       } else {
         res.send({ message: "Wrong pw" });
