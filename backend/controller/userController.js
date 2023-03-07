@@ -135,21 +135,34 @@ export const userDelete= asynchandler((req,res)=> {
 });
 
 export const login = async (req,res)=>{
-    const { email, password } = req.body;
-    await user.findOne({ email })
-      .then(async(response) => {
-        const passwordMatch = await bcrypt.compare(password, response.password);
-        if (passwordMatch) {
-          res.send({ message: "User Authenticated!" });
-        } else {
-          res.send({ message: "Wrong pw" });
-        }
-      })
-      .catch((err) => {
-        res.send({
-          message: "Invalid email, no user found!!",
-        });
-      });
+  const { email, password } = req.body;
+  const userLogin = await user.findOne({ email: email });
+  if (!userLogin) {
+    return res.send("Invalid email, no user found!!");
+  }
+  try{
+    if (userLogin) {
+      const passwordMatch = await bcrypt.compare(password, userLogin.password);
+      if (passwordMatch) {
+        const token = userLogin.generateAuthToken();
+
+        res.send({ message: "User Authenticated!" })
+
+        // res.cookie("test",token,{
+        //   expires: new Date(Date.now()+ 25892000000000),
+        //   httpOnly: true
+        // });
+
+      } else {
+        res.send({ message: "Wrong pw" });
+      }
+    }
+  }
+  catch(err) {
+    res.send({
+      message: "Error Login!!",
+    });
+  }
 };
 
 export const listAidAgency= asynchandler((req,res)=>{
