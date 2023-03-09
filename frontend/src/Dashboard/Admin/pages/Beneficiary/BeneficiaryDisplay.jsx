@@ -8,9 +8,9 @@ const BeneficiaryDisplay = () => {
 
   const getBeneficiary = async () => {
     try {
-      const res = await axios.get("/user/list/benificiary");
+      const res = await axios.get("/user/list/beneficiary");
       console.log(res);
-      setUsers(res.data.benificiary);
+      setUsers(res.data.beneficiary);
     } catch (error) {
       console.log(error.message);
     }

@@ -44,16 +44,24 @@ const Login = () => {
           if (response.data.message === "User Authenticated!") {
             console.log("Login Success");
             toast.success("Login Successful");
+            localStorage.setItem(
+              "userDetails",
+              JSON.stringify(response.data.user)
+            );
+            localStorage.setItem(
+              "Role",
+              JSON.stringify(response.data.user.role)
+            );
             if (user.role == "Donor") {
               navigate("/donorhome");
-            } else if ((user.role == "Beneficiary")) {
+            } else if (user.role == "Beneficiary") {
               navigate("/beneficiaryhome");
-            } else if ((user.role == "Admin")) {
+            } else if (user.role == "Admin") {
               navigate("/admindashboard");
+            } else if (user.role == "Aid Agency") {
+              navigate("/agencydashboard");
             }
-              else if ((user.role == "Aid Agency")) {
-                navigate("/agencydashboard")
-          } }else if (
+          } else if (
             response.data.message === "Invalid email, no user found!!"
           ) {
             console.log("Invalid Email");
