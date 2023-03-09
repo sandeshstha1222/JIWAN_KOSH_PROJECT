@@ -90,6 +90,11 @@ const Navbar = () => {
                 <a>TOKEN RQST</a>
               </li>
             </Link>
+            <Link to="/donor/transaction">
+              <li>
+                <a>TRANSACTIONS</a>
+              </li>
+            </Link>
 
             <Link className="btn" to="#">
               <li>

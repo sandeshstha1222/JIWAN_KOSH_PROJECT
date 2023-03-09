@@ -15,6 +15,7 @@ import DProject from "../src/Dashboard/Agency/pages/dProject/DProject";
 import DonationProjects from "./Dashboard/Donor/Projects/Projects";
 import RequestToken from "./Dashboard/Donor/RequestToken/RequestToken";
 import Donor from "./Dashboard/Donor/Donor";
+import DonorTransaction from "./Dashboard/Donor/Transaction/Transaction";
 import ProjectDetails from "./Dashboard/Donor/Projects/ProjectDetails";
 import Beneficiary from "./Dashboard/Beneficiary/Beneficiary";
 import EnrollProjects from "./Dashboard/Beneficiary/EnrollProjects/EnrollProject";
@@ -44,6 +45,7 @@ function App() {
             <Route path="/beneficiaryhome" element={<Beneficiary />} />
             <Route path="/enrollprojects" element={<EnrollProjects />} />
             <Route path="/transfertoken" element={<TransferToken />} />
+            <Route path="/donor/transaction" element={<DonorTransaction />} />
           </Routes>
         </Router>
       </div>
