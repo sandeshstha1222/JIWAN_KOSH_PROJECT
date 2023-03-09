@@ -11,7 +11,7 @@ const Projects = () => {
     _id: "",
     projectName: "",
     projectInfo: "",
-    numOfBenificiaries: "",
+    numOfBeneficiaries: "",
     target: "",
     startDate: "",
     enddate: "",
@@ -85,15 +85,15 @@ const Projects = () => {
               _id,
               projectName,
               projectInfo,
-              numOfBenificiaries,
-              benificiaries,
+              numOfBeneficiaries,
+              beneficiaries,
               target,
               startDate,
               deadline,
             } = projects;
 
             return (
-              <div className="Projects-Data" key={benificiaries.email}>
+              <div className="Projects-Data" key={beneficiaries.email}>
                 <img
                   style={{ width: "23em", height: "15em" }}
                   src={charity}
@@ -101,7 +101,7 @@ const Projects = () => {
                 />
                 <div className="Projects">
                   <div className="ProjectName">
-                    {/* <p>{benificiaries[0].email}</p> */}
+                    {/* <p>{beneficiaries[0].email}</p> */}
 
                     <p>{projectName}</p>
                   </div>

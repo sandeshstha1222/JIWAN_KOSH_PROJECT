@@ -88,6 +88,8 @@ const DProject = () => {
       console.log(values);
 
       console.log(inputList);
+
+
       axios
         .post("/project", {
           projectName: values.projectname,
@@ -96,7 +98,7 @@ const DProject = () => {
           startDate: values.startdate,
           deadline: values.enddate,
           target: values.amount,
-          benificiaries: inputList,
+          beneficiaries: inputList,
 
           
       
@@ -114,7 +116,7 @@ const DProject = () => {
               draggable: true,
               progress: undefined,
             });
-            navigate("/dashboard");
+            navigate("/agencydashboard");
           }
           if (response.data.message === "Error project Creating") {
             console.log("Project Create fail");
@@ -355,7 +357,12 @@ const DProject = () => {
             )}
           </div>
           <div className="buttons">
-            <button className="Project-btn" onClick={Notify}>
+            <button 
+              className="Project-btn" 
+              onClick={(e) => {
+              Notify();
+              }}
+            >
               Create Project
             </button>
             <ToastContainer />

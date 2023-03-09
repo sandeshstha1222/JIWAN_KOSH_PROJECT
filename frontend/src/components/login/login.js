@@ -4,14 +4,12 @@ import "./login.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import { useSignIn } from "react-auth-kit";
 
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "", role: "" });
   const [passErr, setPassErr] = useState(false);
   const [emailErr, setEmailErr] = useState(false);
   const navigate = useNavigate();
-  const signIn = useSignIn();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
@@ -42,28 +40,27 @@ const Login = () => {
         })
         .then((response) => {
           console.log(response.data.message);
-          signIn({
-            token: response.data.token,
-            expiresIn: 3600,
-            tokenType: "Bearer",
-            authState: { email: user.email },
-          });
+          console.log(user.role);
           if (response.data.message === "User Authenticated!") {
             console.log("Login Success");
-            toast.success("Login Successful", {});
+            toast.success("Login Successful");
             if (user.role == "Donor") {
               navigate("/donorhome");
-            } else if ((user.role = "Beneficiary")) {
+            } else if ((user.role == "Beneficiary")) {
               navigate("/beneficiaryhome");
-            } else navigate("/dashboard");
-          } else if (
+            } else if ((user.role == "Admin")) {
+              navigate("/admindashboard");
+            }
+              else if ((user.role == "Aid Agency")) {
+                navigate("/agencydashboard")
+          } }else if (
             response.data.message === "Invalid email, no user found!!"
           ) {
             console.log("Invalid Email");
             toast.success("Invalid Email");
           } else if (response.data.message === "Wrong pw") {
             console.log("Wrong Password Success");
-            toast.success("Wrong Password");
+            toast.error("Wrong Password");
           }
         });
     }

@@ -16,8 +16,8 @@ const NoteState = (props) => {
       const {
         projectName,
         projectInfo,
-        numOfBenificiaries,
-        benificiaries,
+        numOfBeneficiaries,
+        beneficiaries,
         target,
         startDate,
         deadline,
