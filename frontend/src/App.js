@@ -21,6 +21,7 @@ import EnrollProjects from "./Dashboard/Beneficiary/EnrollProjects/EnrollProject
 import TransferToken from "./Dashboard/Beneficiary/TransferToken/TokenTransfer";
 import DisplayProject from "./Dashboard/Agency/pages/projectDisplay/DisplayProject";
 import BeneficiariesDis from "./Dashboard/Agency/pages/BeneficiariesDisplay/BeneficiariesDis";
+import AidAgency from "./Dashboard/Admin/pages/aidAgency/AidAgency";
 function App() {
   return (
     <div className="App">
@@ -37,6 +38,7 @@ function App() {
             <Route path="/beneficiary" element={<BeneficiaryDisplay />} />
             <Route path="/tokenoperation" element={<TokenOperation />} />
             <Route path="/Projectdisplay" element={<ProjectDisplay />} />
+            <Route path="/AidAgency" element={<AidAgency />} />
             <Route path="/dProject" element={<DProject />} />
             <Route path="/DisplayProject" element={<DisplayProject />} />
             <Route

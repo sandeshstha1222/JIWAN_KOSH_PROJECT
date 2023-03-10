@@ -62,7 +62,7 @@ const DProject = () => {
       toast.warn("Field is Empty");
     }
     if (values.numofbeneficiaries === "") {
-      setNumofbeneficiariesErr(true);
+      setnumOfBeneficiariesErr(true);
       toast.warn("Field is Empty");
     }
     if (values.amount === "") {
@@ -115,6 +115,7 @@ const DProject = () => {
               draggable: true,
               progress: undefined,
             });
+            window.alert("Project created");
             navigate("/dashboard");
           }
           if (response.data.message === "Error project Creating") {

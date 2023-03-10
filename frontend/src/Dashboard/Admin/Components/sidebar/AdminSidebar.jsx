@@ -40,10 +40,12 @@ export default function Sidebar() {
                   Operation
                 </li>
               </Link>
-              <li className="sidebarListItem">
-                <CorporateFareIcon className="sidebarIcon" />
-                Aid Agency
-              </li>
+              <Link to="/AidAgency">
+                <li className="sidebarListItem">
+                  <CorporateFareIcon className="sidebarIcon" />
+                  Aid Agency
+                </li>
+              </Link>
               <Link to="/Projectdisplay">
                 <li className="sidebarListItem">
                   <PaidIcon className="sidebarIcon" />
