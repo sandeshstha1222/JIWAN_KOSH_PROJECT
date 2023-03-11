@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./register.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Navbar from "./navbar";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -92,6 +93,7 @@ const Register = () => {
 
   return (
     <div className="register-form">
+      <Navbar />
       <div className="form">
         <form onSubmit={handleSubmit}>
           <h2>REGISTRATION</h2>
@@ -202,9 +204,6 @@ const Register = () => {
         REGISTER
       </button>
       <ToastContainer />
-      <Link to="/">
-        <div className="register-home-btn">RETURN TO HOME</div>
-      </Link>
     </div>
   );
 };

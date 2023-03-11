@@ -4,6 +4,7 @@ import "./login.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import Navbar from "./navbar";
 
 const Login = () => {
   const [user, setUser] = useState({ email: "", password: "", role: "" });
@@ -65,6 +66,7 @@ const Login = () => {
 
   return (
     <div className="login-form">
+      <Navbar />
       <div className="form">
         {/* <pre>{JSON.stringify(user, undefined, 2)}</pre> */}
         <form onSubmit={handleSubmit}>

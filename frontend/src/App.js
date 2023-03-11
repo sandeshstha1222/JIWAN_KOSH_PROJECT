@@ -34,7 +34,7 @@ function App() {
       <div className="Path">
         <Router>
           <Routes>
-            {!localStorage.getItem("Email") && (
+            {/* {!localStorage.getItem("Email") && (
               <>
                 <Route exact path="/login" element={<Login />} />
                 <Route
@@ -58,7 +58,7 @@ function App() {
                   element={<Navigate replace to="/login" />}
                 />
               </>
-            )}
+            )} */}
             {/* {localStorage.getItem("Role") == "Donor" && (
               <>
                 <Route
