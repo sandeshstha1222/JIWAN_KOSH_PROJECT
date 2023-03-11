@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./register.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Navbar from "./navbar";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -92,8 +93,9 @@ const Register = () => {
 
   return (
     <div className="register-form">
-      <form onSubmit={handleSubmit}>
-        <div className="form">
+      <Navbar />
+      <div className="form">
+        <form onSubmit={handleSubmit}>
           <h2>REGISTRATION</h2>
           <div method="POST" className="input">
             <input
@@ -129,7 +131,7 @@ const Register = () => {
                 setEmailErr(false);
               }}
               id="email"
-              placeholder="Email Adress"
+              placeholder="Email Address"
             />
             {emailErr && <p>Please Enter your email.</p>}
             <input
@@ -189,21 +191,19 @@ const Register = () => {
               {roleErr && <p>Please select one.</p>}
             </div>
           </div>
-        </div>
-        <button
-          className="register-btn"
-          onClick={(e) => {
-            PostData(e);
-            Notify();
-          }}
-        >
-          REGISTER
-        </button>
-        <ToastContainer />
-        <Link to="/">
-          <div className="register-home-btn">RETURN TO HOME</div>
-        </Link>
-      </form>
+        </form>
+      </div>
+
+      <button
+        className="register-btn"
+        onClick={(e) => {
+          PostData(e);
+          Notify();
+        }}
+      >
+        REGISTER
+      </button>
+      <ToastContainer />
     </div>
   );
 };

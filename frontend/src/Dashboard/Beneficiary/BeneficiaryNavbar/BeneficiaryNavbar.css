@@ -22,18 +22,17 @@
 }
 .Beneficiary-nav-menu {
   text-align: right;
-  display: flex;
-  justify-content: space-between;
 }
 .Beneficiary-nav-menu ul li {
+  display: flex;
   float: left;
   list-style: none;
   font-family: "Montserrat", sans-serif;
-  /* display: grid;
+  display: grid;
   grid-template-columns: repeat(5, auto);
-  grid-gap: 10px; */
+  grid-gap: 10px;
   cursor: pointer;
-  /* padding: 8px; */
+  padding: 8px;
 }
 
 .Beneficiary-nav-menu ul li a {

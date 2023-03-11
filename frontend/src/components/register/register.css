@@ -9,33 +9,32 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  flex-direction: column;
   background-color: aliceblue;
 }
-.form {
+.register-form .form {
   background-color: white;
   width: 25em;
   height: 30em;
-  position: relative;
   border-radius: 1em;
+  margin-top: 8em;
   box-shadow: 0 0.188em 1.55em rgb(15, 97, 33);
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
 }
-.form h2 {
+.register-form h2 {
   width: 50%;
   text-align: center;
   color: #fff;
+  /* position: relative */
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
-  font-weight: normal;
+  font-weight: 400;
   background-color: #3cb100;
   border-radius: 10px;
   margin: 30px 0px 0px 98px;
   padding: 10px;
 }
-.form input {
+.register-form .form input {
   width: 300px;
   height: 40px;
   border-radius: 5px;
@@ -44,31 +43,28 @@
   color: rgb(65, 64, 64);
   font-size: 15px;
   padding-left: 10px;
-  justify-content: space-between;
   margin-top: 15px;
 }
-.input {
+.register-form .input {
   margin: 20px 0px 0px 40px;
 }
-.form input:focus {
+.register-form .form input:focus {
   outline: none;
 }
 
-.form input::placeholder {
+.register-form .form input::placeholder {
   color: rgb(65, 64, 64);
   opacity: 70%;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .register-btn {
-  width: 90px;
   text-align: center;
-  height: 40px;
+  padding: 10px 20px;
   color: #fff;
   background: #3cb100;
   border: 2px solid #3cb100;
   border-radius: 5px;
-  margin-top: 50px;
-  margin-left: 150px;
   font-size: 15px;
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
@@ -87,26 +83,24 @@ select:focus-visible {
   color: #fff;
   border: 2px solid #3cb100;
   padding: 10px 45px;
-  margin-top: 30px;
-  margin-left: 80px;
   background: #3cb100;
   position: relative;
   cursor: pointer;
   border-radius: 5px;
-  text-decoration: none;
   font-family: "Montserrat", sans-serif;
+  margin-bottom: 5em;
 }
 .register-home-btn:hover {
   background: #fff;
   transition: 0.5s;
   color: #3cb100;
 }
-.role {
+.register-form .role {
   margin-top: 15px;
   /* padding: 4px; */
 }
 
-.form .input p {
+.register-form .form .input p {
   color: red;
   font-size: 12px;
   font-family: "poppins", sans-serif;
