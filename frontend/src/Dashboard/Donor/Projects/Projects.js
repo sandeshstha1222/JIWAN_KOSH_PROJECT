@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import charity from "../../../images/project.jpg";
 import DonarNavar from "../DonorNavbar/DonorNavbar";
-import data from "../../Api/data.js";
+
 import "./Projects.css";
 import axios from "axios";
 
@@ -101,9 +100,7 @@ const Projects = () => {
                 />
                 <div className="Projects">
                   <div className="ProjectName">
-                    {/* <p>{beneficiaries[0].email}</p> */}
-
-                    <p>{projectName}</p>
+                    {/* <p>{beneficiaries[0].email}</p> */};<p>{projectName}</p>
                   </div>
                   <p>
                     {projectInfo.length > 200

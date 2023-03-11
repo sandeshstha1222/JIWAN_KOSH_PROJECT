@@ -31,10 +31,10 @@ export const register = asynchandler(async (req, res) => {
   const passwordHash = await bcrypt.hash(password, 4);
   const cpasswordHash = await bcrypt.hash(cpassword, 4);
   if (sameUser) {
-    return res.send("Username already exist. Try a new one");
+    return res.send({ message: "Username already exist. Try a new one" });
   }
   if (oldUser) {
-    return res.send("This Email Already Exist. Please Login");
+    return res.send({ message: "This Email Already Exist. Please Login" });
   }
   try {
     const User = await user.create({
@@ -142,7 +142,7 @@ export const login = async (req, res) => {
   const { email, password } = req.body;
   const userLogin = await user.findOne({ email: email });
   if (!userLogin) {
-    return res.send("Invalid email, no user found!!");
+    return res.send({ message: "Invalid email, no user found!!" });
   }
   try {
     if (userLogin) {

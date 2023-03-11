@@ -27,6 +27,11 @@ const Navbar = () => {
                 <a>TRANSFER TOKEN</a>
               </li>
             </Link>
+            <Link to="/beneficiary/transacton">
+              <li>
+                <a>TRANSACTIONS</a>
+              </li>
+            </Link>
             <Link className="btn" to="#">
               <li>
                 <button className="Beneficiary-connectwallet-button">
@@ -37,7 +42,12 @@ const Navbar = () => {
 
             <Link className="btn" to="/">
               <li>
-                <button className="Beneficiary-logout-button">Logout</button>
+                <button
+                  className="Beneficiary-logout-button"
+                  onClick={() => localStorage.clear()}
+                >
+                  Logout
+                </button>
               </li>
             </Link>
           </ul>

@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../EnrollProjects/EnrollProject.css";
 import axios from "axios";
 import charity from "../../../images/project.jpg";
-import BeneficiaryNavbar from "../BeneficiaryNavbar/BeneficiaryNavbar";
 
-const EnrollProjects = () => {
+const Transaction = () => {
   const [projectData, setProjectData] = useState([]);
 
   useEffect(() => {
@@ -22,9 +21,8 @@ const EnrollProjects = () => {
   }, []);
 
   return (
-    <div className="Beneficiary-Project-Body">
-      <BeneficiaryNavbar />
-      <div className="Beneficiary-Project-Whole-Body">
+    <div className="Project-Body">
+      <div className="Project-Whole-Body">
         <div style={{ width: "100%", marginTop: "6em" }}>
           <div
             style={{
@@ -43,7 +41,7 @@ const EnrollProjects = () => {
                 background: "#3cb100",
               }}
             >
-              PROJECTS THAT YOU ARE ENROLL WITH
+              Projects
             </p>
           </div>
           <hr style={{ marginTop: "2em", color: "red" }} />
@@ -57,25 +55,23 @@ const EnrollProjects = () => {
               target,
               startDate,
               deadline,
-              claimableAmount,
             } = projects;
 
             return (
-              <div className="Beneficiary-Projects-Data" key={_id}>
+              <div className="Projects-Data" key={_id}>
                 <img
-                  className="Beneficiary-Charity-Image"
+                  style={{ width: "23em", height: "15em" }}
                   src={charity}
                   alt="PROJECT"
                 />
-                <div className="Beneficiary-Projects">
-                  <div className="Beneficiary-ProjectName">
-                    <p style={{ fontFamily: "Bebas Neue" }}>{projectName}</p>
+                <div className="Projects">
+                  <div className="ProjectName">
+                    {/* <p>{beneficiaries[0].email}</p> */};<p>{projectName}</p>
                   </div>
                   <p>
-                    {/* {projectInfo.length > 200
+                    {projectInfo.length > 200
                       ? `${projectInfo.substring(0, 200)}...`
-                      : projectInfo} */}
-                    {projectInfo}
+                      : projectInfo}
                     <a
                       style={{
                         color: "#3b9d0a",
@@ -84,22 +80,25 @@ const EnrollProjects = () => {
                         fontWeight: "600",
                       }}
                       onClick={""}
-                    ></a>
+                    >
+                      ...Readmore
+                    </a>
                   </p>
-
-                  <div className="Claim-button-border">
-                    <button className="Beneficiary-claim-Button" onClick={""}>
+                  {/* <hr style={{ width: "26em" }} /> */}
+                  <div className="donate-button-border">
+                    {/* <Link to="/projectdetails"> */}
+                    <button className="Donate-Button" onClick={""}>
                       CLAIM NOW
                     </button>
+                    {/* </Link> */}
                   </div>
-                  <div className="Beneficiary-restDetails">
+                  <div className="restDetails">
                     <p>
                       {target} <a>JKT Needed</a>
                     </p>
                     <p>StartDate: {startDate} </p>
                     <p>EndDate: {deadline}</p>
                   </div>
-                  <p>{claimableAmount}</p>
                 </div>
               </div>
             );
@@ -109,4 +108,4 @@ const EnrollProjects = () => {
     </div>
   );
 };
-export default EnrollProjects;
+export default Transaction;

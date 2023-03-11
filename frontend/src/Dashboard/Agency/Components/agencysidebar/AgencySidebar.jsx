@@ -63,7 +63,10 @@ export default function AgencySidebar() {
               </li>
             </div>
             <Link to="/">
-              <li className="agencysidebarListItem">
+              <li
+                className="agencysidebarListItem"
+                onClick={() => localStorage.clear()}
+              >
                 <LogoutOutlinedIcon className="agencysidebarIcon" />
                 Logout
               </li>

@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import "./register.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -54,13 +53,6 @@ const Register = () => {
   const handleInputs = (e) => {
     console.log(e);
     console.log(user.cpassword, user.password);
-    // if (user.cpassword) {
-    //   if (user.cpassword !== user.password) {
-    //     console.log("wrong");
-    //   } else {
-    //     console.log("sucess");
-    //   }
-    // }
     const name = e.target.name;
     const value = e.target.value;
     setUser({ ...user, [name]: value });
@@ -84,31 +76,6 @@ const Register = () => {
     if (user.password !== user.cpassword) {
       setPassMatchErr(true);
     }
-    // if (user.name === "") {
-    //   setNameErr(true);
-    //   // NotifyError(true);
-    // }
-    // if (user.username === "") {
-    //   setUsernameErr(true);
-    //   // NotifyError(true);
-    // }
-    // if (user.email === "") {
-    //   setEmailErr(true);
-    //   // NotifyError(true);
-    // }
-    // if (user.password === "") {
-    //   setPassErr(true);
-    //   // NotifyError(true);
-    // }
-    // if (user.cpassword === "") {
-    //   setCpassErr(true);
-    //   // NotifyError(true);
-    // }
-
-    // if (user.role === "") {
-    //   setRoleErr(true);
-    //   // NotifyError(true);
-    // }
   };
 
   const PostData = async (e) => {
@@ -127,16 +94,29 @@ const Register = () => {
       }),
     });
     const data = await res.json();
-    console.log(res.send);
-    if (res.send === "Account registered!") {
-      SuccessNotify();
+    console.log(data.message);
+    if (data.message === " Account Registered ! ") {
+      // toast.success("Registration Successful. Please Login");
       // window.alert("Registration successful");
       console.log("Registration successful");
-      // navigate("/login");
-    } else {
-      SuccessNotify();
-      // window.alert("Invalid Registration");
-      console.log("Invalid Registration");
+
+      toast.success("Registration Successful. Please Login") &&
+        navigate("/login");
+    } else if (
+      data.message == "This Email Already Exist. Please Login" ||
+      data.message == "Username already exist. Try a new one"
+    ) {
+      toast.error("Username and Email already Registered");
+
+      console.log("Invalid Email");
+    } else if (data.message == "Username already exist. Try a new one") {
+      toast.error("Username already Registered");
+
+      console.log("Invalid email");
+    } else if (data.message == "This Email Already Exist. Please Login") {
+      toast.error("Username already Registered");
+
+      console.log("Invalid Email");
     }
   };
 
