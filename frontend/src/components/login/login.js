@@ -23,7 +23,6 @@ const Login = () => {
   const Notify = () => {
     if ((user.email && user.password && user.role) === "") {
       toast.warn("Field is Empty");
-      // NotifyError();
     }
     if (user.password && user.email && user.role) {
       console.log("not empty");
@@ -39,7 +38,6 @@ const Login = () => {
           if (response.data.message === "User Authenticated!") {
             console.log("Login Success");
             toast.success("Login Successful");
-            window.alert("Success");
             localStorage.setItem("Role", response.data.user.role);
             localStorage.setItem("Email", response.data.user.email);
             localStorage.setItem("Username", response.data.user.username);

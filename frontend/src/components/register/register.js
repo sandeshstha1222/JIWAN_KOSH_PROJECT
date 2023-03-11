@@ -6,33 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const navigate = useNavigate();
-
-  const SuccessNotify = () => {
-    console.log("hey");
-    toast.success("Registration Success", {
-      postion: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
-
-  const NotifyError = () => {
-    console.log("hey");
-    toast.success("Please fill the form properly.", {
-      postion: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-  };
-
   const [user, setUser] = useState({
     name: "",
     username: "",
@@ -71,7 +44,7 @@ const Register = () => {
         user.cpassword &&
         user.role) === ""
     ) {
-      NotifyError();
+      toast.error("Please fill the form properly");
     }
     if (user.password !== user.cpassword) {
       setPassMatchErr(true);
@@ -96,12 +69,9 @@ const Register = () => {
     const data = await res.json();
     console.log(data.message);
     if (data.message === " Account Registered ! ") {
-      // toast.success("Registration Successful. Please Login");
-      // window.alert("Registration successful");
       console.log("Registration successful");
-
-      toast.success("Registration Successful. Please Login") &&
-        navigate("/login");
+      toast.success("Registration Successful. Please Login");
+      navigate("/login");
     } else if (
       data.message == "This Email Already Exist. Please Login" ||
       data.message == "Username already exist. Try a new one"
