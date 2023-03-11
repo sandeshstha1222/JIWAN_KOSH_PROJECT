@@ -34,22 +34,32 @@ function App() {
       <div className="Path">
         <Router>
           <Routes>
-            {/* {!localStorage.getItem("Email") && (
+            {!localStorage.getItem("Email") && (
               <>
                 <Route exact path="/login" element={<Login />} />
                 <Route
                   exact
                   path="/beneficiaryhome"
-                  element={<Navigate replace to="/" />}
+                  element={<Navigate replace to="/login" />}
                 />
                 <Route
                   exact
                   path="/donorhome"
-                  element={<Navigate replace to="/" />}
+                  element={<Navigate replace to="/login" />}
+                />
+                <Route
+                  exact
+                  path="/agencydashboard"
+                  element={<Navigate replace to="/login" />}
+                />
+                <Route
+                  exact
+                  path="/admindashboard"
+                  element={<Navigate replace to="/login" />}
                 />
               </>
             )}
-            {localStorage.getItem("Role") == "Donor" && (
+            {/* {localStorage.getItem("Role") == "Donor" && (
               <>
                 <Route
                   exact
@@ -63,8 +73,8 @@ function App() {
                   element={<Navigate replace to="/donorhome" />}
                 />
               </>
-            )}
-            {localStorage.getItem("Role") == "Beneficiary" && (
+            )} */}
+            {/* {localStorage.getItem("Role") == "Beneficiary" && (
               <>
                 <Route
                   exact

@@ -21,10 +21,10 @@ const Login = () => {
   console.log(user);
 
   const Notify = () => {
-    if ((user.email && user.password && user.role) === "") {
+    if ((user.email && user.password) === "") {
       toast.warn("Field is Empty");
     }
-    if (user.password && user.email && user.role) {
+    if (user.password && user.email) {
       console.log("not empty");
       axios
         .post("/user/login", {
@@ -41,13 +41,13 @@ const Login = () => {
             localStorage.setItem("Role", response.data.user.role);
             localStorage.setItem("Email", response.data.user.email);
             localStorage.setItem("Username", response.data.user.username);
-            if (user.role === "Donor") {
+            if (response.data.user.role === "Donor") {
               navigate("/donorhome");
-            } else if (user.role === "Beneficiary") {
+            } else if (response.data.user.role === "Beneficiary") {
               navigate("/beneficiaryhome");
-            } else if (user.role === "Admin") {
+            } else if (response.data.user.role === "Admin") {
               navigate("/admindashboard");
-            } else if (user.role === "Aid Agency") {
+            } else if (response.data.user.role === "Aid Agency") {
               navigate("/agencydashboard");
             }
           } else if (
@@ -124,37 +124,6 @@ const Login = () => {
                 Please Enter Password.
               </p>
             )}
-            <div className="role">
-              <select
-                type="text"
-                name="role"
-                value={user.role}
-                onClick={handleChange}
-                onChange={(e) => {
-                  setUser({
-                    ...user,
-                    [e.target.name]: e.target.value,
-                  });
-                }}
-                id="role"
-                style={{
-                  padding: "8px 12.5em 8px 6px",
-                  borderRadius: "5px",
-                  borderColor: "#3cb100",
-                  color: "rgb(65, 64, 64)",
-                  fontSize: "15px",
-                }}
-              >
-                <option className="roletext" selected hidden>
-                  Role
-                </option>
-                <option>Aid Agency</option>
-                <option>Beneficiary</option>
-                <option>Donor</option>
-                <option>Bank</option>
-                <option>Vendor</option>
-              </select>
-            </div>
           </div>
           <div className="buttons">
             <button className="login-btn" onClick={Notify}>
@@ -176,12 +145,12 @@ const Login = () => {
                 </Link>
               </p>
             </div>
-            <Link to="/">
-              <div className="home-btn">RETURN TO HOME</div>
-            </Link>
           </div>
         </form>
       </div>
+      <Link to="/">
+        <div className="home-btn">RETURN TO HOME</div>
+      </Link>
     </div>
   );
 };
