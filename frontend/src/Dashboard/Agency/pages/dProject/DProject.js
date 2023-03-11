@@ -25,7 +25,6 @@ const DProject = () => {
   const navigate = useNavigate();
 
   const handleaddclick = () => {
-    // alert("add");
     setInputList([...inputList, { email: "", username: "" }]);
   };
 
@@ -71,24 +70,21 @@ const DProject = () => {
     if (values.enddate === "") {
       setEnddateErr(true);
     }
-    if ((
-      values.projectname &&
-      values.projectinfo &&
-      values.numOfBeneficiaries &&
-      inputList.username &&
-      inputList.email &&
-      values.amount &&
-      values.startdate &&
-      values.enddate
-    )!=""){
-      
-
+    if (
+      (values.projectname &&
+        values.projectinfo &&
+        values.numOfBeneficiaries &&
+        inputList.username &&
+        inputList.email &&
+        values.amount &&
+        values.startdate &&
+        values.enddate) != ""
+    ) {
       console.log("not empty");
 
       console.log(values);
 
       console.log(inputList);
-
 
       axios
         .post("/project", {
@@ -99,36 +95,17 @@ const DProject = () => {
           deadline: values.enddate,
           target: values.amount,
           beneficiaries: inputList,
-
-          
-      
         })
         .then((response) => {
           console.log(response.data.message);
           if (response.data.message === "Project Created") {
             console.log("Project Create Success");
-            toast.success("Project Create Successful", {
-              postion: "top-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            toast.success("Project Create Successful");
             navigate("/agencydashboard");
           }
           if (response.data.message === "Error project Creating") {
             console.log("Project Create fail");
-            toast.success("Project Create failed", {
-              postion: "top-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            toast.success("Project Create failed");
           }
         });
     }
@@ -357,12 +334,7 @@ const DProject = () => {
             )}
           </div>
           <div className="buttons">
-            <button 
-              className="Project-btn" 
-              onClick={(e) => {
-              Notify();
-              }}
-            >
+            <button className="Project-btn" onClick={Notify}>
               Create Project
             </button>
             <ToastContainer />

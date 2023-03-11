@@ -4,9 +4,22 @@ import "./Beneficiary.css";
 import jiwankosh from "../../images/logoblack.png";
 
 const Beneficiary = () => {
+  const userData = () => {
+    window.localStorage.getItem("Role");
+    console.log(window.localStorage.getItem("Role"));
+  };
   return (
     <div className="Beneficiary">
       <BeneficiaryNavbar />
+      <div>
+        {/* <p>
+          You can claim your token by visiting to EnrollProjects page from
+          <br />
+          Navbar and exchange your token with real money by transfering it yo
+          <br />
+          Bank Wallet.
+        </p> */}
+      </div>
       <div className="Quotes" style={{ textAlign: "center" }}>
         <img
           src={jiwankosh}

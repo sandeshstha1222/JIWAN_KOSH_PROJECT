@@ -15,11 +15,6 @@ const Login = () => {
     setUser({ ...user, [name]: value });
   };
 
-  const NotifyError = () => {
-    console.log("hey");
-    toast.success("Please fill the form properly.");
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -28,7 +23,6 @@ const Login = () => {
   const Notify = () => {
     if ((user.email && user.password && user.role) === "") {
       toast.warn("Field is Empty");
-      // NotifyError();
     }
     if (user.password && user.email && user.role) {
       console.log("not empty");
@@ -44,20 +38,23 @@ const Login = () => {
           if (response.data.message === "User Authenticated!") {
             console.log("Login Success");
             toast.success("Login Successful");
-            if (user.role == "Donor") {
+            localStorage.setItem("Role", response.data.user.role);
+            localStorage.setItem("Email", response.data.user.email);
+            localStorage.setItem("Username", response.data.user.username);
+            if (user.role === "Donor") {
               navigate("/donorhome");
-            } else if ((user.role == "Beneficiary")) {
+            } else if (user.role === "Beneficiary") {
               navigate("/beneficiaryhome");
-            } else if ((user.role == "Admin")) {
+            } else if (user.role === "Admin") {
               navigate("/admindashboard");
+            } else if (user.role === "Aid Agency") {
+              navigate("/agencydashboard");
             }
-              else if ((user.role == "Aid Agency")) {
-                navigate("/agencydashboard")
-          } }else if (
+          } else if (
             response.data.message === "Invalid email, no user found!!"
           ) {
             console.log("Invalid Email");
-            toast.success("Invalid Email");
+            toast.error("Invalid Email");
           } else if (response.data.message === "Wrong pw") {
             console.log("Wrong Password Success");
             toast.error("Wrong Password");

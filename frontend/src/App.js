@@ -2,7 +2,13 @@ import "./App.css";
 import Navbar from "./components/navbar/navbar";
 import Login from "./components/login/login";
 import Register from "./components/register/register";
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import {
+  Route,
+  Routes,
+  BrowserRouter as Router,
+  Navigate,
+} from "react-router-dom";
 import Homepage from "./components/homepage/homepage";
 import Footer from "./components/footer/footer";
 import AdminDashboard from "./Dashboard/Admin/Dashboard";
@@ -20,6 +26,7 @@ import ProjectDetails from "./Dashboard/Donor/Projects/ProjectDetails";
 import Beneficiary from "./Dashboard/Beneficiary/Beneficiary";
 import EnrollProjects from "./Dashboard/Beneficiary/EnrollProjects/EnrollProject";
 import TransferToken from "./Dashboard/Beneficiary/TransferToken/TokenTransfer";
+import BeneficiaryTransaction from "./Dashboard/Beneficiary/Transaction/Transaction";
 
 function App() {
   return (
@@ -27,6 +34,82 @@ function App() {
       <div className="Path">
         <Router>
           <Routes>
+            {/* {!localStorage.getItem("Email") && (
+              <>
+                <Route exact path="/login" element={<Login />} />
+                <Route
+                  exact
+                  path="/beneficiaryhome"
+                  element={<Navigate replace to="/" />}
+                />
+                <Route
+                  exact
+                  path="/donorhome"
+                  element={<Navigate replace to="/" />}
+                />
+              </>
+            )}
+            {localStorage.getItem("Role") == "Donor" && (
+              <>
+                <Route
+                  exact
+                  path="/"
+                  element={<Navigate replace to="/donorhome" />}
+                />
+
+                <Route
+                  exact
+                  path="/login"
+                  element={<Navigate replace to="/donorhome" />}
+                />
+              </>
+            )}
+            {localStorage.getItem("Role") == "Beneficiary" && (
+              <>
+                <Route
+                  exact
+                  path="/"
+                  element={<Navigate replace to="/beneficiaryhome" />}
+                />
+
+                <Route
+                  exact
+                  path="/login"
+                  element={<Navigate replace to="/beneficiaryhome" />}
+                />
+              </>
+            )}
+            {localStorage.getItem("Role") == "Aid Agency" && (
+              <>
+                <Route
+                  exact
+                  path="/"
+                  element={<Navigate replace to="/agencyhome" />}
+                />
+
+                <Route
+                  exact
+                  path="/login"
+                  element={<Navigate replace to="/agencyhome" />}
+                />
+              </>
+            )}
+            {localStorage.getItem("Role") == "Admin" && (
+              <>
+                <Route
+                  exact
+                  path="/"
+                  element={<Navigate replace to="/admindashboard" />}
+                />
+
+                <Route
+                  exact
+                  path="/login"
+                  element={<Navigate replace to="/admindashboard" />}
+                />
+              </>
+            )} */}
+
             <Route path="/" element={<Homepage />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
@@ -46,8 +129,13 @@ function App() {
             <Route path="/enrollprojects" element={<EnrollProjects />} />
             <Route path="/transfertoken" element={<TransferToken />} />
             <Route path="/donor/transaction" element={<DonorTransaction />} />
+            <Route
+              path="/beneficiary/transacton"
+              element={<BeneficiaryTransaction />}
+            />
           </Routes>
         </Router>
+        <ToastContainer />
       </div>
     </div>
   );

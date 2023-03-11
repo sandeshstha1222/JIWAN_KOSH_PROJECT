@@ -162,7 +162,12 @@ const Navbar = () => {
 
             <Link className="btn" to="/">
               <li>
-                <button className="donor-logout-button">Logout</button>
+                <button
+                  className="donor-logout-button"
+                  onClick={() => localStorage.clear()}
+                >
+                  Logout
+                </button>
               </li>
             </Link>
           </ul>

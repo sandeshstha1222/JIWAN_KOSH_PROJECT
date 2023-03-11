@@ -1,20 +1,69 @@
-.Enroll-Projects {
-  margin-top: 3em;
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+Pro&display=swap");
+
+.Beneficiary-Charity-Image {
+  width: 20em;
+}
+.Beneficiary-Project-body {
+  display: flex;
 }
 
-.Claim-Button {
+.Claim-button-border {
+  padding: 2em 0 2em 0;
+}
+.Beneficiary-claim-Button {
   color: #fff;
   background: #3cb100;
   border: 2px solid #3cb100;
   padding: 7px 7px;
   cursor: pointer;
   border-radius: 5px;
-  margin-left: 5em;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
 }
-.Claim-Button:hover {
+.Beneficiary-claim-Button:hover {
   background: #fff;
   transition: 0.5s;
   color: #3cb100;
+}
+
+.Beneficiary-Projects-Data {
+  width: auto;
+  height: auto;
+  background: #fff;
+  margin-left: 2em;
+  padding: 40px;
+  border-radius: 5px;
+  margin-top: 2em;
+  background-color: rgb(228, 226, 226);
+  box-shadow: rgb(78, 78, 78);
+}
+.Beneficiary-ProjectName p {
+  margin-top: 1em;
+  font-size: 2em;
+  font-family: "Bebas Neue", cursive;
+}
+.Beneficiary-Projects p {
+  width: auto;
+  margin-top: 1em;
+  text-align: justify;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+/* .Beneficiary-Project-body .ProjectDetails {
+  width: 100%;
+  height: auto;
+} */
+.Beneficiary-restDetails {
+  border: 1px solid black;
+  border-radius: 3px;
+  font-weight: bold;
+  width: "24em";
+  margin-top: "1em";
+}
+.Beneficiary-restDetails p {
+  margin: 1em 0 0.4em 0.4em;
+}
+.Beneficiary-restDetails p a {
+  color: #3b9d0a;
+  font-family: "Source Sans Pro", sans-serif;
 }

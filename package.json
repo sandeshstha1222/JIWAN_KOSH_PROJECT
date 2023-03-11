@@ -1,5 +1,4 @@
 {
-  "proxy": "http://localhost:4000",
   "dependencies": {
     "@openzeppelin/contracts": "^4.8.1",
     "@truffle/hdwallet-provider": "^2.1.7",
