@@ -16,6 +16,7 @@ export const listProjectByBeneficiary = asynchandler(async (req, res) => {
             projectInfo,
             startDate,
             deadline,
+            target,
             claimableFund,
           } = projects[i];
           enrolledProjects[k] = {
@@ -23,6 +24,7 @@ export const listProjectByBeneficiary = asynchandler(async (req, res) => {
             projectInfo,
             startDate,
             deadline,
+            target,
             claimableFund,
           };
           k = k + 1;

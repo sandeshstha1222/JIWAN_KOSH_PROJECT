@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../EnrollProjects/EnrollProject.css";
 import axios from "axios";
 import charity from "../../../images/project.jpg";
+import BeneficiaryNavbar from "../BeneficiaryNavbar/BeneficiaryNavbar";
 
 const Transaction = () => {
   const [projectData, setProjectData] = useState([]);
@@ -22,6 +23,7 @@ const Transaction = () => {
 
   return (
     <div className="Project-Body">
+      <BeneficiaryNavbar />
       <div className="Project-Whole-Body">
         <div style={{ width: "100%", marginTop: "6em" }}>
           <div

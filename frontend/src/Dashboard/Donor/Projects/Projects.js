@@ -13,7 +13,7 @@ const Projects = () => {
     numOfBeneficiaries: "",
     target: "",
     startDate: "",
-    enddate: "",
+    deadline: "",
   });
 
   const [values, setValues] = useState({

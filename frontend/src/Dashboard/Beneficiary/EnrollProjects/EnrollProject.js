@@ -57,7 +57,7 @@ const EnrollProjects = () => {
               target,
               startDate,
               deadline,
-              claimableAmount,
+              claimableFund,
             } = projects;
 
             return (
@@ -99,7 +99,7 @@ const EnrollProjects = () => {
                     <p>StartDate: {startDate} </p>
                     <p>EndDate: {deadline}</p>
                   </div>
-                  <p>{claimableAmount}</p>
+                  <p>{claimableFund}</p>
                 </div>
               </div>
             );
