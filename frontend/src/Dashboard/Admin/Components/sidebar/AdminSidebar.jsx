@@ -71,6 +71,7 @@ export default function Sidebar() {
                 Transaction
               </li>
             </div>
+
             <li
               className="sidebarListItem"
               onClick={() => localStorage.clear()}

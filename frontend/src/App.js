@@ -30,7 +30,6 @@ import DisplayProject from "./Dashboard/Agency/pages/projectDisplay/DisplayProje
 import BeneficiariesDis from "./Dashboard/Agency/pages/BeneficiariesDisplay/BeneficiariesDis";
 import AidAgency from "./Dashboard/Admin/pages/aidAgency/AidAgency";
 import BeneficiaryTransaction from "./Dashboard/Beneficiary/Transaction/Transaction";
-
 function App() {
   return (
     <div className="App">
@@ -131,6 +130,7 @@ function App() {
               element={<BeneficiariesDis />}
             />
             <Route path="/tokenrequest" element={<RequestToken />} />
+
             <Route path="/donationprojects" element={<DonationProjects />} />
             <Route path="/donorhome" element={<Donor />} />
             <Route path="/projectdetails" element={<ProjectDetails />} />

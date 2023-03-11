@@ -25,6 +25,7 @@ const DProject = () => {
   const navigate = useNavigate();
 
   const handleaddclick = () => {
+    // alert("add");
     setInputList([...inputList, { email: "", username: "" }]);
   };
 
@@ -52,40 +53,43 @@ const DProject = () => {
   console.log(values, inputList);
 
   const Notify = () => {
-    if (values.projectname === "") {
-      setProjectnameErr(true);
-      toast.warn("Field is Empty");
-    }
-    if (values.projectinfo === "") {
-      setProjectinfoErr(true);
-      toast.warn("Field is Empty");
-    }
-    if (values.numofbeneficiaries === "") {
-      setnumOfBeneficiariesErr(true);
-      toast.warn("Field is Empty");
-    }
-    if (values.amount === "") {
-      setAmountErr(true);
-      toast.warn("Field is Empty");
-    }
-    if (values.startdate === "") {
-      setStartdateErr(true);
-      toast.warn("Field is Empty");
-    }
-    if (values.enddate === "") {
-      setEnddateErr(true);
-      toast.warn("Field is Empty");
-    }
     if (
       (values.projectname &&
         values.projectinfo &&
         values.numOfBeneficiaries &&
-        inputList.username &&
         inputList.email &&
+        inputList.username &&
         values.amount &&
         values.startdate &&
-        values.enddate) != ""
+        values.enddate) === ""
     ) {
+      toast.warn("Field is Empty");
+    }
+
+    if (values.projectname === "") {
+      setProjectnameErr(true);
+    }
+    if (values.projectinfo === "") {
+      setProjectinfoErr(true);
+    }
+    if (values.numOfBeneficiaries === "") {
+      setnumOfBeneficiariesErr(true);
+    }
+    if (inputList.email === "") {
+      toast.warn("Field is Empty");
+    }
+    if (inputList.username === "") {
+      toast.warn("Field is Empty");
+    }
+    if (values.amount === "") {
+      setAmountErr(true);
+    }
+    if (values.startdate === "") {
+      setStartdateErr(true);
+    }
+    if (values.enddate === "") {
+      setEnddateErr(true);
+    }
     if (
       (values.projectname &&
         values.projectinfo &&
@@ -101,7 +105,6 @@ const DProject = () => {
       console.log(values);
 
       console.log(inputList);
-
       axios
         .post("/project", {
           projectName: values.projectname,
@@ -110,10 +113,7 @@ const DProject = () => {
           startDate: values.startdate,
           deadline: values.enddate,
           target: values.amount,
-          benificiaries: inputList,
-
-          
-      
+          beneficiaries: inputList,
         })
         .then((response) => {
           console.log(response.data.message);
@@ -128,11 +128,20 @@ const DProject = () => {
               draggable: true,
               progress: undefined,
             });
+            window.alert("Project created");
             navigate("/dashboard");
           }
           if (response.data.message === "Error project Creating") {
             console.log("Project Create fail");
-            toast.success("Project Create failed");
+            toast.success("Project Create failed", {
+              postion: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
           }
         });
     }
