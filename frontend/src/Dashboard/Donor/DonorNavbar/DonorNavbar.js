@@ -2,6 +2,12 @@ import "./DonorNavbar.css";
 import React, { useEffect, useState } from "react";
 import logo from "./../../../images/logoblack.png";
 import { Link } from "react-router-dom";
+import {
+  getBlockchain,
+  getOwnBalance,
+  getTotalSupply,
+  transact,
+} from "../../../web3connection";
 // import { ethers } from "ethers";
 
 const Navbar = () => {
@@ -10,8 +16,44 @@ const Navbar = () => {
   const [userBalance, setUserBalance] = useState(null);
   const [walletAddress, setWalletAddress] = useState("");
 
+  const [ownBalance, setOwnBalance] = useState(0);
+  const [totalSupply, SetTotalSupply] = useState(0);
+  const [totalTransferAmount, SetTotalTransferAmount] = useState(0);
+
+  const fetchBalance = () => {
+    getOwnBalance()
+      .then((balance) => {
+        setOwnBalance(balance);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const fetchTotalSuppy = () => {
+    getTotalSupply()
+      .then((supply) => {
+        SetTotalSupply(supply);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const fetchTransfer = () => {
+    transact(
+      "0x7226742399F76c1Ba3D4F4c69E8F93539eE1C6c8",
+      (500 * 10 ** 18).toString()
+    )
+      .then((balance) => {
+        SetTotalTransferAmount(balance);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
-    getConnectWalletHandler();
+    // getConnectWalletHandler();
     addConnectWalletHandler();
   });
   const connectWalletHandler = () => {
@@ -90,11 +132,16 @@ const Navbar = () => {
                 <a>TOKEN RQST</a>
               </li>
             </Link>
+            <Link to="/donor/transaction">
+              <li>
+                <a>TRANSACTIONS</a>
+              </li>
+            </Link>
 
             <Link className="btn" to="#">
               <li>
                 <button
-                  onClick={connectWalletHandler}
+                  onClick={() => getBlockchain(setWalletAddress)}
                   className="donor-connectwallet-button"
                 >
                   {userBalance}
@@ -105,12 +152,22 @@ const Navbar = () => {
                       )}...${walletAddress.substring(38)}`
                     : "CONNECT WALLET"}
                 </button>
+                <button onClick={fetchBalance}>Own balance</button>
+                <button onClick={fetchTotalSuppy}>Total Supply</button>
+                <button onClick={fetchTransfer}>Transfer</button>
+                <button style={{ color: "black" }}>{ownBalance}</button>
+                <button>{totalSupply}</button>
               </li>
             </Link>
 
             <Link className="btn" to="/">
               <li>
-                <button className="donor-logout-button">Logout</button>
+                <button
+                  className="donor-logout-button"
+                  onClick={() => localStorage.clear()}
+                >
+                  Logout
+                </button>
               </li>
             </Link>
           </ul>

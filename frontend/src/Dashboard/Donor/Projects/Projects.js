@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import charity from "../../../images/project.jpg";
 import DonarNavar from "../DonorNavbar/DonorNavbar";
-import data from "../../Api/data.js";
+
 import "./Projects.css";
 import axios from "axios";
 
@@ -11,10 +10,10 @@ const Projects = () => {
     _id: "",
     projectName: "",
     projectInfo: "",
-    numOfBenificiaries: "",
+    numOfBeneficiaries: "",
     target: "",
     startDate: "",
-    enddate: "",
+    deadline: "",
   });
 
   const [values, setValues] = useState({
@@ -85,15 +84,15 @@ const Projects = () => {
               _id,
               projectName,
               projectInfo,
-              numOfBenificiaries,
-              benificiaries,
+              numOfBeneficiaries,
+              beneficiaries,
               target,
               startDate,
               deadline,
             } = projects;
 
             return (
-              <div className="Projects-Data" key={benificiaries.email}>
+              <div className="Projects-Data" key={beneficiaries.email}>
                 <img
                   style={{ width: "23em", height: "15em" }}
                   src={charity}
@@ -101,9 +100,7 @@ const Projects = () => {
                 />
                 <div className="Projects">
                   <div className="ProjectName">
-                    {/* <p>{benificiaries[0].email}</p> */}
-
-                    <p>{projectName}</p>
+                    {/* <p>{beneficiaries[0].email}</p> */};<p>{projectName}</p>
                   </div>
                   <p>
                     {projectInfo.length > 200

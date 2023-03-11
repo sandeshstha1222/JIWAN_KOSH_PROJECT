@@ -25,7 +25,6 @@ const DProject = () => {
   const navigate = useNavigate();
 
   const handleaddclick = () => {
-    // alert("add");
     setInputList([...inputList, { email: "", username: "" }]);
   };
 
@@ -87,11 +86,22 @@ const DProject = () => {
         values.startdate &&
         values.enddate) != ""
     ) {
+    if (
+      (values.projectname &&
+        values.projectinfo &&
+        values.numOfBeneficiaries &&
+        inputList.username &&
+        inputList.email &&
+        values.amount &&
+        values.startdate &&
+        values.enddate) != ""
+    ) {
       console.log("not empty");
 
       console.log(values);
 
       console.log(inputList);
+
       axios
         .post("/project", {
           projectName: values.projectname,
@@ -101,6 +111,9 @@ const DProject = () => {
           deadline: values.enddate,
           target: values.amount,
           benificiaries: inputList,
+
+          
+      
         })
         .then((response) => {
           console.log(response.data.message);
@@ -115,20 +128,11 @@ const DProject = () => {
               draggable: true,
               progress: undefined,
             });
-            window.alert("Project created");
             navigate("/dashboard");
           }
           if (response.data.message === "Error project Creating") {
             console.log("Project Create fail");
-            toast.success("Project Create failed", {
-              postion: "top-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            toast.success("Project Create failed");
           }
         });
     }
