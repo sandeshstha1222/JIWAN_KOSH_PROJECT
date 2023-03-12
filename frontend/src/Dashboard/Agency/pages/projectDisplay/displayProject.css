@@ -1,0 +1,33 @@
+.displayProject {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.displayProject .displayItem {
+  flex: 1;
+  margin: 1px 0px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 13px 22px 10px 2px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 13px 22px 10px 2px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 13px 22px 10px 2px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  justify-content: center;
+}
+
+.displayProject .grid {
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.6rem;
+}
+
+.displayProject .displayTitle {
+  font-size: 20px;
+  color: #3cb100;
+  justify-content: space-between;
+}
+
+.displayProject .displayText {
+  font-size: 15px;
+  font-weight: 200;
+}

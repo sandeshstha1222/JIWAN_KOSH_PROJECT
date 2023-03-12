@@ -13,6 +13,7 @@ const DProject = () => {
     amount: "",
     startdate: "",
     enddate: "",
+    contractAddress: "",
   });
   const [inputList, setInputList] = useState([{ email: "", username: "" }]);
   const [projectnameErr, setProjectnameErr] = useState(false);
@@ -95,6 +96,7 @@ const DProject = () => {
           deadline: values.enddate,
           target: values.amount,
           beneficiaries: inputList,
+          contractAddress: values.contractAddress,
         })
         .then((response) => {
           console.log(response.data.message);
@@ -278,6 +280,20 @@ const DProject = () => {
                 Please Enter Amount.
               </p>
             )}
+            <input
+              type="string"
+              name="contractAddress"
+              id=""
+              placeholder="Contract Address"
+              value={values.contractAddress}
+              onChange={(e) => {
+                setValues({
+                  ...values,
+                  [e.target.name]: e.target.value,
+                });
+              }}
+              onClick={handleChange}
+            />
             <input
               type="date"
               name="startdate"

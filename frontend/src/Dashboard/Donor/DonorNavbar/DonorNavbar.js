@@ -3,9 +3,13 @@ import React, { useEffect, useState } from "react";
 import logo from "./../../../images/logoblack.png";
 import { Link } from "react-router-dom";
 import {
+  approved,
+  createProject,
+  donateFund,
   getBlockchain,
   getOwnBalance,
   getTotalSupply,
+  seeBalance,
   transact,
 } from "../../../web3connection";
 // import { ethers } from "ethers";
@@ -19,6 +23,16 @@ const Navbar = () => {
   const [ownBalance, setOwnBalance] = useState(0);
   const [totalSupply, SetTotalSupply] = useState(0);
   const [totalTransferAmount, SetTotalTransferAmount] = useState(0);
+
+  const test = () => {
+    createProject();
+  };
+  const approve = () => {
+    approved();
+  };
+  const donate = () => {
+    seeBalance();
+  };
 
   const fetchBalance = () => {
     getOwnBalance()
@@ -157,6 +171,9 @@ const Navbar = () => {
                 <button onClick={fetchTransfer}>Transfer</button>
                 <button style={{ color: "black" }}>{ownBalance}</button>
                 <button>{totalSupply}</button>
+                <button onClick={test}>Test</button>
+                <button onClick={approve}>Approve</button>
+                <button onClick={seeBalance}>Donate</button>
               </li>
             </Link>
 

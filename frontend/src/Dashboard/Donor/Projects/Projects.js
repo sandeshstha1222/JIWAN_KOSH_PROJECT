@@ -4,6 +4,7 @@ import DonarNavar from "../DonorNavbar/DonorNavbar";
 
 import "./Projects.css";
 import axios from "axios";
+import { seeBalance, transact } from "../../../web3connection";
 
 const Projects = () => {
   const [projectDetails, setProjectDetails] = useState({
@@ -13,7 +14,8 @@ const Projects = () => {
     numOfBeneficiaries: "",
     target: "",
     startDate: "",
-    deadline: "",
+    enddate: "",
+    contractAddress: "",
   });
 
   const [values, setValues] = useState({
@@ -22,6 +24,43 @@ const Projects = () => {
 
   const [modal, setModal] = useState(false);
   const [projectData, setProjectData] = useState([]);
+
+  const [status, setStatus] = useState(false);
+
+  // Donation or Transfer amount from one account to another
+  const fetchTransfer = (address, amount) => {
+    console.log(address, amount);
+    transact(address.toString(), (values.token * 10 ** 18).toString())
+      .then((balance) => {
+        console.log("sdfdsaf", balance);
+        setStatus(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  //call donateToken method of contract
+  // const FetchTransfer = (amount) => {
+  //   donate((values.token * 10 ** 18).toString())
+  //     .then((balance) => {
+  //       console.log("donated tokens", balance);
+  //       setStatus(true);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   seeBalance(projectDetails.contractAddress);
+  //   // .then((balance) => {
+  //   //   console.log("sdfsdfsfdfdsfsd", balance);
+  //   // })
+  //   // .catch((err) => {
+  //   //   console.log(err);
+  //   // });
+  // }, [status]);
 
   const handleChange = (e) => {
     console.log(values);
@@ -89,10 +128,11 @@ const Projects = () => {
               target,
               startDate,
               deadline,
+              contractAddress,
             } = projects;
 
             return (
-              <div className="Projects-Data" key={beneficiaries.email}>
+              <div className="Projects-Data" key={beneficiaries._id}>
                 <img
                   style={{ width: "23em", height: "15em" }}
                   src={charity}
@@ -220,7 +260,15 @@ const Projects = () => {
                     onChange={handleChange}
                   />
 
-                  <button style={{ margin: "15px 0 0 0px" }} onClick={""}>
+                  <button
+                    style={{ margin: "15px 0 0 0px" }}
+                    onClick={() => {
+                      return fetchTransfer(
+                        projectDetails.contractAddress,
+                        values.token
+                      );
+                    }}
+                  >
                     DONATE
                   </button>
                 </div>

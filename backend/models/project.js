@@ -50,6 +50,10 @@ const projectSchema = mongoose.Schema(
       type: Number,
       required: true,
     },
+    contractAddress: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamp: true,

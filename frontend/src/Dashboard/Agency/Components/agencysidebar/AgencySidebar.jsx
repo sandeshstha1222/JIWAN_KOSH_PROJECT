@@ -48,11 +48,12 @@ export default function AgencySidebar() {
                 <AccountBalanceIcon className="agencysidebarIcon" />
                 Bank
               </li>
-
-              <li className="agencysidebarListItem">
-                <PeopleIcon className="agencysidebarIcon" />
-                Beneficiaries
-              </li>
+              <Link to="/BeneficiariesDisplay">
+                <li className="agencysidebarListItem">
+                  <PeopleIcon className="agencysidebarIcon" />
+                  Beneficiaries
+                </li>
+              </Link>
               <li className="agencysidebarListItem">
                 <ShoppingCartIcon className="agencysidebarIcon" />
                 Vendors
@@ -61,6 +62,12 @@ export default function AgencySidebar() {
                 <CompareArrowsIcon className="agencysidebarIcon" />
                 Transaction
               </li>
+              <Link to="/DisplayProject">
+                <li className="agencysidebarListItem">
+                  <CompareArrowsIcon className="agencysidebarIcon" />
+                  Display Project
+                </li>
+              </Link>
             </div>
             <Link to="/">
               <li

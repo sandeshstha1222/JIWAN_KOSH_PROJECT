@@ -9,9 +9,6 @@
   margin: 0px 20px;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 13px 22px 10px 2px rgba(0, 0, 0, 0.6);
-  -webkit-box-shadow: 13px 22px 10px 2px rgba(0, 0, 0, 0.6);
-  -moz-box-shadow: 13px 22px 10px 2px rgba(0, 0, 0, 0.6);
 }
 
 .featuredTitle {
@@ -23,34 +20,4 @@
   margin: 10px 0px;
   display: flex;
   align-items: center;
-}
-
-.featuredValue {
-  font-size: 30px;
-  font-weight: 600;
-}
-
-.featuredRate {
-  display: flex;
-  align-items: center;
-  margin-left: 20px;
-}
-
-.featuredIcon {
-  font-size: 24px;
-  margin-left: 5px;
-  color: green;
-}
-
-.featuredIconNegative {
-  color: red;
-}
-
-.featuredSub {
-  font-size: 15px;
-  color: green;
-  margin-bottom: 1px;
-}
-.featuredItem .featuredTitle {
-  font-weight: bold;
 }
