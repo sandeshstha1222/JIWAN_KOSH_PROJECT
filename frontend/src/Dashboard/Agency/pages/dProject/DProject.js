@@ -13,6 +13,7 @@ const DProject = () => {
     amount: "",
     startdate: "",
     enddate: "",
+    contractAddress: "",
   });
   const [inputList, setInputList] = useState([{ email: "", username: "" }]);
   const [projectnameErr, setProjectnameErr] = useState(false);
@@ -71,24 +72,21 @@ const DProject = () => {
     if (values.enddate === "") {
       setEnddateErr(true);
     }
-    if ((
-      values.projectname &&
-      values.projectinfo &&
-      values.numOfBeneficiaries &&
-      inputList.username &&
-      inputList.email &&
-      values.amount &&
-      values.startdate &&
-      values.enddate
-    )!=""){
-      
-
+    if (
+      (values.projectname &&
+        values.projectinfo &&
+        values.numOfBeneficiaries &&
+        inputList.username &&
+        inputList.email &&
+        values.amount &&
+        values.startdate &&
+        values.enddate) != ""
+    ) {
       console.log("not empty");
 
       console.log(values);
 
       console.log(inputList);
-
 
       axios
         .post("/project", {
@@ -99,9 +97,7 @@ const DProject = () => {
           deadline: values.enddate,
           target: values.amount,
           beneficiaries: inputList,
-
-          
-      
+          contractAddress: values.contractAddress,
         })
         .then((response) => {
           console.log(response.data.message);
@@ -302,6 +298,20 @@ const DProject = () => {
               </p>
             )}
             <input
+              type="string"
+              name="contractAddress"
+              id=""
+              placeholder="Contract Address"
+              value={values.contractAddress}
+              onChange={(e) => {
+                setValues({
+                  ...values,
+                  [e.target.name]: e.target.value,
+                });
+              }}
+              onClick={handleChange}
+            />
+            <input
               type="date"
               name="startdate"
               id=""
@@ -357,10 +367,10 @@ const DProject = () => {
             )}
           </div>
           <div className="buttons">
-            <button 
-              className="Project-btn" 
+            <button
+              className="Project-btn"
               onClick={(e) => {
-              Notify();
+                Notify();
               }}
             >
               Create Project
