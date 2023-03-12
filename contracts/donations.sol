@@ -27,19 +27,25 @@ contract donations {
         uint256 _noOfBeneficiary,
         JiwanKoshToken _token
     ) {
-        JKT = JiwanKoshToken(_token);
-        target = _target * (10**18);
+        JKT = _token;
+        target = _target * (10 ** 18);
         startDate = block.timestamp + _startDate;
         deadline = block.timestamp + _deadline;
-        minContribution = 50 * (10**18);
+        minContribution = 50 * (10 ** 18);
         aidAgency = msg.sender;
         noOfBeneficiary = _noOfBeneficiary;
         claimableFund = target / noOfBeneficiary;
     }
 
+    function test(uint256 _donationAmount) public returns (address) {
+        address _donor = msg.sender;
+        claimableFund = _donationAmount;
+        return _donor;
+    }
+
     function donateTokens(uint256 _donationAmount) public {
         address _donor = msg.sender;
-        uint256 donationAmount = _donationAmount * (10**18);
+        uint256 donationAmount = _donationAmount * (10 ** 18);
         require(
             block.timestamp >= startDate && block.timestamp < deadline,
             "Donation not active right now"
@@ -49,6 +55,7 @@ contract donations {
         if (donors[_donor] == 0) {
             noOfDonors++;
         }
+        // JKT.approve(address(this), donationAmount);
         JKT.transferFrom(_donor, address(this), donationAmount);
         donors[_donor] += donationAmount;
         amountCollected += donationAmount;

@@ -11,6 +11,7 @@ export const createProject = asynchandler(async (req, res) => {
     startDate,
     deadline,
     target,
+    contractAddress,
   } = req.body;
   var beneficiaries1 = Array(numOfBeneficiary);
   var beneficiaries = Array(numOfBeneficiary);
@@ -50,6 +51,7 @@ export const createProject = asynchandler(async (req, res) => {
     deadline,
     target,
     claimableFund: target / numOfBeneficiary,
+    contractAddress,
   })
     .then((response) => {
       res.send({ message: "Project Created" });
