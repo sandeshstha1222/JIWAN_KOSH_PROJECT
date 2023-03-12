@@ -132,7 +132,7 @@ const Projects = () => {
             } = projects;
 
             return (
-              <div className="Projects-Data" key={beneficiaries.email}>
+              <div className="Projects-Data" key={beneficiaries._id}>
                 <img
                   style={{ width: "23em", height: "15em" }}
                   src={charity}
