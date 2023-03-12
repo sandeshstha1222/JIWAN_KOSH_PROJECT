@@ -66,6 +66,7 @@ export const createProject = asynchandler(async (req, res) => {
 export const listProject = asynchandler((req, res) => {
   Project.find({})
     .then((response) => {
+      console.log(response);
       res.send({
         projects: response,
       });

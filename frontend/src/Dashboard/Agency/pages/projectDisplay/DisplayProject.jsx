@@ -31,7 +31,7 @@ const DisplayProject = () => {
             startDate,
             deadline,
             target,
-            benificiaries,
+            beneficiaries,
           } = post;
           return (
             <div className="displayItem" key={projectName}>
@@ -39,15 +39,21 @@ const DisplayProject = () => {
               <p className="displayText">
                 Numberofbeneficiary: {numOfBenificiary}
               </p>
-              {post.benificiaries.map((data) => {
+              
+              
+
+                {console.log("i am called", post)}
+                {beneficiaries.map((data) => {
                 const { email, username } = data;
                 return (
                   <div>
+                    
                     Emails :{email} <br />
                     Username: {username}
                   </div>
                 );
               })}
+              
 
               <p className="displayText">Projectinfo: {projectInfo}</p>
               <p className="displayText">Startdate: {startDate}</p>

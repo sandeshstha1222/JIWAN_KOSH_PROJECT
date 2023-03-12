@@ -295,7 +295,7 @@ const DProject = () => {
               onClick={handleChange}
             />
             <input
-              type="date"
+              type="datetime-local"
               name="startdate"
               id=""
               placeholder="Startdate"
@@ -322,7 +322,7 @@ const DProject = () => {
               </p>
             )}
             <input
-              type="date"
+              type="datetime-local"
               name="enddate"
               id=""
               placeholder="Enddate"
