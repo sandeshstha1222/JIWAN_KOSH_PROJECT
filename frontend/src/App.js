@@ -12,7 +12,7 @@ import {
 import Homepage from "./components/homepage/homepage";
 import Footer from "./components/footer/footer";
 import AdminDashboard from "./Dashboard/Admin/Dashboard";
-import AgencyDashboard from "./Dashboard/Agency/Dashboard";
+import AgencyDashboard from "./Dashboard/Agency/DashboardTwo";
 import TokenOperation from "./Dashboard/Admin/pages/tokenOperation/TokenOperation";
 import ProjectDisplay from "./Dashboard/Admin/pages/Projectdisplay/projectDisplay";
 
@@ -31,6 +31,7 @@ import BeneficiariesDis from "./Dashboard/Agency/pages/BeneficiariesDisplay/Bene
 import AidAgency from "./Dashboard/Admin/pages/aidAgency/AidAgency";
 import BeneficiaryTransaction from "./Dashboard/Beneficiary/Transaction/Transaction";
 import Dashboard from "./Dashboard/Admin/Dashboard";
+import DashboardTwo from "./Dashboard/Agency/DashboardTwo";
 function App() {
   return (
     <div className="App">
@@ -125,6 +126,7 @@ function App() {
             <Route path="/tokenoperation" element={<TokenOperation />} />
             <Route path="/Projectdisplay" element={<ProjectDisplay />} />
             <Route path="/AidAgency" element={<AidAgency />} />
+            <Route path="/AgencyHome" element={<DashboardTwo />} />
             <Route path="/dProject" element={<DProject />} />
             <Route path="/DisplayProject" element={<DisplayProject />} />
             <Route

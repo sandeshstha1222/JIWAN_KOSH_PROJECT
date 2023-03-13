@@ -28,13 +28,15 @@ export default function AgencySidebar() {
           </div>
 
           <ul className="agencysidebarList">
-            <li
-              style={{ color: "black" }}
-              className="agencysidebarListItem active"
-            >
-              <LineStyleIcon className="agencysidebarIcon" />
-              Home
-            </li>
+            <Link to="/AgencyHome">
+              <li
+                style={{ color: "black" }}
+                className="agencysidebarListItem active"
+              >
+                <LineStyleIcon className="agencysidebarIcon" />
+                Home
+              </li>
+            </Link>
             <hr />
             <div className="agencySidebar-Second">
               <Link to="/dProject">
