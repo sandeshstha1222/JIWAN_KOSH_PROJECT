@@ -46,6 +46,7 @@ textarea {
   font-size: 15px;
   padding-left: 10px;
   margin-top: 15px;
+  margin-left: 3em;
 }
 .donationForm .Form textarea {
   height: 80px;

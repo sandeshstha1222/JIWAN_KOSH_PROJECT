@@ -4,10 +4,6 @@ import "./Beneficiary.css";
 import jiwankosh from "../../images/logoblack.png";
 
 const Beneficiary = () => {
-  const userData = () => {
-    window.localStorage.getItem("Role");
-    console.log(window.localStorage.getItem("Role"));
-  };
   return (
     <div className="Beneficiary">
       <BeneficiaryNavbar />

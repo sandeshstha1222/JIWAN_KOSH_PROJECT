@@ -1,5 +1,4 @@
 import "./navbar.css";
-
 import logo from "./../../images/logoblack.png";
 import { Link } from "react-router-dom";
 

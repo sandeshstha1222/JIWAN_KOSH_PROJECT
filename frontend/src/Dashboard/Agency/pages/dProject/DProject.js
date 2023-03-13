@@ -141,7 +141,7 @@ const DProject = () => {
                   color: "red",
                   fontSize: "14px",
                   fontFamily: "auto",
-                  margin: "0 0 5px 10px",
+                  margin: "0 0 5px 3.1em",
                 }}
               >
                 Please Enter project name
@@ -168,7 +168,7 @@ const DProject = () => {
                   color: "red",
                   fontSize: "14px",
                   fontFamily: "auto",
-                  margin: "0 0 5px 10px",
+                  margin: "0 0 5px 3.1em",
                 }}
               >
                 Please Enter Projectinfo.
@@ -195,7 +195,7 @@ const DProject = () => {
                   color: "red",
                   fontSize: "14px",
                   fontFamily: "auto",
-                  margin: "0 0 5px 10px",
+                  margin: "0 0 5px 3.1em",
                 }}
               >
                 Please Enter number of beneficiaries.
@@ -274,7 +274,7 @@ const DProject = () => {
                   color: "red",
                   fontSize: "14px",
                   fontFamily: "auto",
-                  margin: "0 0 5px 10px",
+                  margin: "0 0 5px 3.1em",
                 }}
               >
                 Please Enter Amount.
@@ -315,7 +315,7 @@ const DProject = () => {
                   color: "red",
                   fontSize: "14px",
                   fontFamily: "auto",
-                  margin: "0 0 5px 10px",
+                  margin: "0 0 5px 3.1em",
                 }}
               >
                 Please Enter Startdate.
@@ -342,7 +342,7 @@ const DProject = () => {
                   color: "red",
                   fontSize: "14px",
                   fontFamily: "auto",
-                  margin: "0 0 5px 10px",
+                  margin: "0 0 5px 3.1em",
                 }}
               >
                 Please Enter enddate.
