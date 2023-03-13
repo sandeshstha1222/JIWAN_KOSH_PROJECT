@@ -1,8 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import "./aidAgency.css";
-import AdminSidebar from "../../Components/sidebar/AdminSidebar";
+import "./agencyChart.css";
 
 const AidAgency = () => {
   const [datas, setDatas] = useState([]);
@@ -23,8 +22,7 @@ const AidAgency = () => {
 
   return (
     <div>
-      <AdminSidebar />
-      <h1 className="AidAgencyTitle"> Aid Agency </h1>
+      <h1 className="AgencyDisplay"> Aid Agency </h1>
       <table>
         <tr>
           <th>Name</th>

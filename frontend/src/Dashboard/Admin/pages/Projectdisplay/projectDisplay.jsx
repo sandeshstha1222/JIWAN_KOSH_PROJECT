@@ -27,7 +27,7 @@ const ProjectDisplay = () => {
         <AdminSidebar />
       </div>
       <div className="grid">
-        <h1 className="displayTitle">Display Project</h1>
+        <h1 className="displayProjectTitle">Display Project</h1>
         {mydata.map((post) => {
           const {
             projectName,

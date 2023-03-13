@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import "./beneficiarydisplay.css";
 import axios from "axios";
-
+import AdminSidebar from "../../Components/sidebar/AdminSidebar";
 const BeneficiaryDisplay = () => {
   const [users, setUsers] = useState([]);
 
@@ -22,6 +22,7 @@ const BeneficiaryDisplay = () => {
 
   return (
     <div>
+      <AdminSidebar />
       <h1 className="tableTitle"> Beneficiaries </h1>
       <table>
         <tr>

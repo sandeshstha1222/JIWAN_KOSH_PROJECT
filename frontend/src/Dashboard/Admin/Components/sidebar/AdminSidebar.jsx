@@ -28,10 +28,12 @@ export default function Sidebar() {
           </div>
 
           <ul className="sidebarList">
-            <li style={{ color: "black" }} className="sidebarListItem active">
-              <LineStyleIcon className="sidebarIcon" />
-              Home
-            </li>
+            <Link to="/Home">
+              <li style={{ color: "black" }} className="sidebarListItem active">
+                <LineStyleIcon className="sidebarIcon" />
+                Home
+              </li>
+            </Link>
             <hr />
             <div className="Sidebar-Second">
               <Link to="/tokenoperation">
