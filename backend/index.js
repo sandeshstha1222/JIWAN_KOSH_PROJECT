@@ -7,6 +7,7 @@ import Project from "./models/project.js";
 import userRouter from "./router/userRouter.js";
 import projectRouter from "./router/projectRouter.js";
 import beneficiaryRouter from "./router/beneficiaryRouter.js";
+import donorRouter from "./router/donorRouter.js";
 
 
 dotenv.config();
@@ -35,6 +36,7 @@ app.use(express.json());
 app.use("/user", userRouter);
 app.use("/project",projectRouter);
 app.use("/beneficiary",beneficiaryRouter);
+app.use("/donor",donorRouter);
 
 // const PORT = process.env.PORT
 // use PORT variable in app.listen()
