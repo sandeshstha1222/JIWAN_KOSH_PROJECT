@@ -3,6 +3,7 @@ import "../EnrollProjects/EnrollProject.css";
 import axios from "axios";
 import charity from "../../../images/project.jpg";
 import BeneficiaryNavbar from "../BeneficiaryNavbar/BeneficiaryNavbar";
+import { toast } from "react-toastify";
 
 const EnrollProjects = () => {
   const [projectData, setProjectData] = useState([]);
@@ -20,6 +21,31 @@ const EnrollProjects = () => {
         console.log(res.data.enrolledProjects);
       });
   }, []);
+
+  const ClaimFund = (projects) => {
+    console.log(projects.contractAddress);
+    const successMsg = () => {
+      return (
+        <div>You have successfully claimed {projects.claimableFund} JKT</div>
+      );
+    };
+    axios
+      .post("/beneficiary/claimfund", {
+        contractAddress: projects.contractAddress,
+      })
+      .then((res) => {
+        console.log(res.data.message);
+        if (res.data.message === "yes u can claim") {
+          toast.success(successMsg, {
+            autoClose: 3000,
+          });
+        } else if (res.data.message === "no U cannot claim") {
+          toast.success("Project hasnot ended yet. You cannot claim now.", {
+            autoClose: 3000,
+          });
+        }
+      });
+  };
 
   return (
     <div className="Beneficiary-Project-Body">
@@ -58,6 +84,7 @@ const EnrollProjects = () => {
               startDate,
               deadline,
               claimableFund,
+              contractAddress,
             } = projects;
 
             return (
@@ -88,7 +115,13 @@ const EnrollProjects = () => {
                   </p>
 
                   <div className="Claim-button-border">
-                    <button className="Beneficiary-claim-Button" onClick={""}>
+                    <button
+                      className="Beneficiary-claim-Button"
+                      onClick={() => {
+                        ClaimFund(projects);
+                        console.log(projects.contractAddress);
+                      }}
+                    >
                       CLAIM NOW
                     </button>
                   </div>

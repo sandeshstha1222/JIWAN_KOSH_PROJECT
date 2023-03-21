@@ -87,16 +87,22 @@ const Projects = () => {
     console.log(projects);
   };
 
-  const startProject = () => {
-    axios.post("/donor/donate").then((response) => {
-      console.log(response.data.message);
-      if (response.data.message === "yes u can donate. go for it") {
-        console.log("You can Donate");
-      } else if (response.data.message === "no u cannot donate now") {
-        console.log("you cannot donate");
-        toast.warn("Donation hasnot been Started Yet");
-      }
-    });
+  const startProject = (projects) => {
+    console.log(projects, "Show Project");
+    axios
+      .post("/donor/donate", {
+        contractAddress: projects.contractAddress,
+      })
+      .then((response) => {
+        console.log(projects, "Show Project");
+        console.log(response.data.message);
+        if (response.data.message === "yes u can donate. go for it") {
+          console.log("You can Donate");
+        } else if (response.data.message === "no u cannot donate now") {
+          console.log("you cannot donate");
+          toast.warn("Donation hasnot been Started Yet");
+        }
+      });
   };
 
   return (
@@ -141,7 +147,7 @@ const Projects = () => {
             return (
               <div className="Projects-Data" key={beneficiaries._id}>
                 <img
-                  style={{ width: "23em", height: "15em" }}
+                  style={{ width: "100%", height: "15em" }}
                   src={charity}
                   alt="PROJECT"
                 />
@@ -178,7 +184,7 @@ const Projects = () => {
                         donateDetails(projects);
                         console.log(_id);
                         toggleModal();
-                        startProject();
+                        startProject(projects);
                       }}
                     >
                       DONATE NOW
