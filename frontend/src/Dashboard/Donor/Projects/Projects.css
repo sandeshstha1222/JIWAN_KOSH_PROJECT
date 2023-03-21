@@ -15,15 +15,16 @@
 
 .Projects .donate-button-border {
   padding: 2em;
+  display: flex;
+  justify-content: center;
 }
 .Projects .Donate-Button {
   color: #fff;
   background: #3cb100;
   border: 2px solid #3cb100;
-  padding: 7px 7px;
+  padding: 10px 15px;
   cursor: pointer;
   border-radius: 5px;
-  margin-left: 7em;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
 }

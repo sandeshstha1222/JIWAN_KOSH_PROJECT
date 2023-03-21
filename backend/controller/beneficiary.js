@@ -18,6 +18,7 @@ export const listProjectByBeneficiary = asynchandler(async (req, res) => {
             deadline,
             target,
             claimableFund,
+            contractAddress,
           } = projects[i];
           enrolledProjects[k] = {
             projectName,
@@ -26,6 +27,7 @@ export const listProjectByBeneficiary = asynchandler(async (req, res) => {
             deadline,
             target,
             claimableFund,
+            contractAddress,
           };
           k = k + 1;
         }
@@ -42,3 +44,26 @@ export const listProjectByBeneficiary = asynchandler(async (req, res) => {
     console.log(err);
   }
 });
+
+export const ClaimFund = async (req, res) => {
+  const { contractAddress } = req.body;
+  try {
+    const soloProject = await Project.findOne({ contractAddress });
+    const { deadline } = soloProject;
+    const endDateInReadableFormat = deadline.toLocaleString();
+    var projectSeconds = deadline.getTime() / 1000;
+
+    const currentDate = new Date();
+    var currentSeconds = currentDate.getTime() / 1000;
+    if (currentSeconds - projectSeconds >= 0) {
+      return res.send({ message: "yes u can claim" });
+    } else {
+      return res.send({ message: "no U cannot claim" });
+    }
+  } catch (err) {
+    res.send({
+      message: "error here",
+      error: JSON.stringify(err),
+    });
+  }
+};

@@ -48,7 +48,10 @@ export default function AgencySidebar() {
                 <AccountBalanceIcon className="agencysidebarIcon" />
                 Bank
               </li>
-              <Link to="/BeneficiariesDisplay">
+              <Link
+                to="/BeneficiariesDisplay"
+                style={{ textDecoration: "none" }}
+              >
                 <li className="agencysidebarListItem">
                   <PeopleIcon className="agencysidebarIcon" />
                   Beneficiaries

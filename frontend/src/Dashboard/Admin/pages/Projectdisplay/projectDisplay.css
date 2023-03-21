@@ -9,11 +9,8 @@
   margin: 0px 20px;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 13px 22px 10px 2px rgba(0, 0, 0, 0.6);
-  -webkit-box-shadow: 13px 22px 10px 2px rgba(0, 0, 0, 0.6);
-  -moz-box-shadow: 13px 22px 10px 2px rgba(0, 0, 0, 0.6);
+  border: 2px solid black;
   text-align: center;
-  justify-content: center;
 }
 
 .grid {

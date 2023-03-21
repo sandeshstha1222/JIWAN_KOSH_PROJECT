@@ -26,25 +26,25 @@ const ProjectDisplay = () => {
         {mydata.map((post) => {
           const {
             projectName,
-            numOfBeneficiary,
+            numOfBenificiary,
             projectInfo,
             startDate,
             deadline,
             target,
-            beneficiaries,
+            benificiaries,
           } = post;
           return (
             <div className="displayItem" key={projectName}>
               <p className="displayText">Project Name: {projectName}</p>
               <p className="displayText">
-                Numberofbeneficiary: {numOfBeneficiary}
+                Numberofbeneficiary: {numOfBenificiary}
               </p>
-              {post.beneficiaries.map((data) => {
+              {post.benificiaries.map((data) => {
                 const { email, username } = data;
                 return (
                   <div>
-                    Emails :{data.email} <br />
-                    Username: {data.username}
+                    Emails :{email} <br />
+                    Username: {username}
                   </div>
                 );
               })}
