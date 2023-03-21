@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import charity from "../../../images/project.jpg";
 import DonarNavar from "../DonorNavbar/DonorNavbar";
-
+import { toast } from "react-toastify";
 import "./Projects.css";
 import axios from "axios";
 import { seeBalance, transact } from "../../../web3connection";
@@ -70,7 +70,6 @@ const Projects = () => {
 
   const toggleModal = (projects) => {
     setModal(!modal);
-    console.log(projects.projectName, "passed here");
   };
 
   if (modal) {
@@ -79,15 +78,25 @@ const Projects = () => {
     document.body.classList.remove("active-modal");
   }
   useEffect(() => {
-    axios.get("/Project").then(
-      (res) => setProjectData(res.data.projects)
-      // console.log(res)
-    );
+    axios.get("/Project").then((res) => setProjectData(res.data.projects));
+    // startProject();
   }, []);
 
   const donateDetails = (projects) => {
     setProjectDetails(projects);
     console.log(projects);
+  };
+
+  const startProject = () => {
+    axios.post("/donor/donate").then((response) => {
+      console.log(response.data.message);
+      if (response.data.message === "yes u can donate. go for it") {
+        console.log("You can Donate");
+      } else if (response.data.message === "no u cannot donate now") {
+        console.log("you cannot donate");
+        toast.warn("Donation hasnot been Started Yet");
+      }
+    });
   };
 
   return (
@@ -123,12 +132,10 @@ const Projects = () => {
               _id,
               projectName,
               projectInfo,
-              numOfBeneficiaries,
               beneficiaries,
               target,
               startDate,
               deadline,
-              contractAddress,
             } = projects;
 
             return (
@@ -140,7 +147,8 @@ const Projects = () => {
                 />
                 <div className="Projects">
                   <div className="ProjectName">
-                    {/* <p>{beneficiaries[0].email}</p> */};<p>{projectName}</p>
+                    {/* <p>{beneficiaries[0].email}</p> */}
+                    <p>{projectName}</p>
                   </div>
                   <p>
                     {projectInfo.length > 200
@@ -153,7 +161,10 @@ const Projects = () => {
                         fontFamily: "Source Sans Pro",
                         fontWeight: "600",
                       }}
-                      onClick={toggleModal}
+                      onClick={(e) => {
+                        donateDetails(projects);
+                        toggleModal();
+                      }}
                     >
                       ...Readmore
                     </a>
@@ -167,6 +178,7 @@ const Projects = () => {
                         donateDetails(projects);
                         console.log(_id);
                         toggleModal();
+                        startProject();
                       }}
                     >
                       DONATE NOW

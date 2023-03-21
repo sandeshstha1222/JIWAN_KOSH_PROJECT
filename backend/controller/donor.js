@@ -16,7 +16,7 @@ export const Donate = async (req, res) => {
     ) {
       return res.send({ message: "yes u can donate. go for it" });
     } else {
-      return res.send({ message: "no U cannot donate now" });
+      return res.send({ message: "no u cannot donate now" });
     }
   } catch (err) {
     res.send({
