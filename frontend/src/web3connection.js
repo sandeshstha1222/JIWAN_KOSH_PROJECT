@@ -81,36 +81,9 @@ export const transact = async (to, amount) => {
 };
 
 export const seeBalance = async () => {
-  // JKTContract.methods
-  //   .approve(
-  //     "0x4023122b8C9B738CFf82012001745Baa18b6728f",
-  //     "1000000000000000000000"
-  //   )
-  //   .send({
-  //     from: selectedAccount,
-  //   })
-  //   .then((confirm) => {
-  //     console.log("confirm", confirm);
-  //   });
-
-  // console.log(donationContract.methods.JKT);
-
-  if (!isInitialized) {
-    await getBlockchain();
-  }
-  return donationContract.methods
-    .donateTokens("100")
-    .send({ from: selectedAccount });
-  //   .then((balace) => {
-  //     console.log(balace);
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-  // // })
-  // // .catch((err) => {
-  // //   console.log(err);
-  // // });
+  return JKTContract.methods
+    .balanceOf("0x4023122b8C9B738CFf82012001745Baa18b6728f")
+    .call();
 };
 
 export const createProject = async () => {
@@ -145,10 +118,26 @@ export const approved = async () => {
 };
 
 export const donateFund = async () => {
-  const donate = await fundraisingContract.methods
-    .donate(1, "1000000000000000000")
+  if (!isInitialized) {
+    await getBlockchain();
+  }
+  const donated = await donationContract.methods
+    .donateTokens("100")
+    .send({ from: selectedAccount });
+  return donated;
+};
+
+export const approveForClaim = async () => {
+  const confirm = await JKTContract.methods
+    .approve(selectedAccount, "1000000000000000000000")
     .send({
       from: selectedAccount,
     });
-  console.log(donate);
+  console.log("confirm", confirm);
+};
+
+export const claim = async () => {
+  return donationContract.methods.claimBeneficiary().send({
+    from: selectedAccount,
+  });
 };

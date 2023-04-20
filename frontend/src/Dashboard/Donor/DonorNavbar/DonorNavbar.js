@@ -4,6 +4,8 @@ import logo from "./../../../images/logoblack.png";
 import { Link } from "react-router-dom";
 import {
   approved,
+  approveForClaim,
+  claim,
   createProject,
   donateFund,
   getBlockchain,
@@ -31,7 +33,31 @@ const Navbar = () => {
     approved();
   };
   const donate = () => {
-    seeBalance();
+    donateFund();
+  };
+
+  const checkBalance = () => {
+    seeBalance()
+      .then((balance) => {
+        console.log("dsfdfsff", balance);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const claimFund = () => {
+    claim()
+      .then((balance) => {
+        console.log(balance);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const claimApproved = () => {
+    approveForClaim();
   };
 
   const fetchBalance = () => {
@@ -173,7 +199,10 @@ const Navbar = () => {
                 <button>{totalSupply}</button>
                 <button onClick={test}>Test</button>
                 <button onClick={approve}>Approve</button>
-                <button onClick={seeBalance}>Donate</button>
+                <button onClick={donate}>Donate</button>
+                <button onClick={checkBalance}>Check Balance</button>
+                <button onClick={claimFund}>Claim FUnd</button>
+                <button onClick={claimApproved}>Approved for Claim FUnd</button>
               </li>
             </Link>
 
