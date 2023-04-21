@@ -81,7 +81,12 @@ contract donations {
         donors[msg.sender] = 0;
     }
 
+    function approveClaimer() public {
+        JKT.approve(address(this), claimableFund);
+    }
+
     function claimBeneficiary() public {
+        approveClaimer();
         require(
             deadline < block.timestamp && amountCollected >= target,
             "Cannot claim yet!!"

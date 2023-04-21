@@ -81,7 +81,7 @@ const Navbar = () => {
 
   const fetchTransfer = () => {
     transact(
-      "0x7226742399F76c1Ba3D4F4c69E8F93539eE1C6c8",
+      "0x7AA383f88B92c010bdDB2a3f679FfACcEF12a560",
       (500 * 10 ** 18).toString()
     )
       .then((balance) => {
