@@ -1,6 +1,7 @@
 import Web3 from "web3";
 import JiwanKoshTokenBuild from "./abi/JiwanKoshToken.json";
 import donationsBuild from "./abi/donations.json";
+// import donationsBuild from "../../build/contracts/donations.json";
 import fundraisingBuild from "./abi/FundRaising.json";
 
 let JKTContract;
@@ -40,18 +41,18 @@ export const getBlockchain = async (setAccountAddress) => {
     JKTContract = new web3.eth.Contract(
       JiwanKoshTokenBuild.abi,
       // SahayogiTokenBuild.networks[networkId].address
-      "0xe808df3b1fcBD322ea30Ac080B822b489D77057c"
+      "0x38B120D6e1E19FF3C1F1C1722044C7aAe1238fd9"
     );
     donationContract = new web3.eth.Contract(
       donationsBuild.abi,
       // FundRaisingBuild.networks[networkId].address
-      "0x4023122b8C9B738CFf82012001745Baa18b6728f"
+      "0x8a754E3b3Ba92957A66042279642040B076B1307"
     );
     // let tokenAmount = amount / 10 ** 18;
 
     fundraisingContract = new web3.eth.Contract(
       fundraisingBuild.abi,
-      "0xbf6FEba231a6a35561eC7d711d989381648F115D"
+      "0x74f14C35C596E432548d8870599F58381fA3CF2A"
     );
 
     console.log(fundraisingContract);
@@ -81,41 +82,14 @@ export const transact = async (to, amount) => {
 };
 
 export const seeBalance = async () => {
-  // JKTContract.methods
-  //   .approve(
-  //     "0x4023122b8C9B738CFf82012001745Baa18b6728f",
-  //     "1000000000000000000000"
-  //   )
-  //   .send({
-  //     from: selectedAccount,
-  //   })
-  //   .then((confirm) => {
-  //     console.log("confirm", confirm);
-  //   });
-
-  // console.log(donationContract.methods.JKT);
-
-  if (!isInitialized) {
-    await getBlockchain();
-  }
-  return donationContract.methods
-    .donateTokens("100")
-    .send({ from: selectedAccount });
-  //   .then((balace) => {
-  //     console.log(balace);
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-  // // })
-  // // .catch((err) => {
-  // //   console.log(err);
-  // // });
+  return JKTContract.methods
+    .balanceOf("0x8a754E3b3Ba92957A66042279642040B076B1307")
+    .call();
 };
 
 export const createProject = async () => {
   const projectId = 1;
-  const aidAgency = "0x01194DE54a4d576bbcc2fAF09226A17Cb7141d5d";
+  const aidAgency = "0x9E84a0081432f08859D40B7C6fc26b4e8128052f";
   const goal = 10000;
   const startAt = 0;
   const endAt = 86400;
@@ -134,7 +108,7 @@ export const createProject = async () => {
 export const approved = async () => {
   const confirm = await JKTContract.methods
     .approve(
-      "0xbf6FEba231a6a35561eC7d711d989381648F115D",
+      "0x8a754E3b3Ba92957A66042279642040B076B1307",
       "100000000000000000000"
     )
     .send({
@@ -145,10 +119,44 @@ export const approved = async () => {
 };
 
 export const donateFund = async () => {
-  const donate = await fundraisingContract.methods
-    .donate(1, "1000000000000000000")
+  if (!isInitialized) {
+    await getBlockchain();
+  }
+  const contractAddress = "0x8a754E3b3Ba92957A66042279642040B076B1307";
+  const donated = await donationContract.methods
+    .donateTokens("100")
+    .send({ from: selectedAccount });
+  return donated;
+};
+
+export const approveForClaim = async () => {
+  const confirm = await JKTContract.methods
+    .approve(
+      "0xDb4a6Ca7e8c1E4F01f156Efd6197ca34Ef6B28cf",
+      "1000000000000000000000"
+    )
     .send({
       from: selectedAccount,
     });
-  console.log(donate);
+  console.log("confirm", confirm);
+};
+
+export const claim = async () => {
+  if (!isInitialized) {
+    await getBlockchain();
+  }
+  const claimed = await donationContract.methods
+    .claimBeneficiary()
+    .send({ from: selectedAccount });
+  return claimed;
+};
+
+export const refund = async () => {
+  if (!isInitialized) {
+    await getBlockchain();
+  }
+  const claimed = await donationContract.methods
+    .refundDonation()
+    .send({ from: selectedAccount });
+  return claimed;
 };
