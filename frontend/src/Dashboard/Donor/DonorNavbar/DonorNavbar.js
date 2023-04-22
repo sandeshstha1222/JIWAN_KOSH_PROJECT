@@ -61,7 +61,7 @@ const Navbar = () => {
   };
 
   const claimApproved = () => {
-    approveForClaim();
+    // approveForClaim();
   };
 
   const fetchBalance = () => {
@@ -197,16 +197,18 @@ const Navbar = () => {
                     : "CONNECT WALLET"}
                 </button>
                 <button onClick={fetchBalance}>Own balance</button>
-                <button onClick={fetchTotalSuppy}>Total Supply</button>
-                <button onClick={fetchTransfer}>Transfer</button>
-                <button style={{ color: "black" }}>{ownBalance}</button>
-                <button>{totalSupply}</button>
-                <button onClick={test}>Test</button>
-                <button onClick={approve}>Approve</button>
-                <button onClick={donate}>Donate</button>
-                <button onClick={checkBalance}>Check Balance</button>
+                {/* <button onClick={fetchTotalSuppy}>Total Supply</button> */}
+                {/* <button onClick={fetchTransfer}>Transfer</button> */}
+                <button style={{ color: "black" }}>
+                  {ownBalance / 10 ** 18}
+                </button>
+                {/* <button>{totalSupply}</button> */}
+                {/* <button onClick={test}>Test</button> */}
+                {/* <button onClick={approve}>Approve</button> */}
+                {/* <button onClick={donate}>Donate</button> */}
+                {/* <button onClick={checkBalance}>Check Balance</button> */}
                 <button onClick={claimFund}>Claim FUnd</button>
-                <button onClick={claimApproved}>Approved for Claim FUnd</button>
+                {/* <button onClick={claimApproved}>Approved for Claim FUnd</button> */}
                 <button onClick={refunds}>refund</button>
               </li>
             </Link>

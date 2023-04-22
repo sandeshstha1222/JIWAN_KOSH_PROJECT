@@ -134,7 +134,7 @@ const DProject = () => {
           }
           if (response.data.message === "Error project Creating") {
             console.log("Project Create fail");
-            toast.success("Project Create failed", {
+            toast.error("Project Create failed", {
               postion: "top-center",
               autoClose: 5000,
               hideProgressBar: false,
@@ -318,7 +318,7 @@ const DProject = () => {
                 </p>
               )}
               <input
-                type="date"
+                type="datetime-local"
                 name="startdate"
                 id=""
                 placeholder="Startdate"
@@ -345,7 +345,7 @@ const DProject = () => {
                 </p>
               )}
               <input
-                type="date"
+                type="datetime-local"
                 name="enddate"
                 id=""
                 placeholder="Enddate"

@@ -4,7 +4,12 @@ import DonarNavar from "../DonorNavbar/DonorNavbar";
 import { toast } from "react-toastify";
 import "./Projects.css";
 import axios from "axios";
-import { seeBalance, transact } from "../../../web3connection";
+import {
+  approved,
+  donateFund,
+  seeBalance,
+  transact,
+} from "../../../web3connection";
 
 const Projects = () => {
   const [projectDetails, setProjectDetails] = useState({
@@ -26,6 +31,7 @@ const Projects = () => {
   const [projectData, setProjectData] = useState([]);
 
   const [status, setStatus] = useState(false);
+  const [totalCollectedFund, setTotalCollectedFund] = useState(0);
 
   // Donation or Transfer amount from one account to another
   const fetchTransfer = (address, amount) => {
@@ -68,6 +74,23 @@ const Projects = () => {
     setValues({ ...values, [name]: value });
   };
 
+  const donate = () => {
+    donateFund()
+      .then((data) =>
+        seeBalance()
+          .then((balance) => {
+            console.log("dsfdfsff", balance);
+            setTotalCollectedFund(balance);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const toggleModal = (projects) => {
     setModal(!modal);
   };
@@ -83,6 +106,15 @@ const Projects = () => {
   }, []);
 
   const donateDetails = (projects) => {
+    seeBalance()
+      .then((balance) => {
+        console.log("dsfdfsff", balance);
+        setTotalCollectedFund(balance);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    approved();
     setProjectDetails(projects);
     console.log(projects);
   };
@@ -265,7 +297,7 @@ const Projects = () => {
                         border: "5px solid #3cb100",
                       }}
                     >
-                      0 JKT
+                      {totalCollectedFund / 10 ** 18} JKT
                     </p>
                   </div>
                 </div>
@@ -280,12 +312,13 @@ const Projects = () => {
 
                   <button
                     style={{ margin: "15px 0 0 0px" }}
-                    onClick={() => {
-                      return fetchTransfer(
-                        projectDetails.contractAddress,
-                        values.token
-                      );
-                    }}
+                    onClick={donate}
+                    // () => {
+                    //   return fetchTransfer(
+                    //     projectDetails.contractAddress,
+                    //     values.token
+                    //   );
+                    // }
                   >
                     DONATE
                   </button>
