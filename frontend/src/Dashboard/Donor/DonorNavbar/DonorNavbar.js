@@ -11,6 +11,7 @@ import {
   getBlockchain,
   getOwnBalance,
   getTotalSupply,
+  refund,
   seeBalance,
   transact,
 } from "../../../web3connection";
@@ -34,6 +35,9 @@ const Navbar = () => {
   };
   const donate = () => {
     donateFund();
+  };
+  const refunds = () => {
+    refund();
   };
 
   const checkBalance = () => {
@@ -203,6 +207,7 @@ const Navbar = () => {
                 <button onClick={checkBalance}>Check Balance</button>
                 <button onClick={claimFund}>Claim FUnd</button>
                 <button onClick={claimApproved}>Approved for Claim FUnd</button>
+                <button onClick={refunds}>refund</button>
               </li>
             </Link>
 

@@ -46,7 +46,7 @@ export const getBlockchain = async (setAccountAddress) => {
     donationContract = new web3.eth.Contract(
       donationsBuild.abi,
       // FundRaisingBuild.networks[networkId].address
-      "0xDb4a6Ca7e8c1E4F01f156Efd6197ca34Ef6B28cf"
+      "0x8a754E3b3Ba92957A66042279642040B076B1307"
     );
     // let tokenAmount = amount / 10 ** 18;
 
@@ -83,7 +83,7 @@ export const transact = async (to, amount) => {
 
 export const seeBalance = async () => {
   return JKTContract.methods
-    .balanceOf("0xDb4a6Ca7e8c1E4F01f156Efd6197ca34Ef6B28cf")
+    .balanceOf("0x8a754E3b3Ba92957A66042279642040B076B1307")
     .call();
 };
 
@@ -108,7 +108,7 @@ export const createProject = async () => {
 export const approved = async () => {
   const confirm = await JKTContract.methods
     .approve(
-      "0xDb4a6Ca7e8c1E4F01f156Efd6197ca34Ef6B28cf",
+      "0x8a754E3b3Ba92957A66042279642040B076B1307",
       "100000000000000000000"
     )
     .send({
@@ -122,9 +122,9 @@ export const donateFund = async () => {
   if (!isInitialized) {
     await getBlockchain();
   }
-  const contractAddress = "0xDb4a6Ca7e8c1E4F01f156Efd6197ca34Ef6B28cf";
+  const contractAddress = "0x8a754E3b3Ba92957A66042279642040B076B1307";
   const donated = await donationContract.methods
-    .donateTokens("800")
+    .donateTokens("100")
     .send({ from: selectedAccount });
   return donated;
 };
@@ -147,6 +147,16 @@ export const claim = async () => {
   }
   const claimed = await donationContract.methods
     .claimBeneficiary()
+    .send({ from: selectedAccount });
+  return claimed;
+};
+
+export const refund = async () => {
+  if (!isInitialized) {
+    await getBlockchain();
+  }
+  const claimed = await donationContract.methods
+    .refundDonation()
     .send({ from: selectedAccount });
   return claimed;
 };

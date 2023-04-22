@@ -67,6 +67,8 @@ contract donations {
     }
 
     function refundDonation() public {
+        address _donor = (msg.sender);
+        approveRefund(donors[_donor]);
         require(
             amountCollected < target,
             "Target for project met.Cannot be refunded!!"
@@ -76,9 +78,12 @@ contract donations {
             "Wait until Donation period is Over."
         );
         require(donors[msg.sender] > 0);
-        address _donor = (msg.sender);
         JKT.transferFrom(address(this), _donor, donors[_donor]);
         donors[msg.sender] = 0;
+    }
+
+    function approveRefund(uint refundAmount) public {
+        JKT.approve(address(this), refundAmount);
     }
 
     function approveClaimer() public {
