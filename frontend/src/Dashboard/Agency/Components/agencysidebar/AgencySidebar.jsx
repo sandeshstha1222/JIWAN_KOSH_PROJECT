@@ -65,7 +65,7 @@ export default function AgencySidebar() {
                 <CompareArrowsIcon className="agencysidebarIcon" />
                 Transaction
               </li>
-              <Link to="/DisplayProject">
+              <Link to="/Projectdisplay">
                 <li className="agencysidebarListItem">
                   <CompareArrowsIcon className="agencysidebarIcon" />
                   Display Project

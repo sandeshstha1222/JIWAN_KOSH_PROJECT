@@ -1,9 +1,14 @@
 import "./BeneficiaryNavbar.css";
-import React from "react";
+import React, { useState } from "react";
 import logo from "./../../../images/logoblack.png";
 import { Link } from "react-router-dom";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const Navbar = () => {
+  const [showBalance, setSetBalance] = useState();
+  const [eyeIcon, setEyeIcon] = useState(<AiFillEyeInvisible />);
+
+  const handleToggle = () => {};
   return (
     <div className="Beneficiary-Navbar-body">
       <nav className="BeneficiaryNavbarItems">
@@ -54,6 +59,10 @@ const Navbar = () => {
                 </button>
               </li>
             </Link>
+            <button>balance</button>
+            <span className="icons-span" onClick={handleToggle}>
+              {eyeIcon}
+            </span>
           </ul>
         </div>
       </nav>

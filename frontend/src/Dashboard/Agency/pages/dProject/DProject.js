@@ -1,10 +1,10 @@
+import AgencySidebar from "../../Components/agencysidebar/AgencySidebar";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./dproject.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
-import AgencySidebar from "../../Components/agencysidebar/AgencySidebar";
 
 const DProject = () => {
   const [values, setValues] = useState({
@@ -14,6 +14,7 @@ const DProject = () => {
     amount: "",
     startdate: "",
     enddate: "",
+    contractAddress: "",
   });
   const [inputList, setInputList] = useState([{ email: "", username: "" }]);
   const [projectnameErr, setProjectnameErr] = useState(false);
@@ -26,7 +27,6 @@ const DProject = () => {
   const navigate = useNavigate();
 
   const handleaddclick = () => {
-    // alert("add");
     setInputList([...inputList, { email: "", username: "" }]);
   };
 
@@ -54,19 +54,6 @@ const DProject = () => {
   console.log(values, inputList);
 
   const Notify = () => {
-    if (
-      (values.projectname &&
-        values.projectinfo &&
-        values.numOfBeneficiaries &&
-        inputList.email &&
-        inputList.username &&
-        values.amount &&
-        values.startdate &&
-        values.enddate) === ""
-    ) {
-      toast.warn("Field is Empty");
-    }
-
     if (values.projectname === "") {
       setProjectnameErr(true);
     }
@@ -75,12 +62,6 @@ const DProject = () => {
     }
     if (values.numOfBeneficiaries === "") {
       setnumOfBeneficiariesErr(true);
-    }
-    if (inputList.email === "") {
-      toast.warn("Field is Empty");
-    }
-    if (inputList.username === "") {
-      toast.warn("Field is Empty");
     }
     if (values.amount === "") {
       setAmountErr(true);
@@ -106,6 +87,7 @@ const DProject = () => {
       console.log(values);
 
       console.log(inputList);
+
       axios
         .post("/project", {
           projectName: values.projectname,
@@ -115,34 +97,18 @@ const DProject = () => {
           deadline: values.enddate,
           target: values.amount,
           beneficiaries: inputList,
+          contractAddress: values.contractAddress,
         })
         .then((response) => {
           console.log(response.data.message);
           if (response.data.message === "Project Created") {
             console.log("Project Create Success");
-            toast.success("Project Create Successful", {
-              postion: "top-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
-            window.alert("Project created");
-            navigate("/dashboard");
+            toast.success("Project Create Successful");
+            navigate("/agencydashboard");
           }
           if (response.data.message === "Error project Creating") {
             console.log("Project Create fail");
-            toast.success("Project Create failed", {
-              postion: "top-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            toast.success("Project Create failed");
           }
         });
     }
@@ -150,6 +116,7 @@ const DProject = () => {
 
   return (
     <div>
+      {" "}
       <AgencySidebar />
       <div className="donationForm">
         <div className="Form">
@@ -318,7 +285,21 @@ const DProject = () => {
                 </p>
               )}
               <input
-                type="date"
+                type="string"
+                name="contractAddress"
+                id=""
+                placeholder="Contract Address"
+                value={values.contractAddress}
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    [e.target.name]: e.target.value,
+                  });
+                }}
+                onClick={handleChange}
+              />
+              <input
+                type="datetime-local"
                 name="startdate"
                 id=""
                 placeholder="Startdate"
@@ -345,7 +326,7 @@ const DProject = () => {
                 </p>
               )}
               <input
-                type="date"
+                type="datetime-local"
                 name="enddate"
                 id=""
                 placeholder="Enddate"
