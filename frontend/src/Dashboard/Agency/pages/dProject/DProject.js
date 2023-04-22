@@ -4,6 +4,7 @@ import "./dproject.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import AgencySidebar from "../../Components/agencysidebar/AgencySidebar";
 
 const DProject = () => {
   const [values, setValues] = useState({
@@ -13,7 +14,6 @@ const DProject = () => {
     amount: "",
     startdate: "",
     enddate: "",
-    contractAddress: "",
   });
   const [inputList, setInputList] = useState([{ email: "", username: "" }]);
   const [projectnameErr, setProjectnameErr] = useState(false);
@@ -26,6 +26,7 @@ const DProject = () => {
   const navigate = useNavigate();
 
   const handleaddclick = () => {
+    // alert("add");
     setInputList([...inputList, { email: "", username: "" }]);
   };
 
@@ -53,6 +54,19 @@ const DProject = () => {
   console.log(values, inputList);
 
   const Notify = () => {
+    if (
+      (values.projectname &&
+        values.projectinfo &&
+        values.numOfBeneficiaries &&
+        inputList.email &&
+        inputList.username &&
+        values.amount &&
+        values.startdate &&
+        values.enddate) === ""
+    ) {
+      toast.warn("Field is Empty");
+    }
+
     if (values.projectname === "") {
       setProjectnameErr(true);
     }
@@ -61,6 +75,12 @@ const DProject = () => {
     }
     if (values.numOfBeneficiaries === "") {
       setnumOfBeneficiariesErr(true);
+    }
+    if (inputList.email === "") {
+      toast.warn("Field is Empty");
+    }
+    if (inputList.username === "") {
+      toast.warn("Field is Empty");
     }
     if (values.amount === "") {
       setAmountErr(true);
@@ -86,7 +106,6 @@ const DProject = () => {
       console.log(values);
 
       console.log(inputList);
-
       axios
         .post("/project", {
           projectName: values.projectname,
@@ -96,266 +115,271 @@ const DProject = () => {
           deadline: values.enddate,
           target: values.amount,
           beneficiaries: inputList,
-          contractAddress: values.contractAddress,
         })
         .then((response) => {
           console.log(response.data.message);
           if (response.data.message === "Project Created") {
             console.log("Project Create Success");
-            toast.success("Project Create Successful");
-            navigate("/agencydashboard");
+            toast.success("Project Create Successful", {
+              postion: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            window.alert("Project created");
+            navigate("/dashboard");
           }
           if (response.data.message === "Error project Creating") {
             console.log("Project Create fail");
-            toast.success("Project Create failed");
+            toast.success("Project Create failed", {
+              postion: "top-center",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
           }
         });
     }
   };
 
   return (
-    <div className="donationForm">
-      <div className="Form">
-        {/* <pre>{JSON.stringify(user, undefined, 2)}</pre> */}
-        <form onSubmit={handleSubmit}>
-          <h2>Donation Project</h2>
-          <div className="input">
-            <input
-              type="text"
-              name="projectname"
-              id=""
-              placeholder="ProjectName"
-              value={values.projectname}
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  [e.target.name]: e.target.value,
-                });
-                setProjectnameErr(false);
-              }}
-              onClick={handleChange}
-            />
-            {projectnameErr && (
-              <p
-                style={{
-                  color: "red",
-                  fontSize: "14px",
-                  fontFamily: "auto",
-                  margin: "0 0 5px 10px",
+    <div>
+      <AgencySidebar />
+      <div className="donationForm">
+        <div className="Form">
+          {/* <pre>{JSON.stringify(user, undefined, 2)}</pre> */}
+          <form onSubmit={handleSubmit}>
+            <h2>Donation Project</h2>
+            <div className="input">
+              <input
+                type="text"
+                name="projectname"
+                id=""
+                placeholder="ProjectName"
+                value={values.projectname}
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    [e.target.name]: e.target.value,
+                  });
+                  setProjectnameErr(false);
                 }}
-              >
-                Please Enter project name
-              </p>
-            )}
-            <textarea
-              type="text"
-              name="projectinfo"
-              id=""
-              placeholder="Projectdescription"
-              value={values.projectinfo}
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  [e.target.name]: e.target.value,
-                });
-                setProjectinfoErr(false);
-              }}
-              onClick={handleChange}
-            />
-            {projectinfoErr && (
-              <p
-                style={{
-                  color: "red",
-                  fontSize: "14px",
-                  fontFamily: "auto",
-                  margin: "0 0 5px 10px",
-                }}
-              >
-                Please Enter Projectinfo.
-              </p>
-            )}
-            <input
-              type="number"
-              name="numOfBeneficiaries"
-              id=""
-              placeholder="numOfBeneficiaries"
-              value={values.numOfBeneficiaries}
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  [e.target.name]: e.target.value,
-                });
-                setnumOfBeneficiariesErr(false);
-              }}
-              onClick={handleChange}
-            />
-            {numOfBeneficiariesErr && (
-              <p
-                style={{
-                  color: "red",
-                  fontSize: "14px",
-                  fontFamily: "auto",
-                  margin: "0 0 5px 10px",
-                }}
-              >
-                Please Enter number of beneficiaries.
-              </p>
-            )}
-
-            {inputList.map((x, i) => {
-              return (
-                <div
-                  className="Beneficiary-Input"
-                  style={{ display: "flex", justifyContent: "space-between" }}
+                onClick={handleChange}
+              />
+              {projectnameErr && (
+                <p
+                  style={{
+                    color: "red",
+                    fontSize: "14px",
+                    fontFamily: "auto",
+                    margin: "0 0 5px 10px",
+                  }}
                 >
-                  <input
-                    style={{ width: "12.6em" }}
-                    type="text"
-                    name="username"
-                    id=""
-                    placeholder="beneficiary Username"
-                    value={values.username}
-                    onChange={(e) => handleinputchange(e, i)}
-                  />
+                  Please Enter project name
+                </p>
+              )}
+              <textarea
+                type="text"
+                name="projectinfo"
+                id=""
+                placeholder="Projectdescription"
+                value={values.projectinfo}
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    [e.target.name]: e.target.value,
+                  });
+                  setProjectinfoErr(false);
+                }}
+                onClick={handleChange}
+              />
+              {projectinfoErr && (
+                <p
+                  style={{
+                    color: "red",
+                    fontSize: "14px",
+                    fontFamily: "auto",
+                    margin: "0 0 5px 10px",
+                  }}
+                >
+                  Please Enter Projectinfo.
+                </p>
+              )}
+              <input
+                type="number"
+                name="numOfBeneficiaries"
+                id=""
+                placeholder="numOfBeneficiaries"
+                value={values.numOfBeneficiaries}
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    [e.target.name]: e.target.value,
+                  });
+                  setnumOfBeneficiariesErr(false);
+                }}
+                onClick={handleChange}
+              />
+              {numOfBeneficiariesErr && (
+                <p
+                  style={{
+                    color: "red",
+                    fontSize: "14px",
+                    fontFamily: "auto",
+                    margin: "0 0 5px 10px",
+                  }}
+                >
+                  Please Enter number of beneficiaries.
+                </p>
+              )}
 
-                  <input
-                    style={{ width: "12.7em", marginLeft: "10px" }}
-                    type="email"
-                    name="email"
-                    id=""
-                    placeholder="beneficiary Email"
-                    value={values.email}
-                    onChange={(e) => handleinputchange(e, i)}
-                  />
-
+              {inputList.map((x, i) => {
+                return (
                   <div
-                    className="addbutton"
-                    style={{ marginTop: "22px", marginLeft: "10px" }}
+                    className="Beneficiary-Input"
+                    style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    {inputList.length !== 1 && (
-                      <button
-                        className="buttonsuccess"
-                        onClick={() => handleremove(i)}
-                      >
-                        Remove
-                      </button>
-                    )}
-                    {inputList.length - 1 === i && (
-                      <button
-                        className="buttonsuccess"
-                        onClick={handleaddclick}
-                      >
-                        Add
-                      </button>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+                    <input
+                      style={{ width: "12.6em" }}
+                      type="text"
+                      name="username"
+                      id=""
+                      placeholder="beneficiary Username"
+                      value={values.username}
+                      onChange={(e) => handleinputchange(e, i)}
+                    />
 
-            <input
-              type="number"
-              name="amount"
-              id=""
-              placeholder="Amount"
-              value={values.amount}
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  [e.target.name]: e.target.value,
-                });
-                setAmountErr(false);
-              }}
-              onClick={handleChange}
-            />
-            {amountErr && (
-              <p
-                style={{
-                  color: "red",
-                  fontSize: "14px",
-                  fontFamily: "auto",
-                  margin: "0 0 5px 10px",
+                    <input
+                      style={{ width: "12.7em", marginLeft: "10px" }}
+                      type="email"
+                      name="email"
+                      id=""
+                      placeholder="beneficiary Email"
+                      value={values.email}
+                      onChange={(e) => handleinputchange(e, i)}
+                    />
+
+                    <div
+                      className="addbutton"
+                      style={{ marginTop: "22px", marginLeft: "10px" }}
+                    >
+                      {inputList.length !== 1 && (
+                        <button
+                          className="buttonsuccess"
+                          onClick={() => handleremove(i)}
+                        >
+                          Remove
+                        </button>
+                      )}
+                      {inputList.length - 1 === i && (
+                        <button
+                          className="buttonsuccess"
+                          onClick={handleaddclick}
+                        >
+                          Add
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+
+              <input
+                type="number"
+                name="amount"
+                id=""
+                placeholder="Amount"
+                value={values.amount}
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    [e.target.name]: e.target.value,
+                  });
+                  setAmountErr(false);
                 }}
-              >
-                Please Enter Amount.
-              </p>
-            )}
-            <input
-              type="string"
-              name="contractAddress"
-              id=""
-              placeholder="Contract Address"
-              value={values.contractAddress}
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  [e.target.name]: e.target.value,
-                });
-              }}
-              onClick={handleChange}
-            />
-            <input
-              type="datetime-local"
-              name="startdate"
-              id=""
-              placeholder="Startdate"
-              value={values.startdate}
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  [e.target.name]: e.target.value,
-                });
-                setStartdateErr(false);
-              }}
-              onClick={handleChange}
-            />
-            {startdateErr && (
-              <p
-                style={{
-                  color: "red",
-                  fontSize: "14px",
-                  fontFamily: "auto",
-                  margin: "0 0 5px 10px",
+                onClick={handleChange}
+              />
+              {amountErr && (
+                <p
+                  style={{
+                    color: "red",
+                    fontSize: "14px",
+                    fontFamily: "auto",
+                    margin: "0 0 5px 10px",
+                  }}
+                >
+                  Please Enter Amount.
+                </p>
+              )}
+              <input
+                type="date"
+                name="startdate"
+                id=""
+                placeholder="Startdate"
+                value={values.startdate}
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    [e.target.name]: e.target.value,
+                  });
+                  setStartdateErr(false);
                 }}
-              >
-                Please Enter Startdate.
-              </p>
-            )}
-            <input
-              type="datetime-local"
-              name="enddate"
-              id=""
-              placeholder="Enddate"
-              value={values.enddate}
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  [e.target.name]: e.target.value,
-                });
-                setEnddateErr(false);
-              }}
-              onClick={handleChange}
-            />
-            {enddateErr && (
-              <p
-                style={{
-                  color: "red",
-                  fontSize: "14px",
-                  fontFamily: "auto",
-                  margin: "0 0 5px 10px",
+                onClick={handleChange}
+              />
+              {startdateErr && (
+                <p
+                  style={{
+                    color: "red",
+                    fontSize: "14px",
+                    fontFamily: "auto",
+                    margin: "0 0 5px 10px",
+                  }}
+                >
+                  Please Enter Startdate.
+                </p>
+              )}
+              <input
+                type="date"
+                name="enddate"
+                id=""
+                placeholder="Enddate"
+                value={values.enddate}
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    [e.target.name]: e.target.value,
+                  });
+                  setEnddateErr(false);
                 }}
-              >
-                Please Enter enddate.
-              </p>
-            )}
-          </div>
-          <div className="buttons">
-            <button className="Project-btn" onClick={Notify}>
-              Create Project
-            </button>
-            <ToastContainer />
-          </div>
-        </form>
+                onClick={handleChange}
+              />
+              {enddateErr && (
+                <p
+                  style={{
+                    color: "red",
+                    fontSize: "14px",
+                    fontFamily: "auto",
+                    margin: "0 0 5px 10px",
+                  }}
+                >
+                  Please Enter enddate.
+                </p>
+              )}
+            </div>
+            <div className="buttons">
+              <button className="Project-btn" onClick={Notify}>
+                Create Project
+              </button>
+              <ToastContainer />
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

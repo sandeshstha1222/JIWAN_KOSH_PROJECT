@@ -10,6 +10,9 @@
 .agencysidebarList li {
   color: white;
 }
+.agencysidebarList .agencysidebarIcon {
+  text-decoration: none;
+}
 .agencysidebarWrapper {
   padding: 20px;
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./register.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -74,17 +74,17 @@ const Register = () => {
       toast.success("Registration Successful. Please Login");
       navigate("/login");
     } else if (
-      data.message == "This Email Already Exist. Please Login" ||
-      data.message == "Username already exist. Try a new one"
+      data.message === "This Email Already Exist. Please Login" ||
+      data.message === "Username already exist. Try a new one"
     ) {
       toast.error("Username and Email already Registered");
 
       console.log("Invalid Email");
-    } else if (data.message == "Username already exist. Try a new one") {
+    } else if (data.message === "Username already exist. Try a new one") {
       toast.error("Username already Registered");
 
       console.log("Invalid email");
-    } else if (data.message == "This Email Already Exist. Please Login") {
+    } else if (data.message === "This Email Already Exist. Please Login") {
       toast.error("Username already Registered");
 
       console.log("Invalid Email");

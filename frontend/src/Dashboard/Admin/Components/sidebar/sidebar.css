@@ -9,6 +9,7 @@
 }
 .sidebarList li {
   color: white;
+  text-decoration: none;
 }
 .sidebarWrapper {
   padding: 20px;
