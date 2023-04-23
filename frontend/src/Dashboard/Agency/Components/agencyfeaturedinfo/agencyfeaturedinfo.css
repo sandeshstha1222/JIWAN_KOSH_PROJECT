@@ -21,3 +21,60 @@
   display: flex;
   align-items: center;
 }
+
+.Agencyprojectdisplay .displayTitle {
+  margin: 0px 100px;
+}
+.AgencyfeaturedContainer .displayItem {
+  margin: 0px 100px;
+  background: #fff;
+  float: left;
+  margin-left: 2em;
+  padding: 40px;
+  border-radius: 5px;
+  margin-top: 2em;
+  background-color: rgb(228, 226, 226);
+  box-shadow: rgb(78, 78, 78);
+}
+
+.AgencyfeaturedContainer .restdata {
+  border: 1px solid black;
+  border-radius: 3px;
+  font-weight: bold;
+  width: "24em";
+  margin-top: "1em";
+}
+.AgencyfeaturedContainer .restdata p {
+  margin: 1em 0 0.4em 0.4em;
+}
+
+.AgencyBeneficiaryDisplay table {
+  margin: 5rem auto;
+  border-radius: 2rem;
+  border: 1rem hidden #443c68;
+  border-collapse: collapse;
+  box-shadow: 0 0 0 1px black;
+  overflow: hidden;
+  max-width: 80rem;
+  text-align: center;
+}
+.AgencyBeneficiaryDisplay th {
+  border: 1px solid #443c68;
+  max-width: 30rem;
+  padding: 1rem;
+  line-height: 1.7;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.BeneficiaryDisplay td {
+  border: 1px solid #443c68;
+  max-width: 30rem;
+  padding: 1rem;
+  line-height: 1.7;
+  font-size: 10px;
+}
+
+.BeneficiaryDisplay td {
+  font-size: 1.4rem;
+}

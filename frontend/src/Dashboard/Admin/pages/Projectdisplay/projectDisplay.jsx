@@ -1,104 +1,73 @@
-import React, { useEffect, useState } from "react";
-import charity from "../../../../images/project.jpg";
-import { toast } from "react-toastify";
+import React, { useState, useEffect } from "react";
 import "./projectDisplay.css";
 import axios from "axios";
 import AdminSidebar from "../../Components/sidebar/AdminSidebar";
+import charity from "../../../../images/project.jpg";
 
-const Projects = () => {
+const ProjectDisplay = () => {
+  const [mydata, setMyData] = useState([]);
 
-  const [projectData, setProjectData] = useState([]);
+  const getProjectData = async () => {
+    try {
+      const res = await axios.get("/project");
+      console.log(res);
+      setMyData(res.data.projects);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   useEffect(() => {
-    axios.get("/Project").then((res) => setProjectData(res.data.projects));
+    getProjectData();
   }, []);
 
-
   return (
-    <div className="Admin-Project-Body">
-      <div><AdminSidebar /></div>
-      <div className="Admin-Project-Whole-Body">
-        <div style={{ width: "100%", marginTop: "6em" }}>
-          <div
-            style={{
-              textAlign: "center",
-              fontSize: "20px",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <p
-              style={{
-                border: "2px solid #3cb100",
-                borderRadius: "5px",
-                padding: "5px 20px 5px 20px",
-                color: "white",
-                background: "#3cb100",
-              }}
-            >
-              Projects
-            </p>
-          </div>
-          <hr style={{ marginTop: "2em", color: "red" }} />
+    <div className="display">
+      <div>
+        <AdminSidebar />
+      </div>
+      <div className="grid">
+        <h1 className="displayProjectTitle">Display Project</h1>
+        {mydata.map((post) => {
+          const {
+            projectName,
+            numOfBenificiary,
+            projectInfo,
+            startDate,
+            deadline,
+            target,
+            benificiaries,
+          } = post;
+          return (
+            <div className="displayItem" key={projectName}>
+              <img style={{ width: "18em" }} src={charity} alt="PROJECT" />
+              <p className="displayText">Projectinfo: {projectInfo}</p>
 
-          {/* fetching projects data from Database */}
-          {projectData.map((projects) => {
-            const {
-              _id,
-              projectName,
-              projectInfo,
-              beneficiaries,
-              target,
-              startDate,
-              deadline,
-            } = projects;
+              <div className="restdata">
+                <p className="displayText">Project Name: {projectName}</p>
+                <p className="displayText">
+                  Numberofbeneficiary: {numOfBenificiary}
+                </p>
+                {post.benificiaries.map((data) => {
+                  const { email, username } = data;
+                  return (
+                    <div>
+                      Emails :{email} <br />
+                      Username: {username}
+                    </div>
+                  );
+                })}
 
-            return (
-              <div className="Admin-Projects-Data" key={beneficiaries._id}>
-                <img
-                  style={{ width: "100%", height: "15em" }}
-                  src={charity}
-                  alt="PROJECT"
-                />
-                <div className="Admin-Projects">
-                  <div className="ProjectName">
-                    {/* <p>{beneficiaries[0].email}</p> */}
-                    <p>{projectName}</p>
-                  </div>
-                  <p>
-                    {projectInfo.length > 200
-                      ? `${projectInfo.substring(0, 200)}...`
-                      : projectInfo}
-                    <a
-                      style={{
-                        color: "#3b9d0a",
-                        cursor: "pointer",
-                        fontFamily: "Source Sans Pro",
-                        fontWeight: "600",
-                      }}
-                      
-                    >
-                 
-                    </a>
-                  </p>
-                  {/* <hr style={{ width: "26em" }} /> */}
-                  <div className="Admin-donate-button-border">
-                  </div>
-                  <div className="restDetails">
-                    <p>
-                      {target} <a>JKT Needed</a>
-                    </p>
-                    <p>StartDate: {startDate} </p>
-                    <p>EndDate: {deadline}</p>
-                  </div>
-                </div>
+                <p className="displayText">Startdate: {startDate}</p>
+                <p className="displayText">Deadline: {deadline}</p>
+                <p className="displayText">Target: {target}</p>
               </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
 };
 
-export default Projects;
+export default ProjectDisplay;

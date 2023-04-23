@@ -28,25 +28,27 @@ export default function Sidebar() {
           </div>
 
           <ul className="sidebarList">
-            <li style={{ color: "black" }} className="sidebarListItem active">
-              <LineStyleIcon className="sidebarIcon" />
-              Home
-            </li>
+            <Link to="/Home">
+              <li style={{ color: "black" }} className="sidebarListItem active">
+                <LineStyleIcon className="sidebarIcon" />
+                Home
+              </li>
+            </Link>
             <hr />
             <div className="Sidebar-Second">
-              <Link to="/tokenoperation" className="Link">
+              <Link to="/tokenoperation">
                 <li className="sidebarListItem">
                   <AppsIcon className="sidebarIcon" />
                   Operation
                 </li>
               </Link>
-              <Link to="/AidAgency" className="Link">
+              <Link to="/AidAgency">
                 <li className="sidebarListItem">
                   <CorporateFareIcon className="sidebarIcon" />
                   Aid Agency
                 </li>
               </Link>
-              <Link to="/Projectdisplay" className="Link">
+              <Link to="/Projectdisplay">
                 <li className="sidebarListItem">
                   <PaidIcon className="sidebarIcon" />
                   Display Project
@@ -56,7 +58,7 @@ export default function Sidebar() {
                 <AccountBalanceIcon className="sidebarIcon" />
                 Bank
               </li>
-              <Link to="/beneficiary" className="Link">
+              <Link to="/beneficiary">
                 <li className="sidebarListItem">
                   <PeopleIcon className="sidebarIcon" />
                   Beneficiaries

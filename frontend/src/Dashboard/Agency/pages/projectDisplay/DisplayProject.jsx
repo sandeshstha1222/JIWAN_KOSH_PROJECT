@@ -6,14 +6,12 @@ import charity from "../../../../images/project.jpg";
 
 const DisplayProject = () => {
   const [mydata, setMyData] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   const getProjectData = async () => {
     try {
       const res = await axios.get("/project");
       console.log(res);
       setMyData(res.data.projects);
-      setLoading(true)
     } catch (error) {
       console.log(error.message);
     }
@@ -22,11 +20,6 @@ const DisplayProject = () => {
   useEffect(() => {
     getProjectData();
   }, []);
-
-
-if(loading){
-  return <h1>Data is loading</h1>
-}
 
   return (
     <div className="displayProject">

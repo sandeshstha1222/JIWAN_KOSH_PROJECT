@@ -1,8 +1,8 @@
 import React from "react";
-import "./Dashboard.css";
+import "./AgencyDashboard.css";
 import AgencySidebar from "./Components/agencysidebar/AgencySidebar";
 import AgencyHomepage from "./pages/home/AgencyHomepage";
-const Dashboard = () => {
+const AgencyDashboarddisplay = () => {
   return (
     <div className="Dashboard">
       <div className="container">
@@ -13,4 +13,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default AgencyDashboarddisplay;
