@@ -3,7 +3,11 @@ import React, { useState } from "react";
 import logo from "./../../../images/logoblack.png";
 import { Link } from "react-router-dom";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { getBlockchain, getOwnBalance } from "../../../web3connection";
+import {
+  getBlockchain,
+  getOwnBalance,
+  transact,
+} from "../../../web3connection";
 
 const Navbar = () => {
   const [showBalance, setShowBalance] = useState();
@@ -13,6 +17,16 @@ const Navbar = () => {
 
   const fetchBalance = () => {
     getOwnBalance()
+      .then((balance) => {
+        setShowBalance(balance);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const transferFund = (to, amount) => {
+    transact(to, (amount * 10 ** 18).toString())
       .then((balance) => {
         setShowBalance(balance);
       })
@@ -68,19 +82,20 @@ const Navbar = () => {
                       )}...${walletAddress.substring(38)}`
                     : "CONNECT WALLET"}
                 </button>
-              </li>
-            </Link>
-
-            <Link className="btn" to="/">
-              <li>
                 <button
                   className="Beneficiary-logout-button"
-                  onClick={() => localStorage.clear()}
+                  onClick={() =>
+                    transferFund(
+                      "0x7AA383f88B92c010bdDB2a3f679FfACcEF12a560",
+                      100
+                    )
+                  }
                 >
-                  Logout
+                  Fund Transfer
                 </button>
               </li>
             </Link>
+
             <li
               style={{
                 display: "flex",
@@ -104,6 +119,17 @@ const Navbar = () => {
                   : showBalance / 10 ** 18}
               </span>
             </li>
+
+            <Link className="btn" to="/">
+              <li>
+                <button
+                  className="Beneficiary-logout-button"
+                  onClick={() => localStorage.clear()}
+                >
+                  Logout
+                </button>
+              </li>
+            </Link>
           </ul>
         </div>
       </nav>
