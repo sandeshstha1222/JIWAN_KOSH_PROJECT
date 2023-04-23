@@ -2,6 +2,8 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./aidAgency.css";
+import AdminSidebar from "../../Components/sidebar/AdminSidebar";
+
 
 const AidAgency = () => {
   const [datas, setDatas] = useState([]);
@@ -22,6 +24,7 @@ const AidAgency = () => {
 
   return (
     <div>
+      <div><AdminSidebar /></div>
       <h1 className="AidAgencyTitle"> Aid Agency </h1>
       <table>
         <tr>

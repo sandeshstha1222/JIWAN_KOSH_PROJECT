@@ -1,7 +1,9 @@
+
 import React, { useState } from "react";
 import "./tokenOperation.css";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AdminSidebar from "../../Components/sidebar/AdminSidebar";
 
 const TokenOperation = () => {
   const [values, setValues] = useState({
@@ -72,188 +74,198 @@ const TokenOperation = () => {
   const Notify = () => {
     if (values.minttoken === "") {
       setMinttokenErr(true);
+      toast.warn("Field is Empty");
     }
     if (values.mintwalletaddress === "") {
       setMintwalletaddressErr(true);
+      toast.warn("Field is Empty");
     }
   };
   const Notice = () => {
     if (values.transfertoken === "") {
       setTransfertokenErr(true);
+      toast.warn("Field is Empty");
     }
     if (values.transferwalletaddress === "") {
       setTransferwalletaddressErr(true);
+      toast.warn("Field is Empty");
     }
   };
 
   return (
-    <div className="tokenOperationForm">
-      <div>
-        <button onClick={connectWalletHandler} className="connectwallet-button">
-          {userBalance}
-          {walletAddress && walletAddress.length > 0
-            ? `: ${walletAddress.substring(0, 6)}...${walletAddress.substring(
-                38
-              )}`
-            : "CONNECT WALLET"}
-        </button>
-      </div>
-      <form onSubmit={handleSubmit}>
-        <h1> Token Operation</h1>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            marginTop: "2em",
-          }}
-        >
-          <div
-            style={{
-              width: "22em",
-              height: "22em",
-              padding: "20px",
-              backgroundColor: "#fff",
-              borderRadius: "10px",
-              border: "2px solid #3cb100",
-            }}
+    <div>
+      <AdminSidebar />
+      <div className="tokenOperationForm">
+        <div>
+          <button
+            onClick={connectWalletHandler}
+            className="connectwallet-button"
           >
-            <h2 style={{ textAlign: "center" }}> Mint Token</h2>
-            <input
-              type="number"
-              name="minttoken"
-              id=""
-              placeholder="Minttoken"
-              value={values.minttoken}
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  [e.target.name]: e.target.value,
-                });
-                setMinttokenErr(false);
-              }}
-              onClick={handleChange}
-            />
-            {minttokenErr && (
-              <p
-                style={{
-                  color: "red",
-                  fontSize: "14px",
-                  fontFamily: "auto",
-                  margin: "0 0 5px 10px",
-                }}
-              >
-                Please Enter mint token value
-              </p>
-            )}
-            <input
-              type="text"
-              name="mintwalletaddress"
-              id=""
-              placeholder="Mintwalletaddress"
-              value={values.mintwalletaddress}
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  [e.target.name]: e.target.value,
-                });
-                setMintwalletaddressErr(false);
-              }}
-              onClick={handleChange}
-            />
-            {mintwalletaddressErr && (
-              <p
-                style={{
-                  color: "red",
-                  fontSize: "14px",
-                  fontFamily: "auto",
-                  margin: "0 0 5px 10px",
-                }}
-              >
-                Please Enter Mint Wallet Address properly.
-              </p>
-            )}
-            <button className="Button-click" onClick={Notify}>
-              Mint Token
-            </button>
-            <ToastContainer />
-          </div>
-          <div
-            style={{
-              width: "22em",
-              height: "22em",
-              padding: "20px",
-              backgroundColor: "#fff",
-              borderRadius: "10px",
-              border: "2px solid #3cb100",
-              marginLeft: "20px",
-            }}
-          >
-            <h2 style={{ textAlign: "center" }}>Transfer Token</h2>
-            <input
-              type="number"
-              name="transfertoken"
-              id=""
-              placeholder="Transfertoken"
-              value={values.transfertoken}
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  [e.target.name]: e.target.value,
-                });
-                setTransfertokenErr(false);
-              }}
-              onClick={handleChange}
-            />
-            {transfertokenErr && (
-              <p
-                style={{
-                  color: "red",
-                  fontSize: "14px",
-                  fontFamily: "auto",
-                  margin: "0 0 5px 10px",
-                }}
-              >
-                Please enter the transfer token amount.
-              </p>
-            )}
-
-            <input
-              type="text"
-              name="transferwalletaddress"
-              id=""
-              placeholder="Transferwalletaddress"
-              value={values.transferwalletaddress}
-              onChange={(e) => {
-                setValues({
-                  ...values,
-                  [e.target.name]: e.target.value,
-                });
-                setTransferwalletaddressErr(false);
-              }}
-              onClick={handleChange}
-            />
-            {transferwalletaddressErr && (
-              <p
-                style={{
-                  color: "red",
-                  fontSize: "14px",
-                  fontFamily: "auto",
-                  margin: "0 0 5px 10px",
-                }}
-              >
-                Please Enter transfer wallet address.
-              </p>
-            )}
-
-            <button className="Button-click" onClick={Notice}>
-              Transfer
-            </button>
-            <ToastContainer />
-          </div>
+            {userBalance}
+            {walletAddress && walletAddress.length > 0
+              ? `: ${walletAddress.substring(0, 6)}...${walletAddress.substring(
+                  38
+                )}`
+              : "CONNECT WALLET"}
+          </button>
         </div>
+        <form onSubmit={handleSubmit}>
+          <h1> Token Operation</h1>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginTop: "2em",
+            }}
+          >
+            <div
+              style={{
+                width: "22em",
+                height: "22em",
+                padding: "20px",
+                backgroundColor: "#fff",
+                borderRadius: "10px",
+                border: "2px solid #3cb100",
+              }}
+            >
+              <h2 style={{ textAlign: "center" }}> Mint Token</h2>
+              <input
+                type="number"
+                name="minttoken"
+                id=""
+                placeholder="Minttoken"
+                value={values.minttoken}
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    [e.target.name]: e.target.value,
+                  });
+                  setMinttokenErr(false);
+                }}
+                onClick={handleChange}
+              />
+              {minttokenErr && (
+                <p
+                  style={{
+                    color: "red",
+                    fontSize: "14px",
+                    fontFamily: "auto",
+                    margin: "0 0 5px 10px",
+                  }}
+                >
+                  Please Enter mint token value
+                </p>
+              )}
+              <input
+                type="text"
+                name="mintwalletaddress"
+                id=""
+                placeholder="Mintwalletaddress"
+                value={values.mintwalletaddress}
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    [e.target.name]: e.target.value,
+                  });
+                  setMintwalletaddressErr(false);
+                }}
+                onClick={handleChange}
+              />
+              {mintwalletaddressErr && (
+                <p
+                  style={{
+                    color: "red",
+                    fontSize: "14px",
+                    fontFamily: "auto",
+                    margin: "0 0 5px 10px",
+                  }}
+                >
+                  Please Enter Mint Wallet Address properly.
+                </p>
+              )}
+              <button className="Button-click" onClick={Notify}>
+                Mint Token
+              </button>
+              <ToastContainer />
+            </div>
+            <div
+              style={{
+                width: "22em",
+                height: "22em",
+                padding: "20px",
+                backgroundColor: "#fff",
+                borderRadius: "10px",
+                border: "2px solid #3cb100",
+                marginLeft: "20px",
+              }}
+            >
+              <h2 style={{ textAlign: "center" }}>Transfer Token</h2>
+              <input
+                type="number"
+                name="transfertoken"
+                id=""
+                placeholder="Transfertoken"
+                value={values.transfertoken}
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    [e.target.name]: e.target.value,
+                  });
+                  setTransfertokenErr(false);
+                }}
+                onClick={handleChange}
+              />
+              {transfertokenErr && (
+                <p
+                  style={{
+                    color: "red",
+                    fontSize: "14px",
+                    fontFamily: "auto",
+                    margin: "0 0 5px 10px",
+                  }}
+                >
+                  Please enter the transfer token amount.
+                </p>
+              )}
 
-        <div>{errorMessage}</div>
-      </form>
+              <input
+                type="text"
+                name="transferwalletaddress"
+                id=""
+                placeholder="Transferwalletaddress"
+                value={values.transferwalletaddress}
+                onChange={(e) => {
+                  setValues({
+                    ...values,
+                    [e.target.name]: e.target.value,
+                  });
+                  setTransferwalletaddressErr(false);
+                }}
+                onClick={handleChange}
+              />
+              {transferwalletaddressErr && (
+                <p
+                  style={{
+                    color: "red",
+                    fontSize: "14px",
+                    fontFamily: "auto",
+                    margin: "0 0 5px 10px",
+                  }}
+                >
+                  Please Enter transfer wallet address.
+                </p>
+              )}
+
+              <button className="Button-click" onClick={Notice}>
+                Transfer
+              </button>
+              <ToastContainer />
+            </div>
+          </div>
+
+          <div>{errorMessage}</div>
+        </form>
+      </div>
     </div>
   );
 };

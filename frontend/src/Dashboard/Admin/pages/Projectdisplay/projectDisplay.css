@@ -1,29 +1,62 @@
-.display {
-  width: 100%;
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+Pro&display=swap");
+
+.Charity-Image {
+  width: 10px;
+  height: 10px;
+}
+.Admin-Project-body {
   display: flex;
-  justify-content: space-between;
 }
 
-.displayItem {
-  flex: 1;
-  margin: 0px 20px;
-  padding: 30px;
-  border-radius: 10px;
-  border: 2px solid black;
-  text-align: center;
+/* .Project-whole-Body .Projects {
+  margin-top: 10em;
+  margin-left: 10em;
+} */
+
+.Admin-Projects .donate-button-border {
+  padding: 2em;
+  display: flex;
+  justify-content: center;
 }
 
-.grid {
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 1.6rem;
+.Admin-Projects-Data {
+  width: 30%;
+  height: 90vh;
+  background: #fff;
+  float: left;
+  margin-left: 2em;
+  padding: 40px;
+  border-radius: 5px;
+  /* margin-top: 2em; */
+  background-color: rgb(228, 226, 226);
+  box-shadow: rgb(78, 78, 78);
+}
+.Admin-Projects-Data .ProjectName p {
+  margin-top: 1em;
+  font-size: 1.5em;
+  font-family: "Bebas Neue", cursive;
+}
+.Admin-Projects p {
+  width: auto;
+  margin-top: 1em;
+  text-align: justify;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
-.displayTitle {
-  font-size: 70px;
-  color: #3cb100;
+
+.Projects .restDetails {
+  border: 1px solid black;
+  border-radius: 3px;
+  font-weight: bold;
+  width: "24em";
+  margin-top: "1em";
+}
+.Admin-Projects .restDetails p {
+  margin: 1em 0 0.4em 0.4em;
+}
+.Admin-Projects .restDetails p a {
+  color: #3b9d0a;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
-.displayText {
-  font-size: 30px;
-  font-weight: 600;
-}
+
