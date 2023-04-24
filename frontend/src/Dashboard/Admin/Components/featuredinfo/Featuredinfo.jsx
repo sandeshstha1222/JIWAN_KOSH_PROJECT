@@ -37,22 +37,35 @@ const Featuredinfo = () => {
         <div className="featuredContainer">
           <div className="ProjectDisplay">
             <h1 className="displayTitle">List of PROJECTS</h1>
-            {mydata.map((post) => {
-              const {
-                projectName,
-
-                projectInfo,
-              } = post;
-              return (
-                <div className="displayItem" key={projectName}>
-                  <p className="displayText">Projectinfo: {projectInfo}</p>
-
-                  <div className="restdata">
-                    <p className="displayText">Project Name: {projectName}</p>
-                  </div>
-                </div>
-              );
-            })}
+            <table>
+              <tr>
+                <th>Project Name</th>
+                <th>Number of beneficiaries</th>
+                <th>Start date</th>
+                <th>End date</th>
+                <th>Token required</th>
+              </tr>
+              <tbody>
+                {mydata.map((post) => {
+                  const {
+                    projectName,
+                    numOfBeneficiary,
+                    startDate,
+                    deadline,
+                    target,
+                  } = post;
+                  return (
+                    <tr key={projectName}>
+                      <td>{projectName}</td>
+                      <td>{numOfBeneficiary}</td>
+                      <td>{startDate}</td>
+                      <td>{deadline}</td>
+                      <td>{target}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

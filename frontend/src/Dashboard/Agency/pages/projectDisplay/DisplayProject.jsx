@@ -31,12 +31,12 @@ const DisplayProject = () => {
         {mydata.map((post) => {
           const {
             projectName,
-            numOfBenificiary,
+            numOfBeneficiary,
             projectInfo,
             startDate,
             deadline,
             target,
-            benificiaries,
+            beneficiaries,
           } = post;
           return (
             <div className="displayProjectItem" key={projectName}>
@@ -46,9 +46,9 @@ const DisplayProject = () => {
               <div className="restdata">
                 <p className="displayText">Project Name: {projectName}</p>
                 <p className="displayText">
-                  Numberofbeneficiary: {numOfBenificiary}
+                  Numberofbeneficiary: {numOfBeneficiary}
                 </p>
-                {post.benificiaries.map((data) => {
+                {post.beneficiaries.map((data) => {
                   const { email, username } = data;
                   return (
                     <div>
