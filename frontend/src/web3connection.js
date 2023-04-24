@@ -13,7 +13,9 @@ let selectedAccount;
 
 let isInitialized = false;
 
-let donationContractAddress = "0xA351f05AAC55d893CD5BadE14b4c194B53d2B481";
+let transactionHash;
+
+let donationContractAddress = "0xF82930aD834d84C115BFed985929D5b4cbE219ef";
 
 export const getBlockchain = async (setAccountAddress) => {
   let provider = window.ethereum;
@@ -117,15 +119,25 @@ export const approved = async () => {
   console.log("COnfirm", confirm);
 };
 
-export const donateFund = async () => {
+export const donateFund = async (token) => {
   if (!isInitialized) {
     await getBlockchain();
   }
   const donated = await donationContract.methods
-    .donateTokens("100")
-    .send({ from: selectedAccount });
+    .donateTokens(token)
+    .send({ from: selectedAccount })
+    .on("transactionHash", function (hash) {
+      console.log("transacion hash:" + hash);
+      transactionHash = hash;
+    });
 
   return donated;
+};
+
+export const transactionDetails = async () => {
+  const web3 = new Web3(window.ethereum);
+  const tranctionDetail = await web3.eth.getTransaction(transactionHash);
+  return tranctionDetail;
 };
 
 // export const approveForClaim = async () => {

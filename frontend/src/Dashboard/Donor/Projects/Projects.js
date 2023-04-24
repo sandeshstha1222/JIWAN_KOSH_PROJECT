@@ -7,8 +7,10 @@ import axios from "axios";
 import {
   approved,
   donateFund,
+  refund,
   seeBalance,
   transact,
+  transactionDetails,
 } from "../../../web3connection";
 
 const Projects = () => {
@@ -16,16 +18,20 @@ const Projects = () => {
     _id: "",
     projectName: "",
     projectInfo: "",
-    numOfBeneficiaries: "",
+    numOfBeneficiary: "",
     target: "",
     startDate: "",
-    enddate: "",
+    deadline: "",
     contractAddress: "",
   });
 
   const [values, setValues] = useState({
     token: "",
   });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   const [modal, setModal] = useState(false);
   const [projectData, setProjectData] = useState([]);
@@ -74,13 +80,39 @@ const Projects = () => {
     setValues({ ...values, [name]: value });
   };
 
-  const donate = () => {
-    donateFund()
+  const donate = (projectDetails) => {
+    console.log("dfdsf");
+
+    donateFund(values.token)
       .then((data) =>
         seeBalance()
-          .then((balance) => {
+          .then(async (balance) => {
             console.log("dsfdfsff", balance);
             setTotalCollectedFund(balance);
+            transactionDetails()
+              .then((data) => {
+                console.log("transaction details", data);
+                axios
+                  .post("/trial", {
+                    projectId: projectDetails._id,
+                    projectName: projectDetails.projectName,
+                    numOfBeneficiary: projectDetails.numOfBeneficiary,
+                    projectInfo: projectDetails.projectInfo,
+                    startDate: projectDetails.startDate,
+                    deadline: projectDetails.deadline,
+                    target: projectDetails.target,
+                    fromAccountAddress: data.from,
+                    toAccountAddress: data.to,
+                    donatedJktAmount: values.token,
+                  })
+                  .then((res) => {
+                    console.log("Project Donar Details", res);
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                  });
+              })
+              .catch((err) => console.log(err));
           })
           .catch((err) => {
             console.log(err);
@@ -89,6 +121,37 @@ const Projects = () => {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  // const donorLog = () => {
+  //   console.log("request Data", projectDetails);
+
+  //   axios
+  //     .post("/project/savedonorlog", {
+  //       projectId: projectDetails._id,
+  //       projectName: projectDetails.projectName,
+  //       numOfBeneficiary: projectDetails.numOfBeneficiary,
+  //       projectInfo: projectDetails.projectInfo,
+  //       startDate: projectDetails.startDate,
+  //       deadline: projectDetails.deadline,
+  //       target: projectDetails.target,
+  //       accountAddress: "projectDetails",
+  //       donatedJktAmount: values.token,
+  //     })
+  //     .then((res) => {
+  //       console.log("Project Donar Details", projectDetails);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
+
+  const refunds = () => {
+    refund()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
   };
 
   const toggleModal = (projects) => {
@@ -221,6 +284,10 @@ const Projects = () => {
                     >
                       DONATE NOW
                     </button>
+
+                    <button className="Donate-Button" onClick={refunds}>
+                      Refund
+                    </button>
                     {/* </Link> */}
                   </div>
                   <div className="restDetails">
@@ -238,107 +305,118 @@ const Projects = () => {
       </div>
 
       {modal && (
-        <div className="ProjectDetails">
-          <div className="modal">
-            <div onClick={toggleModal} className="overlay"></div>
-            <div className="Project-content">
-              <button className="close-button" onClick={toggleModal}>
-                CLOSE
-              </button>
-              <div className="three-bodies">
-                <div style={{ marginTop: "4em" }}>
-                  <img style={{ width: "25em" }} src={charity} alt="PROJECT" />
-                </div>
-                <div className="middle">
-                  <div
-                    style={{
-                      textAlign: "center",
-                      border: "2px solid #3cb100",
-                      borderRadius: "3px",
-                    }}
-                  >
-                    <a
-                      style={{
-                        fontFamily: "Bebas Neue",
-                        fontSize: "25px",
-                        padding: "30px",
-                      }}
-                    >
-                      Amount Needed
-                    </a>
-                    <p
-                      style={{
-                        border: "5px solid #3cb100",
-                      }}
-                    >
-                      {projectDetails.target} JKT
-                    </p>
+        <form onSubmit={handleSubmit}>
+          <div className="ProjectDetails" method="POST">
+            <div className="modal">
+              <div onClick={toggleModal} className="overlay"></div>
+              <div className="Project-content">
+                <button className="close-button" onClick={toggleModal}>
+                  CLOSE
+                </button>
+                <div className="three-bodies">
+                  <div style={{ marginTop: "4em" }}>
+                    <img
+                      style={{ width: "25em" }}
+                      src={charity}
+                      alt="PROJECT"
+                    />
                   </div>
-                  <div
-                    style={{
-                      marginTop: "2em",
-                      textAlign: "center",
-                      border: "2px solid #3cb100",
-                      borderRadius: "3px",
-                    }}
-                  >
-                    <a
+                  <div className="middle">
+                    <div
                       style={{
-                        fontFamily: "Bebas Neue",
-                        fontSize: "25px",
-                        padding: "30px",
+                        textAlign: "center",
+                        border: "2px solid #3cb100",
+                        borderRadius: "3px",
                       }}
                     >
-                      Amount Collected
-                    </a>
+                      <a
+                        style={{
+                          fontFamily: "Bebas Neue",
+                          fontSize: "25px",
+                          padding: "30px",
+                        }}
+                      >
+                        Amount Needed
+                      </a>
+                      <p
+                        style={{
+                          border: "5px solid #3cb100",
+                        }}
+                      >
+                        {projectDetails.target} JKT
+                      </p>
+                    </div>
+                    <div
+                      style={{
+                        marginTop: "2em",
+                        textAlign: "center",
+                        border: "2px solid #3cb100",
+                        borderRadius: "3px",
+                      }}
+                    >
+                      <a
+                        style={{
+                          fontFamily: "Bebas Neue",
+                          fontSize: "25px",
+                          padding: "30px",
+                        }}
+                      >
+                        Amount Collected
+                      </a>
 
-                    <p
-                      style={{
-                        border: "5px solid #3cb100",
+                      <p
+                        style={{
+                          border: "5px solid #3cb100",
+                        }}
+                      >
+                        {totalCollectedFund / 10 ** 18} JKT
+                      </p>
+                    </div>
+                  </div>
+                  <div className="input">
+                    <input
+                      placeholder="JKT Token"
+                      type="number"
+                      name="token"
+                      value={values.token}
+                      onChange={handleChange}
+                    />
+
+                    <button
+                      style={{ margin: "15px 0 0 0px" }}
+                      onClick={() => {
+                        donate(projectDetails);
+                        // donorLog(projectDetails);
                       }}
+                      // () => {
+                      //   return fetchTransfer(
+                      //     projectDetails.contractAddress,
+                      //     values.token
+                      //   );
+                      // }
                     >
-                      {totalCollectedFund / 10 ** 18} JKT
-                    </p>
+                      DONATE
+                    </button>
                   </div>
                 </div>
-                <div className="input">
-                  <input
-                    placeholder="JKT Token"
-                    type="number"
-                    name="token"
-                    value={values.token}
-                    onChange={handleChange}
-                  />
-
-                  <button
-                    style={{ margin: "15px 0 0 0px" }}
-                    onClick={donate}
-                    // () => {
-                    //   return fetchTransfer(
-                    //     projectDetails.contractAddress,
-                    //     values.token
-                    //   );
-                    // }
-                  >
-                    DONATE
-                  </button>
-                </div>
+                <p
+                  style={{
+                    fontFamily: "Bebas Neue",
+                    fontSize: "2em",
+                    marginLeft: "0.79em",
+                  }}
+                >
+                  {projectDetails.projectName}
+                </p>
+                <p
+                  style={{ fontFamily: "Source Sans Pro", marginLeft: "1.6em" }}
+                >
+                  {projectDetails.projectInfo}
+                </p>
               </div>
-              <p
-                style={{
-                  fontFamily: "Bebas Neue",
-                  fontSize: "2em",
-                  marginLeft: "0.79em",
-                }}
-              >
-                {projectDetails.projectName}
-              </p>
-              <p style={{ fontFamily: "Source Sans Pro", marginLeft: "1.6em" }}>
-                {projectDetails.projectInfo}
-              </p>
             </div>
           </div>
-        </div>
+        </form>
       )}
     </div>
   );
