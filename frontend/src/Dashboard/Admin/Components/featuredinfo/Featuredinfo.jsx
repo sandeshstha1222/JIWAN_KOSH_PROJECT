@@ -36,7 +36,7 @@ const Featuredinfo = () => {
       <div className="featuredItem">
         <div className="featuredContainer">
           <div className="ProjectDisplay">
-            <h1 className="displayTitle">Display Project</h1>
+            <h1 className="displayTitle">List of PROJECTS</h1>
             {mydata.map((post) => {
               const {
                 projectName,
@@ -59,7 +59,7 @@ const Featuredinfo = () => {
       <div className="featuredItem">
         <div className="featuredContainer">
           <div className="BeneficiaryDisplay">
-            <h1 className="tableTitle"> Beneficiaries </h1>
+            <h1 className="tableTitle"> List of BENEFICIARIES </h1>
             <table>
               <tr>
                 <th>Name</th>
