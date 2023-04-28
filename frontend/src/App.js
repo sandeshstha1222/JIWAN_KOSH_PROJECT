@@ -31,6 +31,7 @@ import Dashboard from "./Dashboard/Admin/Dashboard";
 import AgencyDashboarddisplay from "./Dashboard/Agency/AgencyDashboard";
 import BeneficiariesDis from "./Dashboard/Agency/pages/BeneficiariesDisplay/BeneficiariesDis";
 import AidAgency from "./Dashboard/Admin/pages/aidAgency/AidAgency";
+import Bank from "./Dashboard/Bank/Bank";
 
 function App() {
   return (
@@ -141,6 +142,7 @@ function App() {
             <Route path="/tokenrequest" element={<RequestToken />} />
             <Route path="/donationprojects" element={<DonationProjects />} />
             <Route path="/donorhome" element={<Donor />} />
+            <Route path="/bankhome" element={<Bank />} />
             <Route path="/projectdetails" element={<ProjectDetails />} />
             <Route path="/beneficiaryhome" element={<Beneficiary />} />
             <Route path="/enrollprojects" element={<EnrollProjects />} />
