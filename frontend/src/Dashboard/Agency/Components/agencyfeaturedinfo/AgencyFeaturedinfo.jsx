@@ -37,42 +37,35 @@ const AgencyFeaturedinfo = () => {
         <div className="AgencyfeaturedContainer">
           <div className="AgencyProjectDisplay">
             <h1 className="displayTitle">Display Project</h1>
-            {mydata.map((post) => {
-              const {
-                projectName,
-                numOfBeneficiary,
-                projectInfo,
-                startDate,
-                deadline,
-                target,
-                beneficiaries,
-              } = post;
-              return (
-                <div className="displayItem" key={projectName}>
-                  <p className="displayText">Projectinfo: {projectInfo}</p>
-
-                  <div className="restdata">
-                    <p className="displayText">Project Name: {projectName}</p>
-                    <p className="displayText">
-                      Numberofbeneficiary: {numOfBeneficiary}
-                    </p>
-                    {post.beneficiaries.map((data) => {
-                      const { email, username } = data;
-                      return (
-                        <div>
-                          Emails :{email} <br />
-                          Username: {username}
-                        </div>
-                      );
-                    })}
-
-                    <p className="displayText">Startdate: {startDate}</p>
-                    <p className="displayText">Deadline: {deadline}</p>
-                    <p className="displayText">Target: {target}</p>
-                  </div>
-                </div>
-              );
-            })}
+            <table>
+              <tr>
+                <th>Project Name</th>
+                <th>Number of beneficiaries</th>
+                <th>Start date</th>
+                <th>End date</th>
+                <th>Target Token</th>
+              </tr>
+              <tbody>
+                {mydata.map((post) => {
+                  const {
+                    projectName,
+                    numOfBeneficiary,
+                    startDate,
+                    deadline,
+                    target,
+                  } = post;
+                  return (
+                    <tr key={projectName}>
+                      <td>{projectName}</td>
+                      <td>{numOfBeneficiary}</td>
+                      <td>{startDate}</td>
+                      <td>{deadline}</td>
+                      <td>{target}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

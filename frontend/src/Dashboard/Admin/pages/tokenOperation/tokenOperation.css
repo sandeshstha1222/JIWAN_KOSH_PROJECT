@@ -9,17 +9,14 @@
   background-size: cover;
   background-position: center;
   flex-direction: column;
+  background-color: aliceblue;
 }
 
 .tokenOperationForm Form {
-  background-color: rgb(233, 246, 213);
+  background-color: aliceblue;
   padding: 0px 60px;
   border-radius: 10px;
   justify-content: space-between;
-}
-.tokenOperationForm Form h1 {
-  color: black;
-  text-align: center;
 }
 
 .tokenOperationForm Form input {

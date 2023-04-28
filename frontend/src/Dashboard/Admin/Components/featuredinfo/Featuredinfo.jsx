@@ -43,7 +43,7 @@ const Featuredinfo = () => {
                 <th>Number of beneficiaries</th>
                 <th>Start date</th>
                 <th>End date</th>
-                <th>Token required</th>
+                <th>Target Token</th>
               </tr>
               <tbody>
                 {mydata.map((post) => {

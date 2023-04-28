@@ -10,6 +10,7 @@
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   margin-top: 2em;
+  justify-content: center;
 }
 table {
   margin: 5rem auto;

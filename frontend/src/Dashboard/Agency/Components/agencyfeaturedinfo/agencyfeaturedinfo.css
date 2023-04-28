@@ -1,6 +1,5 @@
 .Agencyfeatured {
   width: 100%;
-  display: flex;
   justify-content: space-between;
 }
 
@@ -50,7 +49,6 @@
 
 .AgencyBeneficiaryDisplay table {
   margin: 5rem auto;
-  border-radius: 2rem;
   border: 1rem hidden #443c68;
   border-collapse: collapse;
   box-shadow: 0 0 0 1px black;
