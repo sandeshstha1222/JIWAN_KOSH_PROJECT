@@ -26,13 +26,14 @@ const BeneficiaryDisplay = () => {
       <div>
         <AdminSidebar />
       </div>
-      <h1 className="tableTitle"> Beneficiaries </h1>
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>WalletAddress</th>
-        </tr>
+      <div>
+        <h1 className="tableTitle"> Beneficiaries </h1>
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>WalletAddress</th>
+          </tr>
 
           <tbody>
             {users.map((bene) => {
