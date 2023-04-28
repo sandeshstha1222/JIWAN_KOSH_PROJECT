@@ -4,6 +4,7 @@ import axios from "axios";
 import charity from "../../../images/project.jpg";
 import BeneficiaryNavbar from "../BeneficiaryNavbar/BeneficiaryNavbar";
 import { toast } from "react-toastify";
+import { claim } from "../../../web3connection";
 
 const EnrollProjects = () => {
   const [projectData, setProjectData] = useState([]);
@@ -21,6 +22,16 @@ const EnrollProjects = () => {
         console.log(res.data.enrolledProjects);
       });
   }, []);
+
+  const claimFund = () => {
+    claim()
+      .then((balance) => {
+        console.log("balance", balance);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const ClaimFund = (projects) => {
     console.log(projects.contractAddress);
@@ -117,10 +128,11 @@ const EnrollProjects = () => {
                   <div className="Claim-button-border">
                     <button
                       className="Beneficiary-claim-Button"
-                      onClick={() => {
-                        ClaimFund(projects);
-                        console.log(projects.contractAddress);
-                      }}
+                      // onClick={() => {
+                      //   ClaimFund(projects);
+                      //   console.log(projects.contractAddress);
+                      // }}
+                      onClick={claimFund}
                     >
                       CLAIM NOW
                     </button>

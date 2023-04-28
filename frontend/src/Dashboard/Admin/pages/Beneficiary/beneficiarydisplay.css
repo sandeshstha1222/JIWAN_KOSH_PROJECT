@@ -5,31 +5,32 @@
 }
 table {
   margin: 5rem auto;
-  border-radius: 2rem;
   border: 1rem hidden #443c68;
   border-collapse: collapse;
   box-shadow: 0 0 0 1px black;
   overflow: hidden;
   max-width: 80rem;
-  text-align: center;
+  
+  /* text-align: center; */
 }
 th {
   border: 1px solid #443c68;
-  max-width: 30rem;
+  max-width: auto;
   padding: 1rem;
   line-height: 1.7;
   font-size: 20px;
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-family: "Montserrat", sans-serif;
+
 }
 
 td {
   border: 1px solid #443c68;
-  max-width: 30rem;
+  max-width: auto;
   padding: 1rem;
   line-height: 1.7;
   font-size: 10px;
+  font-weight: bold;
 }
 
-td {
-  font-size: 1.4rem;
-}
+

@@ -37,42 +37,35 @@ export default function AgencySidebar() {
             </li>
             <hr />
             <div className="agencySidebar-Second">
-              <Link to="/dProject">
+              <Link to="/dProject" className="Link">
                 <li className="agencysidebarListItem">
                   <PaidIcon className="agencysidebarIcon" />
-                  Donation Project
+                  Create Project
                 </li>
               </Link>
 
-              <li className="agencysidebarListItem">
-                <AccountBalanceIcon className="agencysidebarIcon" />
-                Bank
-              </li>
-              <Link
+              <Link 
                 to="/BeneficiariesDisplay"
-                style={{ textDecoration: "none" }}
+                className="Link"
               >
                 <li className="agencysidebarListItem">
                   <PeopleIcon className="agencysidebarIcon" />
                   Beneficiaries
                 </li>
               </Link>
-              <li className="agencysidebarListItem">
-                <ShoppingCartIcon className="agencysidebarIcon" />
-                Vendors
-              </li>
+              
               <li className="agencysidebarListItem">
                 <CompareArrowsIcon className="agencysidebarIcon" />
                 Transaction
               </li>
-              <Link to="/DisplayProject">
+              <Link to="/Projectdisplay" className="Link">
                 <li className="agencysidebarListItem">
                   <CompareArrowsIcon className="agencysidebarIcon" />
                   Display Project
                 </li>
               </Link>
             </div>
-            <Link to="/">
+            <Link to="/" className="Link">
               <li
                 className="agencysidebarListItem"
                 onClick={() => localStorage.clear()}

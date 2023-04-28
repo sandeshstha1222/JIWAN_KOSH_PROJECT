@@ -1,6 +1,7 @@
 import Web3 from "web3";
 import JiwanKoshTokenBuild from "./abi/JiwanKoshToken.json";
 import donationsBuild from "./abi/donations.json";
+// import donationsBuild from "../../build/contracts/donations.json";
 import fundraisingBuild from "./abi/FundRaising.json";
 
 let JKTContract;
@@ -9,7 +10,12 @@ let fundraisingContract;
 let donationInstants;
 
 let selectedAccount;
+
 let isInitialized = false;
+
+let transactionHash;
+
+let donationContractAddress = "0xAAA0875A769D931ABb94481072ea51958b7E5827";
 
 export const getBlockchain = async (setAccountAddress) => {
   let provider = window.ethereum;
@@ -40,21 +46,21 @@ export const getBlockchain = async (setAccountAddress) => {
     JKTContract = new web3.eth.Contract(
       JiwanKoshTokenBuild.abi,
       // SahayogiTokenBuild.networks[networkId].address
-      "0xe808df3b1fcBD322ea30Ac080B822b489D77057c"
+      "0x38B120D6e1E19FF3C1F1C1722044C7aAe1238fd9"
     );
     donationContract = new web3.eth.Contract(
       donationsBuild.abi,
       // FundRaisingBuild.networks[networkId].address
-      "0x4023122b8C9B738CFf82012001745Baa18b6728f"
+      donationContractAddress
     );
     // let tokenAmount = amount / 10 ** 18;
 
-    fundraisingContract = new web3.eth.Contract(
-      fundraisingBuild.abi,
-      "0xbf6FEba231a6a35561eC7d711d989381648F115D"
-    );
+    // fundraisingContract = new web3.eth.Contract(
+    //   fundraisingBuild.abi,
+    //   "0x74f14C35C596E432548d8870599F58381fA3CF2A"
+    // );
 
-    console.log(fundraisingContract);
+    // console.log(fundraisingContract);
 
     isInitialized = true;
   }
@@ -81,41 +87,13 @@ export const transact = async (to, amount) => {
 };
 
 export const seeBalance = async () => {
-  // JKTContract.methods
-  //   .approve(
-  //     "0x4023122b8C9B738CFf82012001745Baa18b6728f",
-  //     "1000000000000000000000"
-  //   )
-  //   .send({
-  //     from: selectedAccount,
-  //   })
-  //   .then((confirm) => {
-  //     console.log("confirm", confirm);
-  //   });
-
-  // console.log(donationContract.methods.JKT);
-
-  if (!isInitialized) {
-    await getBlockchain();
-  }
-  return donationContract.methods
-    .donateTokens("100")
-    .send({ from: selectedAccount });
-  //   .then((balace) => {
-  //     console.log(balace);
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
-  //   });
-  // // })
-  // // .catch((err) => {
-  // //   console.log(err);
-  // // });
+  console.log("something");
+  return JKTContract.methods.balanceOf(donationContractAddress).call();
 };
 
 export const createProject = async () => {
   const projectId = 1;
-  const aidAgency = "0x01194DE54a4d576bbcc2fAF09226A17Cb7141d5d";
+  const aidAgency = "0x9E84a0081432f08859D40B7C6fc26b4e8128052f";
   const goal = 10000;
   const startAt = 0;
   const endAt = 86400;
@@ -133,10 +111,7 @@ export const createProject = async () => {
 
 export const approved = async () => {
   const confirm = await JKTContract.methods
-    .approve(
-      "0xbf6FEba231a6a35561eC7d711d989381648F115D",
-      "100000000000000000000"
-    )
+    .approve(donationContractAddress, "100000000000000000000")
     .send({
       from: selectedAccount,
     });
@@ -144,11 +119,55 @@ export const approved = async () => {
   console.log("COnfirm", confirm);
 };
 
-export const donateFund = async () => {
-  const donate = await fundraisingContract.methods
-    .donate(1, "1000000000000000000")
-    .send({
-      from: selectedAccount,
+export const donateFund = async (token) => {
+  if (!isInitialized) {
+    await getBlockchain();
+  }
+  const donated = await donationContract.methods
+    .donateTokens(token)
+    .send({ from: selectedAccount })
+    .on("transactionHash", function (hash) {
+      console.log("transacion hash:" + hash);
+      transactionHash = hash;
     });
-  console.log(donate);
+
+  return donated;
+};
+
+export const transactionDetails = async () => {
+  const web3 = new Web3(window.ethereum);
+  const tranctionDetail = await web3.eth.getTransaction(transactionHash);
+  return tranctionDetail;
+};
+
+// export const approveForClaim = async () => {
+//   const confirm = await JKTContract.methods
+//     .approve(
+//       "0xDb4a6Ca7e8c1E4F01f156Efd6197ca34Ef6B28cf",
+//       "1000000000000000000000"
+//     )
+//     .send({
+//       from: selectedAccount,
+//     });
+//   console.log("confirm", confirm);
+// };
+
+export const claim = async () => {
+  if (!isInitialized) {
+    await getBlockchain();
+  }
+  const claimed = await donationContract.methods
+    .claimBeneficiary()
+    .send({ from: selectedAccount });
+  return claimed;
+};
+
+export const refund = async () => {
+  if (!isInitialized) {
+    await getBlockchain();
+  }
+  const claimed = await donationContract.methods
+    .refundDonation()
+    .send({ from: selectedAccount });
+  return claimed;
 };

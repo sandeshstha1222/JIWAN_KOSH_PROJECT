@@ -67,25 +67,35 @@ contract donations {
     }
 
     function refundDonation() public {
-        require(
-            amountCollected < target,
-            "Target for project met.Cannot be refunded!!"
-        ); //message is incase the require condition is not met
-        require(
-            deadline < block.timestamp,
-            "Wait until Donation period is Over."
-        );
-        require(donors[msg.sender] > 0);
         address _donor = (msg.sender);
+        approveRefund(donors[_donor]);
+        // require(
+        //     amountCollected < target,
+        //     "Target for project met.Cannot be refunded!!"
+        // ); //message is incase the require condition is not met
+        // require(
+        //     deadline < block.timestamp,
+        //     "Wait until Donation period is Over."
+        // );
+        require(donors[msg.sender] > 0);
         JKT.transferFrom(address(this), _donor, donors[_donor]);
         donors[msg.sender] = 0;
     }
 
+    function approveRefund(uint refundAmount) public {
+        JKT.approve(address(this), refundAmount);
+    }
+
+    function approveClaimer() public {
+        JKT.approve(address(this), claimableFund);
+    }
+
     function claimBeneficiary() public {
-        require(
-            deadline < block.timestamp && amountCollected >= target,
-            "Cannot claim yet!!"
-        );
+        approveClaimer();
+        // require(
+        //     deadline < block.timestamp && amountCollected >= target,
+        //     "Cannot claim yet!!"
+        // );
         address claimer = msg.sender;
         bool canClaim = true;
         uint256 lengthOfArray = victims.length;

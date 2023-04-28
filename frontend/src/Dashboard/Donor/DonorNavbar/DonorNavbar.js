@@ -4,11 +4,14 @@ import logo from "./../../../images/logoblack.png";
 import { Link } from "react-router-dom";
 import {
   approved,
+  approveForClaim,
+  claim,
   createProject,
   donateFund,
   getBlockchain,
   getOwnBalance,
   getTotalSupply,
+  refund,
   seeBalance,
   transact,
 } from "../../../web3connection";
@@ -31,7 +34,34 @@ const Navbar = () => {
     approved();
   };
   const donate = () => {
-    seeBalance();
+    donateFund();
+  };
+  const refunds = () => {
+    refund();
+  };
+
+  const checkBalance = () => {
+    seeBalance()
+      .then((balance) => {
+        console.log("dsfdfsff", balance);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const claimFund = () => {
+    claim()
+      .then((balance) => {
+        console.log(balance);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const claimApproved = () => {
+    // approveForClaim();
   };
 
   const fetchBalance = () => {
@@ -55,7 +85,7 @@ const Navbar = () => {
 
   const fetchTransfer = () => {
     transact(
-      "0x7226742399F76c1Ba3D4F4c69E8F93539eE1C6c8",
+      "0x7AA383f88B92c010bdDB2a3f679FfACcEF12a560",
       (500 * 10 ** 18).toString()
     )
       .then((balance) => {
@@ -166,14 +196,20 @@ const Navbar = () => {
                       )}...${walletAddress.substring(38)}`
                     : "CONNECT WALLET"}
                 </button>
-                <button onClick={fetchBalance}>Own balance</button>
-                <button onClick={fetchTotalSuppy}>Total Supply</button>
-                <button onClick={fetchTransfer}>Transfer</button>
-                <button style={{ color: "black" }}>{ownBalance}</button>
-                <button>{totalSupply}</button>
-                <button onClick={test}>Test</button>
-                <button onClick={approve}>Approve</button>
-                <button onClick={seeBalance}>Donate</button>
+                {/* <button onClick={fetchBalance}>Own balance</button> */}
+                {/* <button onClick={fetchTotalSuppy}>Total Supply</button> */}
+                {/* <button onClick={fetchTransfer}>Transfer</button> */}
+                {/* <button style={{ color: "black" }}>
+                  {ownBalance / 10 ** 18}
+                </button> */}
+                {/* <button>{totalSupply}</button> */}
+                {/* <button onClick={test}>Test</button> */}
+                {/* <button onClick={approve}>Approve</button> */}
+                {/* <button onClick={donate}>Donate</button> */}
+                {/* <button onClick={checkBalance}>Check Balance</button> */}
+                {/* <button onClick={claimFund}>Claim FUnd</button> */}
+                {/* <button onClick={claimApproved}>Approved for Claim FUnd</button> */}
+                {/* <button onClick={refunds}>refund</button> */}
               </li>
             </Link>
 

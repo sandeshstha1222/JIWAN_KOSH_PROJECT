@@ -1,9 +1,41 @@
 import "./BeneficiaryNavbar.css";
-import React from "react";
+import React, { useState } from "react";
 import logo from "./../../../images/logoblack.png";
 import { Link } from "react-router-dom";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import {
+  getBlockchain,
+  getOwnBalance,
+  transact,
+} from "../../../web3connection";
 
 const Navbar = () => {
+  const [showBalance, setShowBalance] = useState();
+  const [eyeIcon, setEyeIcon] = useState(<AiFillEyeInvisible />);
+  const [userBalance, setUserBalance] = useState(null);
+  const [walletAddress, setWalletAddress] = useState("");
+
+  const fetchBalance = () => {
+    getOwnBalance()
+      .then((balance) => {
+        setShowBalance(balance);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const transferFund = (to, amount) => {
+    transact(to, (amount * 10 ** 18).toString())
+      .then((balance) => {
+        setShowBalance(balance);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleToggle = () => {};
   return (
     <div className="Beneficiary-Navbar-body">
       <nav className="BeneficiaryNavbarItems">
@@ -38,11 +70,55 @@ const Navbar = () => {
 
             <Link className="btn" to="#">
               <li>
-                <button className="Beneficiary-connectwallet-button">
-                  CONNECT WALLET
+                <button
+                  onClick={() => getBlockchain(setWalletAddress)}
+                  className="Beneficiary-connectwallet-button"
+                >
+                  {userBalance}
+                  {walletAddress && walletAddress.length > 0
+                    ? `: ${walletAddress.substring(
+                        0,
+                        6
+                      )}...${walletAddress.substring(38)}`
+                    : "CONNECT WALLET"}
+                </button>
+                <button
+                  className="Beneficiary-logout-button"
+                  onClick={() =>
+                    transferFund(
+                      "0x7AA383f88B92c010bdDB2a3f679FfACcEF12a560",
+                      100
+                    )
+                  }
+                >
+                  Fund Transfer
                 </button>
               </li>
             </Link>
+
+            <li
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "center",
+              }}
+            >
+              <button
+                className="Beneficiary-logout-button"
+                onClick={fetchBalance}
+              >
+                balance
+              </button>
+              <span
+                style={{ border: "1px solid #3cb100" }}
+                className="icons-span"
+                onClick={handleToggle}
+              >
+                {Number.isNaN(showBalance / 10 ** 18)
+                  ? 0
+                  : showBalance / 10 ** 18}
+              </span>
+            </li>
 
             <Link className="btn" to="/">
               <li>

@@ -27,7 +27,7 @@ const TokenTransfer = () => {
                 padding: "5px 3!0px 5px 30px",
               }}
             >
-              You can claim your money by sending token to bank.
+              You can claim your money by sending tokens to vendors or bank
             </div>
             <div
               style={{
