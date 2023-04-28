@@ -24,27 +24,29 @@ const BeneficiaryDis = () => {
   return (
     <div>
       <AgencySidebar />
-      <h1 className="displaytableTitle"> Beneficiaries </h1>
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>WalletAddress</th>
-        </tr>
+      <div className="Beneficiarydisplay">
+        <h1 className="displaytableTitle"> Beneficiaries </h1>
+        <table className="Displaytable">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>WalletAddress</th>
+          </tr>
 
-        <tbody>
-          {users.map((curUser) => {
-            const { name, email, walletAddress } = curUser;
-            return (
-              <tr key={email}>
-                <td>{name}</td>
-                <td>{email}</td>
-                <td>{walletAddress}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+          <tbody>
+            {users.map((curUser) => {
+              const { name, email, walletAddress } = curUser;
+              return (
+                <tr key={email}>
+                  <td>{name}</td>
+                  <td>{email}</td>
+                  <td>{walletAddress}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
