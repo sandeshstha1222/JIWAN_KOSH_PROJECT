@@ -1,5 +1,5 @@
 import asynchandler from "express-async-handler";
-import donarLog from "../models/donarLog.js";
+import transactionLog from "../models/transactionLog.js";
 
 export const trialprint = asynchandler(async (req, res) => {
   const {
@@ -13,10 +13,11 @@ export const trialprint = asynchandler(async (req, res) => {
     fromAccountAddress,
     toAccountAddress,
     donatedJktAmount,
+    status,
   } = req.body;
 
   try {
-    const DonarLog = await donarLog.create({
+    const TransactionLog = await transactionLog.create({
       projectId,
       projectName,
       numOfBeneficiary,
@@ -27,28 +28,29 @@ export const trialprint = asynchandler(async (req, res) => {
       fromAccountAddress,
       toAccountAddress,
       donatedJktAmount,
+      status,
     });
-    res.send({ message: " Donor Log! ", DonarLog });
+    res.send({ message: " Transaction Log! ", TransactionLog });
   } catch (err) {
     console.log(err);
-    res.send({ message: "Error Creating User ! " });
+    res.send({ message: "Error ! " });
   }
 });
 
-export const getDonorTransactionDetails = asynchandler(async (req, res) => {
-  donarLog
+export const getTransactionDetails = asynchandler(async (req, res) => {
+  transactionLog
     .find({})
     .then((response) => {
       res.send({
-        message: "Donor details listed!",
-        donorDetails: response,
+        message: "Transaction details listed!",
+        transactionDetails: response,
       });
       console.log(response);
     })
     .catch((err) => {
       res.send({
-        message: "Error getting users!",
-        donorDetails: JSON.stringify(err),
+        message: "Error!",
+        transactionDetails: JSON.stringify(err),
       });
       console.log(err);
     });
