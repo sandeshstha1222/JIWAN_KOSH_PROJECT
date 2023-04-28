@@ -7,17 +7,80 @@
 .featuredItem {
   flex: 1;
   margin: 0px 20px;
-  padding: 30px;
-  border-radius: 10px;
-}
 
-.featuredTitle {
-  font-size: 20px;
-  color: #3cb100;
+  border-radius: 10px;
 }
 
 .featuredContainer {
   margin: 10px 0px;
   display: flex;
   align-items: center;
+}
+
+.ProjectDisplay .displayTitle {
+  margin: 0px 100px;
+}
+
+.ProjectDisplay table {
+  margin: 5rem auto;
+
+  border: 1rem hidden #443c68;
+  border-collapse: collapse;
+  box-shadow: 0 0 0 1px black;
+  overflow: hidden;
+  max-width: 80rem;
+  text-align: center;
+  background-color: rgb(213, 209, 209);
+}
+.ProjectDisplay th {
+  border: 1px solid #443c68;
+  max-width: 30rem;
+  padding: 1rem;
+  line-height: 1.7;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.ProjectDisplay td {
+  border: 1px solid #443c68;
+  max-width: 30rem;
+  padding: 1rem;
+  line-height: 1.7;
+  font-size: 10px;
+}
+
+.ProjectDisplay td {
+  font-size: 1rem;
+}
+
+.BeneficiaryDisplay table {
+  margin: 5rem auto;
+
+  border: 1rem hidden #443c68;
+  border-collapse: collapse;
+  box-shadow: 0 0 0 1px black;
+  overflow: hidden;
+  max-width: 80rem;
+  text-align: center;
+  background-color: rgb(213, 209, 209);
+}
+.BeneficiaryDisplay th {
+  border: 1px solid #443c68;
+  max-width: 30rem;
+  padding: 1rem;
+  line-height: 1.7;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.BeneficiaryDisplay td {
+  border: 1px solid #443c68;
+  max-width: 30rem;
+  padding: 1rem;
+  line-height: 1.7;
+  font-size: 10px;
+}
+
+.BeneficiaryDisplay td {
+  font-size: 1rem;
 }

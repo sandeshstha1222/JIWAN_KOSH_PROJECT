@@ -6,14 +6,12 @@ import charity from "../../../../images/project.jpg";
 
 const DisplayProject = () => {
   const [mydata, setMyData] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   const getProjectData = async () => {
     try {
       const res = await axios.get("/project");
       console.log(res);
       setMyData(res.data.projects);
-      setLoading(true)
     } catch (error) {
       console.log(error.message);
     }
@@ -22,11 +20,6 @@ const DisplayProject = () => {
   useEffect(() => {
     getProjectData();
   }, []);
-
-
-if(loading){
-  return <h1>Data is loading</h1>
-}
 
   return (
     <div className="displayProject">
@@ -38,12 +31,12 @@ if(loading){
         {mydata.map((post) => {
           const {
             projectName,
-            numOfBenificiary,
+            numOfBeneficiary,
             projectInfo,
             startDate,
             deadline,
             target,
-            benificiaries,
+            beneficiaries,
           } = post;
           return (
             <div className="displayProjectItem" key={projectName}>
@@ -53,9 +46,9 @@ if(loading){
               <div className="restdata">
                 <p className="displayText">Project Name: {projectName}</p>
                 <p className="displayText">
-                  Numberofbeneficiary: {numOfBenificiary}
+                  Numberofbeneficiary: {numOfBeneficiary}
                 </p>
-                {post.benificiaries.map((data) => {
+                {post.beneficiaries.map((data) => {
                   const { email, username } = data;
                   return (
                     <div>

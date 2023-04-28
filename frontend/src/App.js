@@ -12,10 +12,10 @@ import {
 import Homepage from "./components/homepage/homepage";
 import Footer from "./components/footer/footer";
 import AdminDashboard from "./Dashboard/Admin/Dashboard";
-import AgencyDashboard from "./Dashboard/Agency/Dashboard";
+import AgencyDashboard from "./Dashboard/Agency/AgencyDashboard";
 import TokenOperation from "./Dashboard/Admin/pages/tokenOperation/TokenOperation";
 import ProjectDisplay from "./Dashboard/Admin/pages/Projectdisplay/projectDisplay";
-
+import DisplayProject from "./Dashboard/Agency/pages/projectDisplay/DisplayProject";
 import BeneficiaryDisplay from "./Dashboard/Admin/pages/Beneficiary/BeneficiaryDisplay";
 import DProject from "../src/Dashboard/Agency/pages/dProject/DProject";
 import DonationProjects from "./Dashboard/Donor/Projects/Projects";
@@ -27,7 +27,8 @@ import Beneficiary from "./Dashboard/Beneficiary/Beneficiary";
 import EnrollProjects from "./Dashboard/Beneficiary/EnrollProjects/EnrollProject";
 import TransferToken from "./Dashboard/Beneficiary/TransferToken/TokenTransfer";
 import BeneficiaryTransaction from "./Dashboard/Beneficiary/Transaction/Transaction";
-
+import Dashboard from "./Dashboard/Admin/Dashboard";
+import AgencyDashboarddisplay from "./Dashboard/Agency/AgencyDashboard";
 import BeneficiariesDis from "./Dashboard/Agency/pages/BeneficiariesDisplay/BeneficiariesDis";
 import AidAgency from "./Dashboard/Admin/pages/aidAgency/AidAgency";
 
@@ -131,9 +132,12 @@ function App() {
             <Route path="/admindashboard" element={<AdminDashboard />} />
             <Route path="/agencydashboard" element={<AgencyDashboard />} />
             <Route path="/beneficiary" element={<BeneficiaryDisplay />} />
+            <Route path="/Home" element={<Dashboard />} />
+            <Route path="/AgencyHome" element={<AgencyDashboarddisplay />} />
             <Route path="/tokenoperation" element={<TokenOperation />} />
             <Route path="/Projectdisplay" element={<ProjectDisplay />} />
             <Route path="/dProject" element={<DProject />} />
+            <Route path="/DisplayProject" element={<DisplayProject />} />
             <Route path="/tokenrequest" element={<RequestToken />} />
             <Route path="/donationprojects" element={<DonationProjects />} />
             <Route path="/donorhome" element={<Donor />} />

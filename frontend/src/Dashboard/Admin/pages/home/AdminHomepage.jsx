@@ -1,13 +1,14 @@
 import Featuredinfo from "../../Components/featuredinfo/Featuredinfo";
 import "./home.css";
-import AidAgency from "../aidAgency/AidAgency";
+
+import Chart from "../../Components/AgencyChart/Chart";
 
 export default function Homepage() {
   return (
     <div className="Admin-home">
       <Featuredinfo />
       <div className="Agency">
-        <AidAgency />
+        <Chart />
       </div>
     </div>
   );

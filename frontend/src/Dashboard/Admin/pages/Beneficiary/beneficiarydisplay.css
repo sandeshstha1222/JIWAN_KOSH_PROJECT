@@ -13,12 +13,12 @@
 }
 table {
   margin: 5rem auto;
-
   border: 1rem hidden #443c68;
   border-collapse: collapse;
   box-shadow: 0 0 0 1px black;
   overflow: hidden;
   max-width: 80rem;
+
   /* text-align: center; */
 }
 th {
@@ -27,7 +27,8 @@ th {
   padding: 1rem;
   line-height: 1.7;
   font-size: 20px;
-  font-weight: bold;
+  /* font-weight: bold; */
+  font-family: "Montserrat", sans-serif;
 }
 
 td {
@@ -36,4 +37,5 @@ td {
   padding: 1rem;
   line-height: 1.7;
   font-size: 10px;
+  font-weight: bold;
 }

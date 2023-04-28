@@ -1,12 +1,9 @@
 import "./agencysidebar.css";
 import LineStyleIcon from "@mui/icons-material/LineStyle";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import AppsIcon from "@mui/icons-material/Apps";
-import CorporateFareIcon from "@mui/icons-material/CorporateFare";
-import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+
 import PeopleIcon from "@mui/icons-material/People";
 import PaidIcon from "@mui/icons-material/Paid";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 import profile from "../../../../images/Profile.png";
@@ -28,44 +25,43 @@ export default function AgencySidebar() {
           </div>
 
           <ul className="agencysidebarList">
-            <li
-              style={{ color: "black" }}
-              className="agencysidebarListItem active"
-            >
-              <LineStyleIcon className="agencysidebarIcon" />
-              Home
-            </li>
+            <Link to="/AgencyHome">
+              <li
+                style={{ color: "black" }}
+                className="agencysidebarListItem active"
+              >
+                <LineStyleIcon className="agencysidebarIcon" />
+                Home
+              </li>
+            </Link>
             <hr />
             <div className="agencySidebar-Second">
-              <Link to="/dProject" className="Link">
+              <Link to="/dProject">
                 <li className="agencysidebarListItem">
                   <PaidIcon className="agencysidebarIcon" />
-                  Create Project
+                  Donation Project
                 </li>
               </Link>
 
-              <Link 
-                to="/BeneficiariesDisplay"
-                className="Link"
-              >
+              <Link to="/BeneficiariesDisplay">
                 <li className="agencysidebarListItem">
                   <PeopleIcon className="agencysidebarIcon" />
                   Beneficiaries
                 </li>
               </Link>
-              
+
               <li className="agencysidebarListItem">
                 <CompareArrowsIcon className="agencysidebarIcon" />
                 Transaction
               </li>
-              <Link to="/Projectdisplay" className="Link">
+              <Link to="/DisplayProject">
                 <li className="agencysidebarListItem">
                   <CompareArrowsIcon className="agencysidebarIcon" />
                   Display Project
                 </li>
               </Link>
             </div>
-            <Link to="/" className="Link">
+            <Link to="/">
               <li
                 className="agencysidebarListItem"
                 onClick={() => localStorage.clear()}

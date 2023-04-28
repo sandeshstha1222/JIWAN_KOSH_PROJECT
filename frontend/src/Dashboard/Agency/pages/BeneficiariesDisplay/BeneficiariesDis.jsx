@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import "./beneficiariesdis.css";
 import axios from "axios";
+import AgencySidebar from "../../Components/agencysidebar/AgencySidebar";
 
 const BeneficiaryDis = () => {
   const [users, setUsers] = useState([]);
@@ -22,6 +23,7 @@ const BeneficiaryDis = () => {
 
   return (
     <div>
+      <AgencySidebar />
       <h1 className="displaytableTitle"> Beneficiaries </h1>
       <table>
         <tr>

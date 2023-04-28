@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "./beneficiarydisplay.css";
 import axios from "axios";
 import AdminSidebar from "../../Components/sidebar/AdminSidebar";
+
 const BeneficiaryDisplay = () => {
   const [users, setUsers] = useState([]);
 
@@ -21,18 +22,17 @@ const BeneficiaryDisplay = () => {
   }, []);
 
   return (
-    <div className="BeneficiaryDisplay">
+    <div>
       <div>
         <AdminSidebar />
       </div>
-      <div className="List">
-        <h1 className="tableTitle"> LIST OF BENEFICIARIES </h1>
-        <table>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>WalletAddress</th>
-          </tr>
+      <h1 className="tableTitle"> Beneficiaries </h1>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>WalletAddress</th>
+        </tr>
 
           <tbody>
             {users.map((bene) => {
