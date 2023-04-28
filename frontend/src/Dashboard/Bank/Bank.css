@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Open+Sans&family=Roboto+Condensed&display=swap");
+
+.Bank .Quotes {
+  margin-left: 6em;
+  margin-top: 4em;
+}
+.Bank .Quotes p {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: bold;
+  /* font-size: 3em; */
+  margin-left: 5em;
+}
