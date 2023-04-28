@@ -28,6 +28,7 @@ const RequestToken = () => {
         .post("/token/tokenentry", {
           tokenAmount: token.tokenRequired,
           walletAddress: token.walletAddress,
+          mode: "to admin",
         })
         .then((response) => {
           console.log(response.data.message);
