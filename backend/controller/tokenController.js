@@ -2,10 +2,9 @@ import asynchandler from "express-async-handler";
 import token from "../models/token.js";
 
 export const StoreToken= asynchandler(async (req, res)=> {
-    const { _id,tokenAmount,walletAddress,mode } = req.body;
+    const { tokenAmount,walletAddress,mode } = req.body;
     try {
         const Token = await token.create({
-            _id,
             tokenAmount,
             walletAddress,
             mode,
