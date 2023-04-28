@@ -14,6 +14,10 @@ const tokenSchema = mongoose.Schema(
         type: String,
         required: true,
     },
+    mode:{
+        type: String,
+        required: true,
+    },
   },
   {
     timestamp: true,
