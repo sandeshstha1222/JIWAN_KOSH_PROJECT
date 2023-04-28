@@ -1,7 +1,7 @@
 .AgencyDisplay {
   text-align: center;
   justify-content: center;
-  color: greenyellow;
+  color: black;
 }
 .AgencyDisplay table {
   margin: 5rem auto;
@@ -12,6 +12,7 @@
   overflow: hidden;
   max-width: 80rem;
   text-align: center;
+  background-color: rgb(213, 209, 209);
 }
 .AgencyDisplay th {
   border: 1px solid #443c68;

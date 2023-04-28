@@ -25,7 +25,7 @@ export default function AgencySidebar() {
           </div>
 
           <ul className="agencysidebarList">
-            <Link to="/AgencyHome">
+            <Link to="/AgencyHome" className="Link">
               <li
                 style={{ color: "black" }}
                 className="agencysidebarListItem active"
@@ -36,14 +36,14 @@ export default function AgencySidebar() {
             </Link>
             <hr />
             <div className="agencySidebar-Second">
-              <Link to="/dProject">
+              <Link to="/dProject" className="Link">
                 <li className="agencysidebarListItem">
                   <PaidIcon className="agencysidebarIcon" />
                   Donation Project
                 </li>
               </Link>
 
-              <Link to="/BeneficiariesDisplay">
+              <Link to="/BeneficiariesDisplay" className="Link">
                 <li className="agencysidebarListItem">
                   <PeopleIcon className="agencysidebarIcon" />
                   Beneficiaries
@@ -54,14 +54,14 @@ export default function AgencySidebar() {
                 <CompareArrowsIcon className="agencysidebarIcon" />
                 Transaction
               </li>
-              <Link to="/DisplayProject">
+              <Link to="/DisplayProject" className="Link">
                 <li className="agencysidebarListItem">
                   <CompareArrowsIcon className="agencysidebarIcon" />
                   Display Project
                 </li>
               </Link>
             </div>
-            <Link to="/">
+            <Link to="/" className="Link">
               <li
                 className="agencysidebarListItem"
                 onClick={() => localStorage.clear()}

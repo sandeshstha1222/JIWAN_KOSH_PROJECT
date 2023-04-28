@@ -1,7 +1,7 @@
 .tableTitle {
-  text-align: center;
+  text-align: left;
   justify-content: center;
-  color: greenyellow;
+  color: black;
 }
 table {
   margin: 5rem auto;
@@ -10,7 +10,7 @@ table {
   box-shadow: 0 0 0 1px black;
   overflow: hidden;
   max-width: 80rem;
-  
+
   /* text-align: center; */
 }
 th {
@@ -21,7 +21,6 @@ th {
   font-size: 20px;
   /* font-weight: bold; */
   font-family: "Montserrat", sans-serif;
-
 }
 
 td {
@@ -32,5 +31,3 @@ td {
   font-size: 10px;
   font-weight: bold;
 }
-
-
