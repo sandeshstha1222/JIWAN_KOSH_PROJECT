@@ -26,9 +26,9 @@ const BeneficiaryDisplay = () => {
       <div>
         <AdminSidebar />
       </div>
-      <div>
+      <div className="BeneficiaryDisplay">
         <h1 className="tableTitle"> Beneficiaries </h1>
-        <table>
+        <table className="beneficiarytable">
           <tr>
             <th>Name</th>
             <th>Email</th>

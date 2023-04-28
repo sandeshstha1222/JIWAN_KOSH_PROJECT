@@ -23,7 +23,7 @@ const Chart = () => {
   return (
     <div>
       <h1 className="AgencyDisplay"> Aid Agency </h1>
-      <table>
+      <table className="tabledata">
         <tr>
           <th>Name</th>
           <th>Username</th>

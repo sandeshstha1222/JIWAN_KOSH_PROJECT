@@ -1,18 +1,22 @@
 .BeneficiaryDisplay {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 .BeneficiaryDisplay .List {
   margin-left: 27em;
 }
-.tableTitle {
+.Beneficiary .tableTitle {
   text-align: center;
   color: black;
   font-family: "Montserrat", sans-serif;
-  font-weight: 500;
-  margin-top: 2em;
+  font-weight: bold;
+
   justify-content: center;
 }
-table {
+.BeneficiaryDisplay .beneficiarytable {
   margin: 5rem auto;
   border: 1rem hidden #443c68;
   border-collapse: collapse;

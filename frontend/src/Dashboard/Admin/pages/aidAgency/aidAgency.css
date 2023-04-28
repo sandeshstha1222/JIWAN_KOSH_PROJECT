@@ -1,9 +1,16 @@
-.AidAgencyTitle {
+.AidAgency {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.AidAgenc .AidAgencyTitle {
   text-align: center;
   justify-content: center;
   color: black;
 }
-.AidAgencyTitle table {
+.AidAgenc .agencytable {
   margin: 5rem auto;
   border: 1rem hidden #443c68;
   border-collapse: collapse;
