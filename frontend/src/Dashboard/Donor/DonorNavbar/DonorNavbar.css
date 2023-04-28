@@ -74,6 +74,23 @@
   transition: 0.5s;
   color: #3cb100;
 }
+
+.Balance-button {
+  color: #fff;
+  background: #3cb100;
+  border: 2px solid #3cb100;
+  padding: 7px 7px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+
+.Balance-button :hover {
+  background: #fff;
+  transition: 0.5s;
+  color: #3cb100;
+}
 .donor-connectwallet-button {
   color: #fff;
   background: #3cb100;

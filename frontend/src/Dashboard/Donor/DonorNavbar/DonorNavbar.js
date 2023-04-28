@@ -22,7 +22,7 @@ const Navbar = () => {
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
   const [walletAddress, setWalletAddress] = useState("");
-
+  const [showBalance, setShowBalance] = useState();
   const [ownBalance, setOwnBalance] = useState(0);
   const [totalSupply, SetTotalSupply] = useState(0);
   const [totalTransferAmount, SetTotalTransferAmount] = useState(0);
@@ -68,6 +68,7 @@ const Navbar = () => {
     getOwnBalance()
       .then((balance) => {
         setOwnBalance(balance);
+        setShowBalance(balance);
       })
       .catch((err) => {
         console.log(err);
@@ -212,7 +213,26 @@ const Navbar = () => {
                 {/* <button onClick={refunds}>refund</button> */}
               </li>
             </Link>
-
+            <li
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                textAlign: "center",
+              }}
+            >
+              <button className="Balance-button" onClick={fetchBalance}>
+                balance
+              </button>
+              <span
+                style={{ border: "1px solid #3cb100" }}
+                className="icons-span"
+                onClick={""}
+              >
+                {Number.isNaN(showBalance / 10 ** 18)
+                  ? 0
+                  : showBalance / 10 ** 18}
+              </span>
+            </li>
             <Link className="btn" to="/">
               <li>
                 <button
