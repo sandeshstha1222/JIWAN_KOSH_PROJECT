@@ -50,6 +50,11 @@ const Login = () => {
               navigate("/admindashboard");
             } else if (response.data.user.role === "Aid Agency") {
               navigate("/agencydashboard");
+            } else if (
+              response.data.user.role === "Bank" ||
+              response.data.user.role === "Vendor"
+            ) {
+              navigate("/bank/home");
             }
           } else if (
             response.data.message === "Invalid email, no user found!!"

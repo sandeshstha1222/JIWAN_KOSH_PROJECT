@@ -66,7 +66,7 @@ const TokenTransfer = () => {
                 <input
                   type="number"
                   name="tokenTransfer"
-                  placeholder="Token Required"
+                  placeholder="Token Transfer"
                   value={token.tokenTransfer}
                   onChange={handleInputs}
                 />
@@ -75,8 +75,8 @@ const TokenTransfer = () => {
                 <label style={{ marginTop: "5em" }}>Bank WalletAddress</label>
                 <div>
                   <input
-                    type=""
-                    name="walletAddress"
+                    type="text"
+                    name="bankWalletAddress"
                     placeholder="Wallet Address"
                     value={token.bankWalletAddress}
                     onChange={handleInputs}
@@ -91,10 +91,7 @@ const TokenTransfer = () => {
                 marginTop: "5em",
               }}
             >
-              <button
-                className="submit"
-                onClick={transact(token.bankWalletAddress, token.tokenTransfer)}
-              >
+              <button className="submit" onClick={""}>
                 TRANSFER
               </button>
             </div>

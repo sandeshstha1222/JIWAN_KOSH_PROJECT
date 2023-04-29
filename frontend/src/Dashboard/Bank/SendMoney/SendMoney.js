@@ -27,7 +27,7 @@ const SendMoney = () => {
           </div>
         </div>
         <div className="token-form">
-          <form>
+          <div>
             <p>TRANSFER MONEY</p>
             <div className="input" style={{ margin: "1em 0 0 2.3em" }}>
               <label>Money</label>
@@ -44,7 +44,7 @@ const SendMoney = () => {
                 <label style={{ marginTop: "5em" }}>WalletAddress</label>
                 <div>
                   <input
-                    type=""
+                    type="text"
                     name="walletAddress"
                     placeholder="Wallet Address"
                     value={token.walletAddress}
@@ -62,7 +62,7 @@ const SendMoney = () => {
             >
               <button className="submit">TRANSFER</button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
