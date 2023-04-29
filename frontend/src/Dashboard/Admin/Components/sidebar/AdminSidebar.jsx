@@ -42,6 +42,12 @@ export default function Sidebar() {
                   Operation
                 </li>
               </Link>
+              <Link to="/requestlist" className="Link">
+                <li className="sidebarListItem">
+                  <ShoppingCartIcon className="sidebarIcon" />
+                  Token Request List
+                </li>
+              </Link>
               <Link to="/AidAgency" className="Link">
                 <li className="sidebarListItem">
                   <CorporateFareIcon className="sidebarIcon" />
@@ -56,7 +62,7 @@ export default function Sidebar() {
               </Link>
               <li className="sidebarListItem">
                 <AccountBalanceIcon className="sidebarIcon" />
-                Bank
+                Bank/Vendors
               </li>
               <Link to="/beneficiary" className="Link">
                 <li className="sidebarListItem">
@@ -64,23 +70,21 @@ export default function Sidebar() {
                   Beneficiaries
                 </li>
               </Link>
-              <li className="sidebarListItem">
-                <ShoppingCartIcon className="sidebarIcon" />
-                Vendors
-              </li>
+
               <li className="sidebarListItem">
                 <CompareArrowsIcon className="sidebarIcon" />
                 Transaction
               </li>
             </div>
-
-            <li
-              className="sidebarListItem"
-              onClick={() => localStorage.clear()}
-            >
-              <LogoutOutlinedIcon className="sidebarIcon" />
-              Logout
-            </li>
+            <Link to="/" className="Link">
+              <li
+                className="sidebarListItem"
+                onClick={() => localStorage.clear()}
+              >
+                <LogoutOutlinedIcon className="sidebarIcon" />
+                Logout
+              </li>
+            </Link>
           </ul>
         </div>
       </div>

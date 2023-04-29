@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./RequestToken.css";
+import "./SendMoney.css";
 import BankNavbar from "../BankNavbar/BankNavbar";
 
-const RequestToken = () => {
+const SendMoney = () => {
   const [token, setToken] = useState({
     tokenRequired: "",
     walletAddress: "",
@@ -82,4 +82,4 @@ const RequestToken = () => {
   );
 };
 
-export default RequestToken;
+export default SendMoney;

@@ -4,7 +4,6 @@ import axios from "axios";
 import "./aidAgency.css";
 import AdminSidebar from "../../Components/sidebar/AdminSidebar";
 
-
 const AidAgency = () => {
   const [datas, setDatas] = useState([]);
 
@@ -24,28 +23,32 @@ const AidAgency = () => {
 
   return (
     <div>
-      <div><AdminSidebar /></div>
-      <h1 className="AidAgencyTitle"> Aid Agency </h1>
-      <table>
-        <tr>
-          <th>Name</th>
-          <th>Username</th>
-          <th>Email</th>
-        </tr>
+      <div>
+        <AdminSidebar />
+      </div>
+      <div className="AidAgency">
+        <h1 className="AidAgencyTitle"> Aid Agency </h1>
+        <table className="agencytable">
+          <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+          </tr>
 
-        <tbody>
-          {datas.map((curUser) => {
-            const { name, username, email } = curUser;
-            return (
-              <tr key={username}>
-                <td>{name}</td>
-                <td>{username}</td>
-                <td>{email}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+          <tbody>
+            {datas.map((curUser) => {
+              const { name, username, email } = curUser;
+              return (
+                <tr key={username}>
+                  <td>{name}</td>
+                  <td>{username}</td>
+                  <td>{email}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

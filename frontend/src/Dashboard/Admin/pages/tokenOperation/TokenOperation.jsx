@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./tokenOperation.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AdminSidebar from "../../Components/sidebar/AdminSidebar";
+import axios from "axios";
 
 const TokenOperation = () => {
   const [values, setValues] = useState({
     transfertoken: "",
     transferwalletaddress: "",
   });
+  const [list, setList] = useState([]);
 
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
@@ -76,6 +78,11 @@ const TokenOperation = () => {
       toast.warn("Field is Empty");
     }
   };
+  useEffect(() => {
+    axios
+      .get("/token/tokendisplay")
+      .then((res) => console.log(res.data.message));
+  }, []);
 
   return (
     <div>

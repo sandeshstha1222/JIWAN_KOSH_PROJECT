@@ -10,7 +10,7 @@ const BeneficiaryDisplay = () => {
   const getBeneficiary = async () => {
     try {
       const res = await axios.get("/user/list/beneficiary");
-      console.log(res);
+      console.log(res.data);
       setUsers(res.data.beneficiary);
     } catch (error) {
       console.log(error.message);
@@ -26,13 +26,13 @@ const BeneficiaryDisplay = () => {
       <div>
         <AdminSidebar />
       </div>
-      <div>
-        <h1 className="tableTitle"> Beneficiaries </h1>
-        <table>
+      <div className="BeneficiaryDisplay">
+        <h1 className="BeneficiaryTitle"> Beneficiaries </h1>
+        <table className="beneficiarytable">
           <tr>
             <th>Name</th>
+            <th>Username</th>
             <th>Email</th>
-            <th>WalletAddress</th>
           </tr>
 
           <tbody>

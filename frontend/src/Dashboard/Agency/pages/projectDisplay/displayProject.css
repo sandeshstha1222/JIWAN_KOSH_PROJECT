@@ -5,10 +5,8 @@
 }
 
 .displayProjectItem {
-  margin: 0px 100px;
   background: #fff;
-  float: left;
-  margin-left: 2em;
+  margin-left: 25em;
   padding: 40px;
   border-radius: 5px;
   margin-top: 2em;
@@ -22,9 +20,11 @@
 }
 
 .displayProject .displayTitle {
-  font-size: 20px;
-  color: #3cb100;
+  font-size: 30px;
+  color: black;
   justify-content: space-between;
+  margin: 2em 0 2em 13.5em;
+  text-transform: uppercase;
 }
 
 .displayProject .displayText {

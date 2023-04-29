@@ -1,6 +1,7 @@
 .featured {
   width: 100%;
   justify-content: space-between;
+  background-color: aliceblue;
 }
 
 .featuredItem {
@@ -16,8 +17,7 @@
 }
 
 .ProjectDisplay table {
-  margin: 5rem auto;
-
+  margin: 2rem;
   border: 1rem hidden #443c68;
   border-collapse: collapse;
   box-shadow: 0 0 0 1px black;
@@ -47,9 +47,17 @@
   font-size: 1rem;
 }
 
-.BeneficiaryDisplay table {
-  margin: 5rem auto;
+.BeneficiaryDisplay .tableTitle {
+  text-align: left;
+  color: black;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-right: 35rem;
+}
 
+table {
+  margin: 2rem;
   border: 1rem hidden #443c68;
   border-collapse: collapse;
   box-shadow: 0 0 0 1px black;
@@ -57,7 +65,9 @@
   max-width: 80rem;
   text-align: center;
   background-color: rgb(213, 209, 209);
+  margin-right: 20rem;
 }
+
 .BeneficiaryDisplay th {
   border: 1px solid #443c68;
   max-width: 30rem;
