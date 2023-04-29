@@ -30,6 +30,18 @@ const projectSchema = mongoose.Schema(
         },
       },
     ],
+    donorDetails: [
+      {
+        username: {
+          type: String,
+          required: false,
+        },
+        email: {
+          type: String,
+          required: false,
+        },
+      },
+    ],
     projectInfo: {
       type: String,
       required: true,
