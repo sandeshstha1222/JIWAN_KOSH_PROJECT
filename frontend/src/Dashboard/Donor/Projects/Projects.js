@@ -169,6 +169,7 @@ const Projects = () => {
 
   const toggleModal = (projects) => {
     setModal(!modal);
+    console.log("Modal Entered");
   };
 
   if (modal) {
@@ -208,7 +209,7 @@ const Projects = () => {
           console.log("You can Donate");
         } else if (response.data.message === "no u cannot donate now") {
           console.log("you cannot donate");
-          toast.warn("Donation hasnot been Started Yet");
+          toast.warn("You Cannot Donate Now.");
         }
       });
   };
