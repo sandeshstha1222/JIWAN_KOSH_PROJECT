@@ -5,12 +5,12 @@
   align-items: center;
 }
 
-.AidAgenc .AidAgencyTitle {
+.AidAgency .AidAgencyTitle {
   text-align: center;
   justify-content: center;
   color: black;
 }
-.AidAgenc .agencytable {
+.AidAgency .agencytable {
   margin: 5rem auto;
   border: 1rem hidden #443c68;
   border-collapse: collapse;
@@ -20,7 +20,7 @@
 
   /* text-align: center; */
 }
-.AidAgencyTitle th {
+.AidAgency th {
   border: 1px solid #443c68;
   max-width: auto;
   padding: 1rem;
@@ -30,7 +30,7 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.AidAgencyTitle td {
+.AidAgency td {
   border: 1px solid #443c68;
   max-width: auto;
   padding: 1rem;
