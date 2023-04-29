@@ -229,7 +229,7 @@ const Navbar = () => {
                 onClick={""}
               >
                 {Number.isNaN(showBalance / 10 ** 18)
-                  ? 0
+                  ? "XXXX.XX"
                   : showBalance / 10 ** 18}
               </span>
             </li>
