@@ -24,7 +24,7 @@ const Projects = () => {
     deadline: "",
     contractAddress: "",
   });
-
+  let email = localStorage.getItem("Email");
   const [values, setValues] = useState({
     token: "",
   });
@@ -81,8 +81,8 @@ const Projects = () => {
   };
 
   const donate = (projectDetails) => {
-    console.log("dfdsf");
-
+    let email = localStorage.getItem("Email");
+    let username = localStorage.getItem("Username");
     donateFund(values.token)
       .then((data) =>
         seeBalance()
@@ -92,6 +92,7 @@ const Projects = () => {
             transactionDetails()
               .then((data) => {
                 console.log("transaction details", data);
+                let status = "DONATE";
                 axios
                   .post("/trial", {
                     projectId: projectDetails._id,
@@ -104,6 +105,7 @@ const Projects = () => {
                     fromAccountAddress: data.from,
                     toAccountAddress: data.to,
                     donatedJktAmount: values.token,
+                    status: status,
                   })
                   .then((res) => {
                     console.log("Project Donar Details", res);
@@ -111,6 +113,21 @@ const Projects = () => {
                   .catch((err) => {
                     console.log(err);
                   });
+
+                axios
+                  .put("/project/addDonorDetails", {
+                    projectId: projectDetails._id,
+                    donorDetail1: [
+                      {
+                        username: username,
+                        email: email,
+                      },
+                    ],
+                  })
+                  .then((res) => {
+                    console.log("Res", res);
+                  })
+                  .catch((err) => console.log(err));
               })
               .catch((err) => console.log(err));
           })
@@ -146,10 +163,28 @@ const Projects = () => {
   //     });
   // };
 
-  const refunds = () => {
+  const refunds = (projects) => {
+    console.log("PROJECTDETAILS", projects);
+    let email = localStorage.getItem("Email");
+    let username = localStorage.getItem("Username");
     refund()
       .then((data) => {
         console.log(data);
+
+        axios
+          .put("/project/deleteDonorDetails", {
+            projectId: projects._id,
+            donorDetail1: [
+              {
+                username: username,
+                email: email,
+              },
+            ],
+          })
+          .then((res) => {
+            console.log("Res", res);
+          })
+          .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
   };
@@ -237,6 +272,7 @@ const Projects = () => {
               target,
               startDate,
               deadline,
+              donorDetails,
             } = projects;
 
             return (
@@ -248,7 +284,6 @@ const Projects = () => {
                 />
                 <div className="Projects">
                   <div className="ProjectName">
-                    {/* <p>{beneficiaries[0].email}</p> */}
                     <p>{projectName}</p>
                   </div>
                   <p>
@@ -271,25 +306,44 @@ const Projects = () => {
                     </a>
                   </p>
                   {/* <hr style={{ width: "26em" }} /> */}
-                  <div className="donate-button-border">
-                    {/* <Link to="/projectdetails"> */}
-                    <button
-                      className="Donate-Button"
-                      onClick={(e) => {
-                        donateDetails(projects);
-                        console.log(_id);
-                        toggleModal();
-                        startProject(projects);
-                      }}
-                    >
-                      DONATE NOW
-                    </button>
+                  <div className="DonateRefund">
+                    <div className="donate-button-border">
+                      {/* <Link to="/projectdetails"> */}
+                      <button
+                        className="Donate-Button"
+                        onClick={(e) => {
+                          donateDetails(projects);
+                          console.log(_id);
+                          toggleModal();
+                          startProject(projects);
+                        }}
+                      >
+                        DONATE NOW
+                      </button>
+                    </div>
+                    <div className="donate-button-border">
+                      {donorDetails.map((donor) => {
+                        const { email } = donor;
 
-                    <button className="Donate-Button" onClick={refunds}>
-                      Refund
-                    </button>
-                    {/* </Link> */}
+                        return (
+                          <div>
+                            {console.log(email)}
+                            {email === localStorage.getItem("Email") ? (
+                              <button
+                                className="Donate-Button"
+                                onClick={() => refunds(projects)}
+                              >
+                                REFUND
+                              </button>
+                            ) : (
+                              ""
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
+
                   <div className="restDetails">
                     <p>
                       {target} <a>JKT Needed</a>

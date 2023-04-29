@@ -221,17 +221,17 @@ const Navbar = () => {
               }}
             >
               <button className="Balance-button" onClick={fetchBalance}>
-                balance
+                Balance:
+                <span
+                  style={{ border: "1px solid #3cb100" }}
+                  className="icons-span"
+                  onClick={""}
+                >
+                  {Number.isNaN(showBalance / 10 ** 18)
+                    ? "XXXX.XX"
+                    : showBalance / 10 ** 18}
+                </span>
               </button>
-              <span
-                style={{ border: "1px solid #3cb100" }}
-                className="icons-span"
-                onClick={""}
-              >
-                {Number.isNaN(showBalance / 10 ** 18)
-                  ? 0
-                  : showBalance / 10 ** 18}
-              </span>
             </li>
             <Link className="btn" to="/">
               <li>
