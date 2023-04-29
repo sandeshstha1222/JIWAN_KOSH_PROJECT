@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { getDonorTransactionDetails, trialprint } from "../controller/trial.js";
+import { getTransactionDetails, trialprint } from "../controller/trial.js";
 
 const trialRouter = Router();
-trialRouter.route("/").post(trialprint).get(getDonorTransactionDetails);
+trialRouter.route("/").post(trialprint).get(getTransactionDetails);
 
 export default trialRouter;

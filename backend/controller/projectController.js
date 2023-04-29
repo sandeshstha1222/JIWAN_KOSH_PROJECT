@@ -2,7 +2,7 @@ import asynchandler from "express-async-handler";
 import { array } from "yup";
 import Project from "../models/project.js";
 import user from "../models/user.js";
-import donarLog from "../models/donarLog.js";
+import transaxtionLog from "../models/transactionLog.js";
 
 export const createProject = asynchandler(async (req, res) => {
   const {
@@ -92,4 +92,48 @@ export const listProjectBySearch = asynchandler((req, res) => {
         message: "Error getting the project",
       });
     });
+});
+
+export const AddDonorDetails = asynchandler(async(req,res) => {
+  const { projectId, donorDetail1 } = req.body;
+  var project1= await Project.findOne({_id: projectId});
+  console.log("Project 1", project1)
+  const newdonorDetail = project1.donorDetails.concat(donorDetail1);
+  console.log("After concate", newdonorDetail)
+  Project.findOneAndUpdate(
+    {_id: projectId},
+    {
+      donorDetails:newdonorDetail,
+    }
+  )
+  .then((response)=> {
+    console.log(response);
+    res.send({message: "donor updated"});
+  })
+  .catch((err)=> {
+    console.log(err);
+    res.send({message: "Error in donor update"});
+  });
+});
+
+export const DeleteDonorDetails = asynchandler(async(req,res) => {
+  const { projectId, donorDetail1 } = req.body;
+  var project1= await Project.findOne({_id: projectId});
+  const existingArray= project1.donorDetails;
+  const index = existingArray.findIndex( obj=> obj.username === donorDetail1.username);
+  existingArray.splice(index, 1);
+  Project.findOneAndUpdate(
+    {_id: projectId},
+    {
+      donorDetails:existingArray,
+    }
+  )
+  .then((response)=> {
+    console.log(response);
+    res.send({message: "donor deleted"});
+  })
+  .catch((err)=> {
+    console.log(err);
+    res.send({message: "Error in donor delete"});
+  });
 });

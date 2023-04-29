@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const donarLogSchema = mongoose.Schema(
+const transactionLogSchema = mongoose.Schema(
   {
     projectId: {
       type: String,
@@ -42,11 +42,15 @@ const donarLogSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    status:{
+      type: String,
+      required: true,
+    },
   },
   {
     timestamp: true,
   }
 );
 
-const donarLog = mongoose.model("donarLog", donarLogSchema);
-export default donarLog;
+const transactionLog = mongoose.model("transactionLog", transactionLogSchema);
+export default transactionLog;
