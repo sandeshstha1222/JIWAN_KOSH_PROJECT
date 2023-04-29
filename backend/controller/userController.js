@@ -209,7 +209,7 @@ export const listDonor = asynchandler((req, res) => {
 
 export const listbeneficiary = asynchandler((req, res) => {
   user
-    .find({ role: "beneficiary" })
+    .find({ role: "Beneficiary" })
     .then((response) => {
       res.send({
         message: "beneficiary listed!",
