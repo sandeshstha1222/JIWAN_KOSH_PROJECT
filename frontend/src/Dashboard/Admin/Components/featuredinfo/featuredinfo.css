@@ -47,6 +47,15 @@
   font-size: 1rem;
 }
 
+.BeneficiaryDisplay .tableTitle {
+  text-align: left;
+  color: black;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-right: 25rem;
+}
+
 table {
   margin: 2rem;
   border: 1rem hidden #443c68;
@@ -56,14 +65,7 @@ table {
   max-width: 80rem;
   text-align: center;
   background-color: rgb(213, 209, 209);
-}
-
-.BeneficiaryDisplay .tableTitle {
-  text-align: left;
-  color: black;
-  font-family: "Montserrat", sans-serif;
-  font-weight: bold;
-  margin-top: 2rem;
+  margin-right: 20rem;
 }
 
 .BeneficiaryDisplay th {

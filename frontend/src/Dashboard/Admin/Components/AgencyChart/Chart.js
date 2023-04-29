@@ -21,8 +21,8 @@ const Chart = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className="AgencyDisplay"> Aid Agency </h1>
+    <div className="AgencyDisplay">
+      <h1 className="AgencyTitle"> Aid Agency </h1>
       <table className="tabledata">
         <tr>
           <th>Name</th>

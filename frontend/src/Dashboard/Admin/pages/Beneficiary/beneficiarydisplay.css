@@ -8,7 +8,7 @@
 .BeneficiaryDisplay .List {
   margin-left: 27em;
 }
-.Beneficiary .tableTitle {
+.BeneficiaryDisplay .beneficiarytable {
   text-align: center;
   color: black;
   font-family: "Montserrat", sans-serif;

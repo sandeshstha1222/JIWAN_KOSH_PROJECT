@@ -27,7 +27,7 @@ const BeneficiaryDisplay = () => {
         <AdminSidebar />
       </div>
       <div className="BeneficiaryDisplay">
-        <h1 className="tableTitle"> Beneficiaries </h1>
+        <h1 className="BeneficiaryTitle"> Beneficiaries </h1>
         <table className="beneficiarytable">
           <tr>
             <th>Name</th>

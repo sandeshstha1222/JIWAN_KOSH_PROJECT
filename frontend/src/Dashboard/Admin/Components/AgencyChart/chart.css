@@ -3,8 +3,17 @@
   justify-content: center;
   color: black;
 }
+
+.AgencyDisplay .AgencyTitle {
+  text-align: left;
+  color: black;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  margin-top: 2rem;
+  margin-right: 15rem;
+}
+
 .AgencyDisplay .tabledata {
-  margin: 5rem auto;
   border: 1rem hidden #443c68;
   border-collapse: collapse;
   box-shadow: 0 0 0 1px black;
