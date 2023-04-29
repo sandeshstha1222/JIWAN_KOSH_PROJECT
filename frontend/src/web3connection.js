@@ -15,7 +15,7 @@ let isInitialized = false;
 
 let transactionHash;
 
-let donationContractAddress = "0x28924f4A98f9F5Da03B574B89089A73ae37B5142";
+let donationContractAddress = "0x75939e1A788f858E03cdd11D1B138367382999F7";
 
 export const getBlockchain = async (setAccountAddress) => {
   let provider = window.ethereum;

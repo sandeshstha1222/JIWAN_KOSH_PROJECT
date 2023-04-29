@@ -4,7 +4,7 @@ import axios from "axios";
 import charity from "../../../images/project.jpg";
 import BeneficiaryNavbar from "../BeneficiaryNavbar/BeneficiaryNavbar";
 import { toast } from "react-toastify";
-import { claim } from "../../../web3connection";
+import { claim, transactionDetails } from "../../../web3connection";
 
 const EnrollProjects = () => {
   const [projectData, setProjectData] = useState([]);
@@ -27,36 +27,66 @@ const EnrollProjects = () => {
     claim()
       .then((balance) => {
         console.log("balance", balance);
+        // transactionDetails()
+        //   .then((data) => {
+        //     console.log("transation details", data);
+        //   })
+        //   .catch((err) => {
+        //     console.log(err);
+        //   });
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const ClaimFund = (projects) => {
-    console.log(projects.contractAddress);
-    const successMsg = () => {
-      return (
-        <div>You have successfully claimed {projects.claimableFund} JKT</div>
-      );
-    };
-    axios
-      .post("/beneficiary/claimfund", {
-        contractAddress: projects.contractAddress,
-      })
-      .then((res) => {
-        console.log(res.data.message);
-        if (res.data.message === "yes u can claim") {
-          toast.success(successMsg, {
-            autoClose: 3000,
-          });
-        } else if (res.data.message === "no U cannot claim") {
-          toast.success("Project hasnot ended yet. You cannot claim now.", {
-            autoClose: 3000,
-          });
-        }
-      });
-  };
+  // const claimFund = (projects) => {
+  //   // console.log("ProjectData", projectData);
+  //   // let email = localStorage.getItem("Email");
+  //   // let username = localStorage.getItem("Username");
+  //   // let status = "CLAIM";
+  //   // axios
+  //   //   .post("/trial", {
+  //   //     status: status,
+  //   //   })
+  //   //   .then((res) => {
+  //   //     console.log("Project Claim Details", res);
+  //   //   })
+  //   //   .catch((err) => {
+  //   //     console.log(err);
+  //   //   });
+
+  //   console.log(projects.contractAddress);
+  //   const successMsg = () => {
+  //     return (
+  //       <div>You have successfully claimed {projects.claimableFund} JKT</div>
+  //     );
+  //   };
+  //   axios
+  //     .post("/beneficiary/claimfund", {
+  //       contractAddress: projects.contractAddress,
+  //     })
+  //     .then((res) => {
+  //       console.log("Response", res);
+  //       transactionDetails()
+  //         .then((data) => {
+  //           console.log("transation details", data);
+  //         })
+  //         .catch((err) => {
+  //           console.log(err);
+  //         });
+  //       console.log(res.data.message);
+  //       if (res.data.message === "yes u can claim") {
+  //         toast.success(successMsg, {
+  //           autoClose: 3000,
+  //         });
+  //       } else if (res.data.message === "no U cannot claim") {
+  //         toast.success("Project hasnot ended yet. You cannot claim now.", {
+  //           autoClose: 3000,
+  //         });
+  //       }
+  //     });
+  // };
 
   return (
     <div className="Beneficiary-Project-Body">

@@ -7,8 +7,8 @@ const Transaction = () => {
   const [transaction, setTransaction] = useState([]);
   useEffect(() => {
     axios.get("/trial").then((res) => {
-      setTransaction(res.data.donorDetails);
-      console.log(res.data.donorDetails);
+      setTransaction(res.data.transactionDetails);
+      console.log(res.data.transactionDetails);
     });
   }, []);
   return (
@@ -23,25 +23,16 @@ const Transaction = () => {
             <th>To</th>
             <th>Donated Amount</th>
             <th>ProjectName</th>
-            <th>ProjectInfo</th>
-            <th>No. of Beneficiaries</th>
-            <th> StartDate </th>
-            <th>Deadline</th>
-            <th>Target</th>
           </tr>
 
           <tbody>
             {transaction.map((data) => {
               const {
                 projectName,
-                numOfBeneficiary,
-                projectInfo,
-                startDate,
-                deadline,
-                target,
                 fromAccountAddress,
                 toAccountAddress,
                 donatedJktAmount,
+                status,
               } = data;
 
               return (
@@ -50,11 +41,6 @@ const Transaction = () => {
                   <td>{toAccountAddress}</td>
                   <td>{donatedJktAmount}</td>
                   <td>{projectName}</td>
-                  <td> {projectInfo} </td>
-                  <td>{numOfBeneficiary}</td>
-                  <td>{startDate}</td>
-                  <td>{deadline}</td>
-                  <td>{target}</td>
                 </tr>
               );
             })}

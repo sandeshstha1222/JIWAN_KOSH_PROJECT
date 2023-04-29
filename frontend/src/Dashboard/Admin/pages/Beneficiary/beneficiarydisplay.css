@@ -13,12 +13,12 @@
   justify-content: center;
 }
 table {
-  margin: 5rem auto;
+  margin-top:8em ;
   border: 1rem hidden #443c68;
   border-collapse: collapse;
   box-shadow: 0 0 0 1px black;
   overflow: hidden;
-  max-width: 80rem;
+  width: 100%;
 
   /* text-align: center; */
 }
@@ -35,8 +35,8 @@ th {
 td {
   border: 1px solid #443c68;
   max-width: auto;
-  padding: 1rem;
+  padding: 2rem;
   line-height: 1.7;
-  font-size: 10px;
+  font-size: 15px;
   font-weight: bold;
 }
