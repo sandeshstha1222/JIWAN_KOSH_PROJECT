@@ -31,8 +31,8 @@ const BeneficiaryDisplay = () => {
         <table className="beneficiarytable">
           <tr>
             <th>Name</th>
+            <th>Username</th>
             <th>Email</th>
-            <th>WalletAddress</th>
           </tr>
 
           <tbody>
