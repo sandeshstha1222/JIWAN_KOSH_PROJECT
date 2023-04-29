@@ -56,27 +56,27 @@ const DProject = () => {
   const Notify = () => {
     if (values.projectname === "") {
       setProjectnameErr(true);
-      toast.warn("Field is Empty");
+      // toast.warn("Field is Empty");
     }
     if (values.projectinfo === "") {
       setProjectinfoErr(true);
-      toast.warn("Field is Empty");
+      // toast.warn("Field is Empty");
     }
     if (values.numOfBeneficiaries === "") {
       setnumOfBeneficiariesErr(true);
-      toast.warn("Field is Empty");
+      // toast.warn("Field is Empty");
     }
     if (values.amount === "") {
       setAmountErr(true);
-      toast.warn("Field is Empty");
+      // toast.warn("Field is Empty");
     }
     if (values.startdate === "") {
       setStartdateErr(true);
-      toast.warn("Field is Empty");
+      // toast.warn("Field is Empty");
     }
     if (values.enddate === "") {
       setEnddateErr(true);
-      toast.warn("Field is Empty");
+      // toast.warn("Field is Empty");
     }
     if (
       (values.projectname &&

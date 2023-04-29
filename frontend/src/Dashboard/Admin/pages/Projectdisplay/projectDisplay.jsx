@@ -22,48 +22,50 @@ const ProjectDisplay = () => {
   }, []);
 
   return (
-    <div className="display">
+    <div>
       <div>
         <AdminSidebar />
       </div>
-      <div className="grid">
-        <h1 className="displayProjectTitle">Project Details</h1>
-        {mydata.map((post) => {
-          const {
-            projectName,
-            numOfBeneficiary,
-            projectInfo,
-            startDate,
-            deadline,
-            target,
-            beneficiaries,
-          } = post;
-          return (
-            <div className="displayItem" key={projectName}>
-              <img style={{ width: "18em" }} src={charity} alt="PROJECT" />
-              <p className="displayText">Project Name: {projectName}</p>
-              <div className="restdata">
-                <p className="displayText">Projectinfo: {projectInfo}</p>
-                <p className="displayText">
-                  Numberofbeneficiary: {numOfBeneficiary}
-                </p>
-                {post.beneficiaries.map((data) => {
-                  const { email, username } = data;
-                  return (
-                    <div>
-                      Emails :{email} <br />
-                      Username: {username}
-                    </div>
-                  );
-                })}
+      <div className="display">
+        <div className="grid">
+          <h1 className="displayProjectTitle">Project Details</h1>
+          {mydata.map((post) => {
+            const {
+              projectName,
+              numOfBeneficiary,
+              projectInfo,
+              startDate,
+              deadline,
+              target,
+              beneficiaries,
+            } = post;
+            return (
+              <div className="displayItem" key={projectName}>
+                <img style={{ width: "18em" }} src={charity} alt="PROJECT" />
+                <p className="displayText">Project Name: {projectName}</p>
+                <div className="restdata">
+                  <p className="displayText">Projectinfo: {projectInfo}</p>
+                  <p className="displayText">
+                    Numberofbeneficiary: {numOfBeneficiary}
+                  </p>
+                  {post.beneficiaries.map((data) => {
+                    const { email, username } = data;
+                    return (
+                      <div>
+                        Emails :{email} <br />
+                        Username: {username}
+                      </div>
+                    );
+                  })}
 
-                <p className="displayText">Startdate: {startDate}</p>
-                <p className="displayText">Deadline: {deadline}</p>
-                <p className="displayText">Target: {target}</p>
+                  <p className="displayText">Startdate: {startDate}</p>
+                  <p className="displayText">Deadline: {deadline}</p>
+                  <p className="displayText">Target: {target}</p>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );
