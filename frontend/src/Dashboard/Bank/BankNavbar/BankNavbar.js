@@ -86,14 +86,19 @@ const Navbar = () => {
         </div>
         <div className="donor-nav-menu">
           <ul>
-            <Link to="/donorhome">
+            <Link to="/bank/home">
               <li>
                 <a>HOME</a>
               </li>
             </Link>
-            <Link to="/sendmoney">
+            <Link to="/bank/requestlist">
               <li>
-                <a>SEND MONEY</a>
+                <a>REQUEST LIST</a>
+              </li>
+            </Link>
+            <Link to="/bank/transfermoney">
+              <li>
+                <a>TRANSFER MONEY</a>
               </li>
             </Link>
 
@@ -121,17 +126,13 @@ const Navbar = () => {
               }}
             >
               <button className="Balance-button" onClick={fetchBalance}>
-                balance
+                Balance:
+                <span>
+                  {Number.isNaN(showBalance / 10 ** 18)
+                    ? "XXXX.XX"
+                    : showBalance / 10 ** 18}
+                </span>
               </button>
-              <span
-                style={{ border: "1px solid #3cb100" }}
-                className="icons-span"
-                onClick={""}
-              >
-                {Number.isNaN(showBalance / 10 ** 18)
-                  ? 0
-                  : showBalance / 10 ** 18}
-              </span>
             </li>
             <Link className="btn" to="/">
               <li>

@@ -62,12 +62,6 @@ const Navbar = () => {
               </li>
             </Link>
 
-            <Link to="/beneficiary/transacton">
-              <li>
-                <a>TRANSACTIONS</a>
-              </li>
-            </Link>
-
             <Link className="btn" to="#">
               <li>
                 <button
@@ -103,21 +97,14 @@ const Navbar = () => {
                 textAlign: "center",
               }}
             >
-              <button
-                className="Beneficiary-logout-button"
-                onClick={fetchBalance}
-              >
-                balance
+              <button className="Balance-button" onClick={fetchBalance}>
+                Balance:
+                <span>
+                  {Number.isNaN(showBalance / 10 ** 18)
+                    ? "XXXX.XX"
+                    : showBalance / 10 ** 18}
+                </span>
               </button>
-              <span
-                style={{ border: "1px solid #3cb100" }}
-                className="icons-span"
-                onClick={handleToggle}
-              >
-                {Number.isNaN(showBalance / 10 ** 18)
-                  ? 0
-                  : showBalance / 10 ** 18}
-              </span>
             </li>
 
             <Link className="btn" to="/">

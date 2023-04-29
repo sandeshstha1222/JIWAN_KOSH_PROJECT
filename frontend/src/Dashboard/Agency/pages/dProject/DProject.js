@@ -111,18 +111,12 @@ const DProject = () => {
             console.log("Project Create Success");
             toast.success("Project Create Successful");
             navigate("/agencydashboard");
-          }
-          if (response.data.message === "Error project Creating") {
+          } else if (response.data.message === "Error project Creating") {
             console.log("Project Create fail");
-            toast.error("Project Create failed", {
-              postion: "top-center",
-              autoClose: 5000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
+            toast.error("Project Create failed", {});
+          } else if (response.data.message === "This account doesnot exist.") {
+            console.log("Beneficiary Not Found");
+            toast.error("Beneficiary Not Found", {});
           }
         });
     }
@@ -135,7 +129,7 @@ const DProject = () => {
       <div className="donationForm">
         <div className="Form">
           {/* <pre>{JSON.stringify(user, undefined, 2)}</pre> */}
-          <form onSubmit={handleSubmit}>
+          <div onSubmit={handleSubmit}>
             <h2>Donation Project</h2>
             <div className="input">
               <input
@@ -373,7 +367,7 @@ const DProject = () => {
               </button>
               <ToastContainer />
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

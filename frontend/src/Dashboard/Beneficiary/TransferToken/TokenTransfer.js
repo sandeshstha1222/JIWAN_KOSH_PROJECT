@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./TokenTransfer.css";
 import BeneficiaryNavar from "../BeneficiaryNavbar/BeneficiaryNavbar";
+import { transact } from "../../../web3connection";
 
 const TokenTransfer = () => {
   const [token, setToken] = useState({
@@ -42,7 +43,7 @@ const TokenTransfer = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  CLAIM
+                  TRANSFER
                 </a>
                 <a
                   style={{
@@ -57,7 +58,7 @@ const TokenTransfer = () => {
           </div>
         </div>
         <div className="Beneficiary-token-form">
-          <form>
+          <div>
             <p>TOKEN TRANSFER</p>
             <div className="input" style={{ margin: "1em 0 0 2.3em" }}>
               <label>Token</label>
@@ -90,9 +91,14 @@ const TokenTransfer = () => {
                 marginTop: "5em",
               }}
             >
-              <button className="submit">Submit</button>
+              <button
+                className="submit"
+                onClick={transact(token.bankWalletAddress, token.tokenTransfer)}
+              >
+                TRANSFER
+              </button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

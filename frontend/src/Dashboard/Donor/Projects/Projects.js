@@ -82,6 +82,8 @@ const Projects = () => {
 
   const donate = (projectDetails) => {
     console.log("dfdsf");
+    let donarEmail = localStorage.getItem("Email");
+    let donarUsername = localStorage.getItem("Username");
 
     donateFund(values.token)
       .then((data) =>
@@ -104,12 +106,23 @@ const Projects = () => {
                     fromAccountAddress: data.from,
                     toAccountAddress: data.to,
                     donatedJktAmount: values.token,
+                    status: "DONATE",
                   })
                   .then((res) => {
                     console.log("Project Donar Details", res);
                   })
                   .catch((err) => {
                     console.log(err);
+                  });
+
+                axios
+                  .post("", {
+                    projectId: projectDetails._id,
+                    donorEmail: donarEmail,
+                    donorUsername: donarUsername,
+                  })
+                  .then((res) => {
+                    console.log("Details Send");
                   });
               })
               .catch((err) => console.log(err));

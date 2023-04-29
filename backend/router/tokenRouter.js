@@ -1,5 +1,10 @@
 import { Router } from "express";
-import { DisplayTokenToAdmin, DisplayTokenToBank, StoreToken, TokenDelete } from "../controller/tokenController.js";
+import {
+  DisplayTokenToAdmin,
+  DisplayTokenToBank,
+  StoreToken,
+  TokenDelete,
+} from "../controller/tokenController.js";
 
 const tokenRouter = Router();
 tokenRouter.route("/tokenentry").post(StoreToken);

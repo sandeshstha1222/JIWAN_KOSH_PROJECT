@@ -24,13 +24,47 @@ const EnrollProjects = () => {
   }, []);
 
   const claimFund = () => {
-    claim()
-      .then((balance) => {
-        console.log("balance", balance);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // claim()
+    //   .then((balance) => {
+    //     console.log("balance", balance);
+    //     transactionDetails()
+    //       .then((data) => {
+    //         console.log("transaction details", data);
+    //         axios
+    //           .post("/trial", {
+    //             projectId: projectDetails._id,
+    //             projectName: projectDetails.projectName,
+    //             numOfBeneficiary: projectDetails.numOfBeneficiary,
+    //             projectInfo: projectDetails.projectInfo,
+    //             startDate: projectDetails.startDate,
+    //             deadline: projectDetails.deadline,
+    //             target: projectDetails.target,
+    //             fromAccountAddress: data.from,
+    //             toAccountAddress: data.to,
+    //             donatedJktAmount: values.token,
+    //             status: "CLAIM"
+    //           })
+    //           .then((res) => {
+    //             console.log("Project Donar Details", res);
+    //           })
+    //           .catch((err) => {
+    //             console.log(err);
+    //           });
+    //         axios
+    //           .post("", {
+    //             projectId: projectDetails._id,
+    //             donorEmail: donarEmail,
+    //             donorUsername: donarUsername,
+    //           })
+    //           .then((res) => {
+    //             console.log("Details Send");
+    //           });
+    //       })
+    //       .catch((err) => console.log(err));
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
 
   const ClaimFund = (projects) => {

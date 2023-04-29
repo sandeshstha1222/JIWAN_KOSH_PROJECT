@@ -24,31 +24,18 @@ const SendMoney = () => {
             <div>
               Happiness doesn't result from what we get, but from what we give.
             </div>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              So please
-            </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                color: "#3cb100",
-                fontWeight: "bold",
-              }}
-            >
-              DONATE.
-            </div>
           </div>
         </div>
         <div className="token-form">
           <form>
-            <p>TOKEN REQUEST</p>
+            <p>TRANSFER MONEY</p>
             <div className="input" style={{ margin: "1em 0 0 2.3em" }}>
-              <label>Token</label>
+              <label>Money</label>
               <div>
                 <input
                   type="number"
                   name="tokenRequired"
-                  placeholder="Token Required"
+                  placeholder="Amount"
                   value={token.tokenRequired}
                   onChange={handleInputs}
                 />
@@ -73,7 +60,7 @@ const SendMoney = () => {
                 marginTop: "5em",
               }}
             >
-              <button className="submit">Submit</button>
+              <button className="submit">TRANSFER</button>
             </div>
           </form>
         </div>

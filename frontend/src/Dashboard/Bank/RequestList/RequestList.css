@@ -1,0 +1,9 @@
+.RequestList {
+  background-color: aliceblue;
+  width: 100%;
+  min-height: 100vh;
+  height: auto;
+}
+.Lists {
+  margin-top: 10vh;
+}

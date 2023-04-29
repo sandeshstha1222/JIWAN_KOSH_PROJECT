@@ -26,14 +26,14 @@ import ProjectDetails from "./Dashboard/Donor/Projects/ProjectDetails";
 import Beneficiary from "./Dashboard/Beneficiary/Beneficiary";
 import EnrollProjects from "./Dashboard/Beneficiary/EnrollProjects/EnrollProject";
 import TransferToken from "./Dashboard/Beneficiary/TransferToken/TokenTransfer";
-import BeneficiaryTransaction from "./Dashboard/Beneficiary/Transaction/Transaction";
 import Dashboard from "./Dashboard/Admin/Dashboard";
 import AgencyDashboarddisplay from "./Dashboard/Agency/AgencyDashboard";
 import BeneficiariesDis from "./Dashboard/Agency/pages/BeneficiariesDisplay/BeneficiariesDis";
 import AidAgency from "./Dashboard/Admin/pages/aidAgency/AidAgency";
 import Bank from "./Dashboard/Bank/Bank";
 import SendMoney from "./Dashboard/Bank/SendMoney/SendMoney";
-import RequestList from "./Dashboard/Admin/pages/RequestList/RequestList";
+import BankRequestList from "./Dashboard/Bank/RequestList/RequestList";
+import AdminRequestList from "./Dashboard/Admin/pages/RequestList/RequestList";
 
 function App() {
   return (
@@ -138,24 +138,21 @@ function App() {
             <Route path="/Home" element={<Dashboard />} />
             <Route path="/AgencyHome" element={<AgencyDashboarddisplay />} />
             <Route path="/tokenoperation" element={<TokenOperation />} />
-            <Route path="/requestlist" element={<RequestList />} />
+            <Route path="/requestlist" element={<AdminRequestList />} />
             <Route path="/Projectdisplay" element={<ProjectDisplay />} />
             <Route path="/dProject" element={<DProject />} />
             <Route path="/DisplayProject" element={<DisplayProject />} />
             <Route path="/tokenrequest" element={<RequestToken />} />
             <Route path="/donationprojects" element={<DonationProjects />} />
             <Route path="/donorhome" element={<Donor />} />
-            <Route path="/bankhome" element={<Bank />} />
-            <Route path="/sendmoney" element={<SendMoney />} />
+            <Route path="/bank/home" element={<Bank />} />
+            <Route path="/bank/requestlist" element={<BankRequestList />} />
+            <Route path="/bank/transfermoney" element={<SendMoney />} />
             <Route path="/projectdetails" element={<ProjectDetails />} />
             <Route path="/beneficiaryhome" element={<Beneficiary />} />
             <Route path="/enrollprojects" element={<EnrollProjects />} />
             <Route path="/transfertoken" element={<TransferToken />} />
             <Route path="/donor/transaction" element={<DonorTransaction />} />
-            <Route
-              path="/beneficiary/transacton"
-              element={<BeneficiaryTransaction />}
-            />
 
             <Route
               path="/BeneficiariesDisplay"
