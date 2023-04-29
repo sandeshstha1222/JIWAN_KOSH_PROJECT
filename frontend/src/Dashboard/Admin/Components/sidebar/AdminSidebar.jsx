@@ -76,14 +76,15 @@ export default function Sidebar() {
                 Transaction
               </li>
             </div>
-
-            <li
-              className="sidebarListItem"
-              onClick={() => localStorage.clear()}
-            >
-              <LogoutOutlinedIcon className="sidebarIcon" />
-              Logout
-            </li>
+            <Link to="/" className="Link">
+              <li
+                className="sidebarListItem"
+                onClick={() => localStorage.clear()}
+              >
+                <LogoutOutlinedIcon className="sidebarIcon" />
+                Logout
+              </li>
+            </Link>
           </ul>
         </div>
       </div>
