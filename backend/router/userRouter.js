@@ -2,7 +2,17 @@ import { Router } from "express";
 
 import userSchema from "../schemas/user.js";
 import validateData from "../middlewares/validation.js";
-import { listAidAgency, listbeneficiary, listDonor, listUser, listUserById, login, register, userDelete, userUpdate } from "../controller/userController.js";
+import {
+  listAidAgency,
+  listbeneficiary,
+  listDonor,
+  listUser,
+  listUserById,
+  login,
+  register,
+  userDelete,
+  userUpdate,
+} from "../controller/userController.js";
 
 const userRouter = Router();
 
